@@ -1,7 +1,8 @@
 CC = gcc
 
 OBJS = obj/main.o\
-       obj/elf_helper.o
+       obj/elf_helper.o\
+       obj/memory.o
 
 ODIR = obj
 SDIR = src
