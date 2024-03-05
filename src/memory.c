@@ -12,8 +12,6 @@ void init_page(uint64_t page[], uint64_t pagesize)
             page[i] = NULL;
         }
     }
-    {
-    }
 }
 
 void write_byte(uint64_t addr, uint8_t byte)

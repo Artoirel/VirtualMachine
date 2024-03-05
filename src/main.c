@@ -5,6 +5,11 @@
 
 
 int main(int argc, char *argv[]) {
+    address_t test;
+    test.address = "4";
+
+    printf("%x", test.L1)
+
     if(argc < 2){
         THROW_ERROR("No file provided, please specify file");
     }
