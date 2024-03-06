@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 typedef struct bits_type{
-    uint64_t offest : 12;
+    uint64_t offset : 12;
     uint64_t L4 : 9;
     uint64_t L3 : 9;
     uint64_t L2 : 9;
