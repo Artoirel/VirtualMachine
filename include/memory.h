@@ -2,6 +2,7 @@
 #define __MEMORY_H__
 
 #include <stdint.h>
+#include <stddef.h>
 
 uint8_t *****vmem = NULL;
 
