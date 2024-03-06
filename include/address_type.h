@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-typedef union struct address_type
+typedef union address_type
 {
     uint64_t address = 0;
     struct{
