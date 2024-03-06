@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "error.h"
 #include "elf_helper.h"
+#include "address_type.h"
 
 
 int main(int argc, char *argv[]) {

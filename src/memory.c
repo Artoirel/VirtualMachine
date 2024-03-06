@@ -16,8 +16,8 @@ void init_page(uint64_t page[], uint64_t pagesize)
 
 void write_byte(uint64_t addr, uint8_t byte)
 {
-    address_t address;
-    address.address = addr;
+    //address_t address;
+    /address.address = addr;
 
 
 
