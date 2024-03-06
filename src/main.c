@@ -9,10 +9,11 @@ int main(int argc, char *argv[]) {
     address_t test;
     test.address = 4;
 
-    printf("%x\n", test.bits.offset);
+    printf("%d", test.address);
+    printf("0x%08x\n", test.bits.offset);
 
     if(argc < 2){
-        THROW_ERROR("No file provided, please specify file");
+        //THROW_ERROR("No file provided, please specify file");
     }
 
     Elf64_Ehdr* header = (Elf64_Ehdr*) create_hdr(argv[1]);
