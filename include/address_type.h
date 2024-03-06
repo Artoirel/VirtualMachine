@@ -3,14 +3,16 @@
 
 #include <stdint.h>
 
-typedef struct address_type
+typedef union struct address_type
 {
     uint64_t address = 0;
-    uint64_t L1 : 9 = (address >> 38) & 0x1ff;
-    uint64_t L2 : 9 = (address >> 29) & 0x1ff;
-    uint64_t L3 : 9 = (address >> 20) & 0x1ff;
-    uint64_t L4 : 9 = (address >> 11) & 0x1ff;
-    uint64_t offest : 12 = address & 0xfff;
+    struct{
+        uint64_t offest : 12;
+        uint64_t L4 : 9;
+        uint64_t L3 : 9;
+        uint64_t L2 : 9;
+        uint64_t L1 : 9;
+    } bits;
 } address_t;
 
 #endif //VIRTUALMACHINE_ADDRESS_TYPE_H
