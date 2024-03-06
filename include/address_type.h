@@ -17,4 +17,4 @@ typedef union address_type
     bits_t bits;
 } address_t;
 
-#endif //VIRTUALMACHINE_ADDRESS_TYPE_H
+#endif

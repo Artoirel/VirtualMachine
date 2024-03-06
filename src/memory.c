@@ -1,6 +1,7 @@
 #include "memory.h"
 #include <math.h>
 #include <stdio.h>
+#include <stddef.h>
 #include "address_type.h"
 
 void init_page(uint64_t page[], uint64_t pagesize)
