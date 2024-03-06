@@ -5,7 +5,7 @@
 
 typedef union address_type
 {
-    uint64_t address = 0;
+    uint64_t address;
     struct{
         uint64_t offest : 12;
         uint64_t L4 : 9;
