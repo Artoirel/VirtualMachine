@@ -5,7 +5,7 @@
 
 typedef struct address_type
 {
-    uint64_t address;
+    uint64_t address = 0;
     uint64_t L1 : 9 = (address >> 38) & 0x1ff;
     uint64_t L2 : 9 = (address >> 29) & 0x1ff;
     uint64_t L3 : 9 = (address >> 20) & 0x1ff;
