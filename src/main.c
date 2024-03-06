@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[]) {
     address_t test;
-    test.address = "4";
+    test.address = 4;
 
     printf("%x", test.L1);
 
