@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     test.address = 4;
 
     printf("%d", test.address);
-    printf("0x%08x\n", test.bits.offset);
+    printf("0x%08x\n", test.bits.L1);
 
     if(argc < 2){
         //THROW_ERROR("No file provided, please specify file");
