@@ -78,7 +78,7 @@ void write_double_word(uint64_t addr, uint64_t double_word)
     validate_mem_alloc(address);
 
     write_word(addr, data.words.w1);
-    write_half(addr + 4, data.words.w2);
+    write_word(addr + 4, data.words.w2);
 }
 
 uint8_t read_byte(uint64_t addr)
