@@ -61,12 +61,87 @@ void write_word(uint64_t addr, uint32_t word)
     write_half(addr, data.halfs.h1);
     write_half(addr + 2, data.halfs.h2);
 }
-void write_double_word(uint64_t addr, uint64_t double_word);
+void write_double_word(uint64_t addr, uint64_t double_word)
+{
+    address_t address;
+    address.address = addr;
 
-uint8_t read_byte(uint64_t addr);
-uint16_t read_half(uint64_t addr);
-uint32_t read_word(uint64_t addr);
-uint64_t read_double_word(uint64_t addr);
+    data_t data;
+    data.data = (uint64_t) word;
+
+    int aligned = check_addr_aligned(addr, 8);
+    if(aligned > 0)
+    {
+        THROW_ERROR("Address unaligned");
+    }
+
+    validate_mem_alloc(address);
+
+    write_word(addr, data.words.w1);
+    write_half(addr + 4, data.words.w2);
+}
+
+uint8_t read_byte(uint64_t addr)
+{
+    int aligned = check_addr_aligned(addr, 1);
+    if(aligned > 0)
+    {
+        THROW_ERROR("Address unaligned");
+    }
+
+    address_t address;
+    data_t data;
+
+    address.address = addr;
+    return vmem[addr.bits.L1][addr.bits.L2][addr.bits.L3][addr.bits.L4][addr.bits.offset];
+}
+uint16_t read_half(uint64_t addr)
+{
+    int aligned = check_addr_aligned(addr, 2);
+    if(aligned > 0)
+    {
+        THROW_ERROR("Address unaligned");
+    }
+
+    data_t data;
+
+    data.bytes.b1 = read_byte(addr);
+    data.bytes.b2 = read_byte(addr + 1);
+
+    return (uint16_t) data.data;
+}
+
+uint32_t read_word(uint64_t addr)
+{
+    int aligned = check_addr_aligned(addr, 4);
+    if(aligned > 0)
+    {
+        THROW_ERROR("Address unaligned");
+    }
+
+    data_t data;
+
+    data.halfs.h1 = read_half(addr);
+    data.halfs.h2 = read_half(addr + 2);
+
+    return (uint32_t) data.data;
+}
+
+uint64_t read_double_word(uint64_t addr)
+{
+    int aligned = check_addr_aligned(addr, 8);
+    if(aligned > 0)
+    {
+        THROW_ERROR("Address unaligned");
+    }
+
+    data_t data;
+
+    data.words.w1 = read_word(addr);
+    data.words.h2 = read_word(addr + 4);
+
+    return data.data;
+}
 
 int check_addr_aligned(uint64_t addr, int size)
 {
