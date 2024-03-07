@@ -149,7 +149,7 @@ void validate_mem_alloc(address_t address)
     if(vmem == NULL)
     {
         vmem = (uint8_t*****) malloc(sizeof(uint8_t*****) * 2^9);
-        printf("Before global allocation\n")
+        printf("Before global allocation\n");
         for(int i = 0; i < 2^9; i++)
         {
             vmem[i] = NULL;
