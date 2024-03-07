@@ -148,9 +148,9 @@ void validate_mem_alloc(address_t address)
 {
     if(vmem == NULL)
     {
-        vmem = (uint8_t*****) malloc(sizeof(uint8_t*****) * 2^9);
+        vmem = (uint8_t*****) malloc(sizeof(uint8_t*****) * 512);
         printf("Before global allocation\n");
-        for(int i = 0; i < 2^9; i++)
+        for(int i = 0; i < 512; i++)
         {
             vmem[i] = NULL;
             printf("%d\n", i);
@@ -160,8 +160,8 @@ void validate_mem_alloc(address_t address)
 
     if(vmem[address.bits.L1] == NULL)
     {
-        vmem[address.bits.L1] = (uint8_t****) malloc(sizeof(uint8_t****) * 2^9);
-        for(int i = 0; i < 2^9; i++)
+        vmem[address.bits.L1] = (uint8_t****) malloc(sizeof(uint8_t****) * 512);
+        for(int i = 0; i < 512; i++)
         {
             vmem[address.bits.L1][i] = NULL;
         }
@@ -170,8 +170,8 @@ void validate_mem_alloc(address_t address)
 
     if(vmem[address.bits.L1][address.bits.L2] == NULL)
     {
-        vmem[address.bits.L1][address.bits.L2] = (uint8_t***) malloc(sizeof(uint8_t***) * 2^9);
-        for(int i = 0; i < 2^9; i++)
+        vmem[address.bits.L1][address.bits.L2] = (uint8_t***) malloc(sizeof(uint8_t***) * 512);
+        for(int i = 0; i < 512; i++)
         {
             vmem[address.bits.L1][address.bits.L2][i] = NULL;
         }
@@ -180,8 +180,8 @@ void validate_mem_alloc(address_t address)
 
     if(vmem[address.bits.L1][address.bits.L2][address.bits.L3] == NULL)
     {
-        vmem[address.bits.L1][address.bits.L2][address.bits.L3] = (uint8_t**) malloc(sizeof(uint8_t**) * 2^9);
-        for(int i = 0; i < 2^9; i++)
+        vmem[address.bits.L1][address.bits.L2][address.bits.L3] = (uint8_t**) malloc(sizeof(uint8_t**) * 512);
+        for(int i = 0; i < 512; i++)
         {
             vmem[address.bits.L1][address.bits.L2][address.bits.L3][i] = NULL;
         }
@@ -190,8 +190,8 @@ void validate_mem_alloc(address_t address)
 
     if(vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4] == NULL)
     {
-        vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4] = (uint8_t*) malloc(sizeof(uint8_t*) * 2^12);
-        for(int i = 0; i < 2^12; i++)
+        vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4] = (uint8_t*) malloc(sizeof(uint8_t*) * 4096);
+        for(int i = 0; i < 4096; i++)
         {
             vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4][i] = NULL;
         }
