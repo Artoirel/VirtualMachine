@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
      write_double_word(1000012016, 0xdeadbeef);
 
      data_t test;
-     test.data = read_double_word(1000000000);
+     test.data = read_double_word(1000012016);
 
     printf("0x%16x\n\n", test.data);
 
