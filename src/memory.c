@@ -6,6 +6,8 @@
 #include "address_type.h"
 #include "error.h"
 
+uint8_t *****vmem = NULL;
+
 void write_byte(uint64_t addr, uint8_t byte)
 {
     address_t address;
