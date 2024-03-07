@@ -138,7 +138,7 @@ uint64_t read_double_word(uint64_t addr)
     data_t data;
 
     data.words.w1 = read_word(addr);
-    data.words.h2 = read_word(addr + 4);
+    data.words.w2 = read_word(addr + 4);
 
     return data.data;
 }
