@@ -18,7 +18,7 @@ void write_byte(uint64_t addr, uint8_t byte)
 
     validate_mem_alloc(address);
 
-    vmem[address.L1][address.L2][address.L3][address.L4][address.offset] = byte;
+    vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4][address.bits.offset] = byte;
 }
 
 void write_half(uint64_t addr, uint16_t half)
