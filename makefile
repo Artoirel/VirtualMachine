@@ -7,7 +7,7 @@ OBJS = obj/main.o\
 ODIR = obj
 SDIR = src
 BDIR = bin
-BIN = wild
+BIN = vm
 
 INCLUDE = -I./include
 
