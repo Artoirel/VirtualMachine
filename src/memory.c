@@ -58,7 +58,8 @@ void write_word(uint64_t addr, uint32_t word)
 
     validate_mem_alloc(address);
 
-    //write_half(addr, )
+    write_half(addr, data.halfs.h1);
+    write_half(addr + 2, data.halfs.h2);
 }
 void write_double_word(uint64_t addr, uint64_t double_word);
 

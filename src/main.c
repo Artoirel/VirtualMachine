@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[]) {
     data_t test;
-    test.data = 0xffeeccdd11665522;
+    test.data = (uint64_t) 0x4422;
 
     printf("0x%16x\n\n", test.data);
 
