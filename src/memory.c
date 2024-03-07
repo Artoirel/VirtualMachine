@@ -153,6 +153,7 @@ void validate_mem_alloc(address_t address)
         for(int i = 0; i < 2^9; i++)
         {
             vmem[i] = NULL;
+            printf("%d\n", i);
         }
         printf("After first loop\n");
     }
