@@ -27,7 +27,7 @@ void write_half(uint64_t addr, uint16_t half)
     address_t address;
     address.address = addr;
 
-    data_bytes_t data;
+    data_t data;
     data.data = (uint64_t) half;
 
     int aligned = check_addr_aligned(addr, 2);
@@ -47,7 +47,7 @@ void write_word(uint64_t addr, uint32_t word)
     address_t address;
     address.address = addr;
 
-    data_bytes_type data;
+    data_t data;
     data.data = (uint64_t) word;
 
     int aligned = check_addr_aligned(addr, 4);
