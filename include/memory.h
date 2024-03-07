@@ -5,8 +5,6 @@
 #include <stddef.h>
 #include "address_type.h"
 
-uint8_t *****vmem = NULL;
-
 void write_byte(uint64_t addr, uint8_t byte);
 void write_half(uint64_t addr, uint16_t half);
 void write_word(uint64_t addr, uint32_t word);
