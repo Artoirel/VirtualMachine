@@ -149,10 +149,12 @@ void validate_mem_alloc(address_t address)
     if(vmem == NULL)
     {
         vmem = (uint8_t*****) malloc(sizeof(uint8_t*****) * 2^9);
+        printf("Before global allocation\n")
         for(int i = 0; i < 2^9; i++)
         {
             vmem[i] = NULL;
         }
+        printf("After first loop\n");
     }
 
     if(vmem[address.bits.L1] == NULL)
@@ -162,6 +164,7 @@ void validate_mem_alloc(address_t address)
         {
             vmem[address.bits.L1][i] = NULL;
         }
+        printf("After second loop\n");
     }
 
     if(vmem[address.bits.L1][address.bits.L2] == NULL)
@@ -171,6 +174,7 @@ void validate_mem_alloc(address_t address)
         {
             vmem[address.bits.L1][address.bits.L2][i] = NULL;
         }
+        printf("After 3rd loop\n");
     }
 
     if(vmem[address.bits.L1][address.bits.L2][address.bits.L3] == NULL)
@@ -180,6 +184,7 @@ void validate_mem_alloc(address_t address)
         {
             vmem[address.bits.L1][address.bits.L2][address.bits.L3][i] = NULL;
         }
+        printf("After 4th loop\n");
     }
 
     if(vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4] == NULL)
@@ -189,5 +194,6 @@ void validate_mem_alloc(address_t address)
         {
             vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4][i] = NULL;
         }
+        printf("After final loop\n");
     }
 }
