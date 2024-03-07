@@ -7,7 +7,7 @@
 
 
 int main(int argc, char *argv[]) {
-     write_double_word(1000000000, 4568455221564);
+     write_double_word(1000000000, 0xdeadbeef);
 
      data_t test;
      test.data = read_double_word(1000000000);
