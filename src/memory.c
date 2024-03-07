@@ -93,7 +93,7 @@ uint8_t read_byte(uint64_t addr)
     data_t data;
 
     address.address = addr;
-    return vmem[addr.bits.L1][addr.bits.L2][addr.bits.L3][addr.bits.L4][addr.bits.offset];
+    return vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4][address.bits.offset];
 }
 uint16_t read_half(uint64_t addr)
 {
