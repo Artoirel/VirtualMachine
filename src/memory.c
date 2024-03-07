@@ -110,7 +110,7 @@ void validate_mem_alloc(address_t address)
 
     if(vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4] == NULL)
     {
-        vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4][i] == (uint8_t*) malloc(sizeof(uint8_t*) * 2^12);
+        vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4] = (uint8_t*) malloc(sizeof(uint8_t*) * 2^12);
         for(int i = 0; i < 2^12; i++)
         {
             vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4][i] = NULL;
