@@ -81,39 +81,39 @@ void validate_mem_alloc(address_t address)
         }
     }
 
-    if(vmem[address.L1] == NULL)
+    if(vmem[address.bits.L1] == NULL)
     {
-        vmem[address.L1] = (uint8_t****) malloc(sizeof(uint8_t****) * 2^9);
+        vmem[address.bits.L1] = (uint8_t****) malloc(sizeof(uint8_t****) * 2^9);
         for(int i = 0; i < 2^9; i++)
         {
-            vmem[address.L1][i] = NULL;
+            vmem[address.bits.L1][i] = NULL;
         }
     }
 
-    if(vmem[address.L1][address.L2] == NULL)
+    if(vmem[address.bits.L1][address.bits.L2] == NULL)
     {
-        vmem[address.L1][address.L2] = (uint8_t***) malloc(sizeof(uint8_t***) * 2^9);
+        vmem[address.bits.L1][address.bits.L2] = (uint8_t***) malloc(sizeof(uint8_t***) * 2^9);
         for(int i = 0; i < 2^9; i++)
         {
-            vmem[address.L1][address.L2][i] = NULL;
+            vmem[address.bits.L1][address.bits.L2][i] = NULL;
         }
     }
 
-    if(vmem[address.L1][address.L2][address.L3] == NULL)
+    if(vmem[address.bits.L1][address.bits.L2][address.bits.L3] == NULL)
     {
-        vmem[address.L1][address.L2][address.L3] = (uint8_t**) malloc(sizeof(uint8_t**) * 2^9);
+        vmem[address.bits.L1][address.bits.L2][address.bits.L3] = (uint8_t**) malloc(sizeof(uint8_t**) * 2^9);
         for(int i = 0; i < 2^9; i++)
         {
-            vmem[address.L1][address.L2][address.L3][i] = NULL;
+            vmem[address.bits.L1][address.bits.L2][address.bits.L3][i] = NULL;
         }
     }
 
-    if(vmem[address.L1][address.L2][address.L3][address.L4] == NULL)
+    if(vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4] == NULL)
     {
-        vmem[address.L1][address.L2][address.L3][address.L4][i] == (uint8_t*) malloc(sizeof(uint8_t*) * 2^12);
+        vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4][i] == (uint8_t*) malloc(sizeof(uint8_t*) * 2^12);
         for(int i = 0; i < 2^12; i++)
         {
-            vmem[address.L1][address.L2][address.L3][address.L4][i] = NULL;
+            vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4][i] = NULL;
         }
     }
 }
