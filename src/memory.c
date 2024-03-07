@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "address_type.h"
+#include "data_type.h"
 #include "error.h"
 
 uint8_t *****vmem = NULL;

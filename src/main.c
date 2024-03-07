@@ -3,6 +3,7 @@
 #include "error.h"
 #include "elf_helper.h"
 #include "address_type.h"
+#include "data_type.h"
 #include "memory.h"
 
 
