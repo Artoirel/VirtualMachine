@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stddef.h>
+#include <stdlib.h>
 #include "address_type.h"
 
 void write_byte(uint64_t addr, uint8_t byte)
