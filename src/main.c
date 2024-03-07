@@ -19,14 +19,14 @@ int main(int argc, char *argv[]) {
     printf("0x%04x\n", test.halfs[2]);
     printf("0x%04x\n\n", test.halfs[3]);
 
-    printf("0x%02x\n", test.bytes[0]);
-    printf("0x%02x\n", test.bytes[1]);
-    printf("0x%02x\n", test.bytes[2]);
-    printf("0x%02x\n", test.bytes[3]);
-    printf("0x%02x\n", test.bytes[4]);
-    printf("0x%02x\n", test.bytes[5]);
-    printf("0x%02x\n", test.bytes[6]);
-    printf("0x%02x\n\n", test.bytes[7]);
+    printf("0x%02x\n", test.bytest[0]);
+    printf("0x%02x\n", test.bytest[1]);
+    printf("0x%02x\n", test.bytest[2]);
+    printf("0x%02x\n", test.bytest[3]);
+    printf("0x%02x\n", test.bytest[4]);
+    printf("0x%02x\n", test.bytest[5]);
+    printf("0x%02x\n", test.bytest[6]);
+    printf("0x%02x\n\n", test.bytest[7]);
 
 
     if(argc < 2){

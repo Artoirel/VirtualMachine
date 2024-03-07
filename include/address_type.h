@@ -46,9 +46,9 @@ typedef struct data_word_type
 typedef union data_type
 {
     uint64_t data;
-    uint32_t words[];
-    uint16_t halfs[];
-    uint8_t bytest[];
+    uint32_t *words;
+    uint16_t *halfs;
+    uint8_t *bytest;
     data_bytes_t bytes;
 } data_t;
 
