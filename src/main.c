@@ -11,22 +11,22 @@ int main(int argc, char *argv[]) {
 
     printf("0x%16x\n\n", test.data);
 
-    printf("0x%08x\n", test.words[0]);
-    printf("0x%08x\n\n", test.words[1]);
+    printf("0x%08x\n", test.words.w1);
+    printf("0x%08x\n\n", test.words.w2);
 
-    printf("0x%04x\n", test.halfs[0]);
-    printf("0x%04x\n", test.halfs[1]);
-    printf("0x%04x\n", test.halfs[2]);
-    printf("0x%04x\n\n", test.halfs[3]);
+    printf("0x%04x\n", test.halfs.h1);
+    printf("0x%04x\n", test.halfs.h2);
+    printf("0x%04x\n", test.halfs.h3);
+    printf("0x%04x\n\n", test.halfs.h4);
 
-    printf("0x%02x\n", test.bytest[0]);
-    printf("0x%02x\n", test.bytest[1]);
-    printf("0x%02x\n", test.bytest[2]);
-    printf("0x%02x\n", test.bytest[3]);
-    printf("0x%02x\n", test.bytest[4]);
-    printf("0x%02x\n", test.bytest[5]);
-    printf("0x%02x\n", test.bytest[6]);
-    printf("0x%02x\n\n", test.bytest[7]);
+    printf("0x%02x\n", test.bytes.b1);
+    printf("0x%02x\n", test.bytes.b2);
+    printf("0x%02x\n", test.bytes.b3);
+    printf("0x%02x\n", test.bytes.b4);
+    printf("0x%02x\n", test.bytes.b5);
+    printf("0x%02x\n", test.bytes.b6);
+    printf("0x%02x\n", test.bytes.b7);
+    printf("0x%02x\n\n", test.bytes.b8);
 
 
     if(argc < 2){

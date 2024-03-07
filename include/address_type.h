@@ -3,7 +3,8 @@
 
 #include <stdint.h>
 
-typedef struct bits_type{
+typedef struct bits_type
+{
     uint64_t offset : 12;
     uint64_t L4 : 9;
     uint64_t L3 : 9;
@@ -41,14 +42,13 @@ typedef struct data_word_type
 {
     uint32_t w1;
     uint32_t w2;
-};
+} data_word_t;
 
 typedef union data_type
 {
     uint64_t data;
-    uint32_t *words;
-    uint16_t *halfs;
-    uint8_t *bytest;
+    data_word_t words;
+    data_half_t halfs;
     data_bytes_t bytes;
 } data_t;
 
