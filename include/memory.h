@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include "address_type.h"
 
 uint8_t *****vmem = NULL;
 
