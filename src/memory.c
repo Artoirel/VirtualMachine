@@ -89,6 +89,8 @@ uint8_t read_byte(uint64_t addr)
     address_t address;
     data_t data;
 
+    validate_mem_alloc(address);
+
     address.address = addr;
     return vmem[address.bits.L1][address.bits.L2][address.bits.L3][address.bits.L4][address.bits.offset];
 }
