@@ -3,11 +3,14 @@
 #include "error.h"
 #include "elf_helper.h"
 #include "address_type.h"
+#include "memory.h"
 
 
 int main(int argc, char *argv[]) {
-    data_t test;
-    test.data = (uint64_t) 0x4422;
+     write_double_word(1000000000, 4568455221564);
+
+     data_t test;
+     test.data = read_double_word(1000000000);
 
     printf("0x%16x\n\n", test.data);
 
