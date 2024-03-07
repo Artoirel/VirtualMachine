@@ -38,8 +38,6 @@ void write_half(uint64_t addr, uint16_t half)
         THROW_ERROR("Address unaligned");
     }
 
-    validate_mem_alloc(address);
-
     write_byte(addr, data.bytes.b1);
     write_byte(addr + 1, data.bytes.b2);
 }
@@ -58,8 +56,6 @@ void write_word(uint64_t addr, uint32_t word)
         THROW_ERROR("Address unaligned");
     }
 
-    validate_mem_alloc(address);
-
     write_half(addr, data.halfs.h1);
     write_half(addr + 2, data.halfs.h2);
 }
@@ -76,8 +72,6 @@ void write_double_word(uint64_t addr, uint64_t double_word)
     {
         THROW_ERROR("Address unaligned");
     }
-
-    validate_mem_alloc(address);
 
     write_word(addr, data.words.w1);
     write_word(addr + 4, data.words.w2);
