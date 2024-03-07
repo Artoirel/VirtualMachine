@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "address_type.h"
+#include "error.h"
 
 void write_byte(uint64_t addr, uint8_t byte)
 {
