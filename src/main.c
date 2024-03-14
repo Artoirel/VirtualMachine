@@ -8,12 +8,11 @@
 
 
 int main(int argc, char *argv[]) {
-    char *file;
-
-    for(int i = 0; i < argc; i++)
-    {
-        file = argv[i];
+    if(argc < 2){
+        THROW_ERROR("No file provided, please specify file");
     }
+
+    char *file = argv[1];
 
     printf("%d %s\n\n", argc, argv[0]);
 
@@ -41,12 +40,8 @@ int main(int argc, char *argv[]) {
     printf("0x%02x\n", test.bytes.b7);
     printf("0x%02x\n\n", test.bytes.b8);
 
-
-    if(argc < 2){
-        THROW_ERROR("No file provided, please specify file");
-    }
-
     Elf64_Ehdr* header = (Elf64_Ehdr*) create_hdr(argv[1]);
+    printf("%s \n\n", header->e_ident)
     Elf64_Shdr* sec = (Elf64_Shdr*) create_shdr(header);
     get_main(header, sec, argc - 1, &argv[1]);
     
