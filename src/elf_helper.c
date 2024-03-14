@@ -26,7 +26,7 @@ int check_elf(char* file)
     {
         THROW_ERROR("Not Little Endian");
     }
-}
+    
     if(magic[EI_CLASS] == ELFCLASSNONE)
     {
         THROW_ERROR("Invalid Class");
