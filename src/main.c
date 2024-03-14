@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     }
 
     printf("%s", file);
-    
+
      write_double_word(1000012016, 0xdeadbeef);
 
      data_t test;
