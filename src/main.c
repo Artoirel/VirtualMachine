@@ -40,8 +40,14 @@ int main(int argc, char *argv[]) {
     printf("0x%02x\n", test.bytes.b7);
     printf("0x%02x\n\n", test.bytes.b8);
 
+    int valid = check_elf(argv[1]);
+
+    if(valid != 64)
+    {
+        THROW_ERROR("Invalid architecture")
+    }
+
     Elf64_Ehdr* header = (Elf64_Ehdr*) create_hdr(argv[1]);
-    printf("%08x \n\n", header->e_ident);
     Elf64_Shdr* sec = (Elf64_Shdr*) create_shdr(header);
     get_main(header, sec, argc - 1, &argv[1]);
     

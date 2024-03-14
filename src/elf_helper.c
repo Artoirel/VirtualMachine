@@ -12,6 +12,37 @@
 
 static int fd = -1;
 
+int check_elf(char* file)
+{
+    char *magic = NULL;
+    fd = open(file, O_RDONLY);
+    magic = (char*) mmap(NULL, 16, PROT_READ, MAP_SHARED, fd, 0);
+
+    if(magic[EI_MAG0] != ELFMAG0 || magic[EI_MAG1] != ELFMAG1 || magic[EI_MAG2] != ELFMAG2 || magic[EI_MAG3] != ELFMAG3)
+    {
+        THROW_ERROR("Not an ELF formatted file");
+    }
+    if(magic[EI_DATA != ELFDATA2LSB])
+    {
+        THROW_ERROR("Not Little Endian");
+    }
+}
+    if(magic[EI_CLASS] == ELFCLASSNONE)
+    {
+        THROW_ERROR("Invalid Class");
+    }
+    else if(magic[EI_CLASS] == ELFCLASS32)
+    {
+        munmap(magic, 16);
+        return 32;
+    }
+    else if(magic[EI_CLASS] == ELFCLASS64)
+    {
+        munmap(magic, 16);
+        return 64;
+    }
+    return -1;
+
 void* create_hdr(char* file)
 {
     fd = open(file, O_RDONLY);

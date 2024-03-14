@@ -1,6 +1,8 @@
 #ifndef __ELF_HELPER_H__
 #define __ELF_HELPER_H__
 
+int check_elf(char* file);
+
 void* create_hdr(char* file);
 
 void* create_shdr(void *header);
