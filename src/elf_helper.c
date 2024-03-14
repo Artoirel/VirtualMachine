@@ -21,7 +21,8 @@ int check_elf(char* file) {
         magic[EI_MAG3] != ELFMAG3) {
         THROW_ERROR("Not an ELF formatted file");
     }
-    if (magic[EI_DATA != ELFDATA2LSB]) {
+
+    if (magic[EI_DATA] != ELFDATA2LSB) {
         THROW_ERROR("Not Little Endian");
     }
 
