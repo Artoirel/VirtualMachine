@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
         file = argv[i];
     }
 
-    printf("%s", file);
+    printf("%d %s\n\n", argc, file);
 
      write_double_word(1000012016, 0xdeadbeef);
 
