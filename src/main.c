@@ -48,6 +48,12 @@ int main(int argc, char *argv[]) {
 
     Elf64_Phdr* phdr = (Elf64_Phdr*) create_phdr(header);
 
+    Elf64_Phdr* pt_load = (Elf64_Phdr*) get_loadable_segment(header, phdr, PT_LOAD);
+    Elf64_Phdr* pt_tls = (Elf64_Phdr*) get_loadable_segment(header, phdr, PT_TLS);
+
+    printf("%d = %d\n", PT_LOAD, pt_load->p_type);
+    printf("%d = %d\n", PT_TLS, pt_load->p_type);
+
     Elf64_Shdr* sec = (Elf64_Shdr*) create_shdr(header);
     //get_main(header, sec, argc - 1, &argv[1]);
 
