@@ -1,31 +1,28 @@
-#include <elf.h>
-#include <stdio.h>
-#include "error.h"
-#include "elf_helper.h"
-#include "address_type.h"
-#include "data_type.h"
-#include "memory.h"
+    #include <elf.h>
+    #include <stdio.h>
+    #include "error.h"
+    #include "elf_helper.h"
+    #include "address_type.h"
+    #include "data_type.h"
+    #include "memory.h"
 
 
 int main(int argc, char *argv[]) {
-    if(argc < 2){
+    if(argc < 2)
+    {
         THROW_ERROR("No file provided, please specify file");
     }
 
     char *file = argv[1];
 
-    printf("%d %s\n\n", argc, argv[0]);
+    write_double_word(1000012016, 0xdeadbeef);
 
-     write_double_word(1000012016, 0xdeadbeef);
-
-     data_t test;
-     test.data = read_double_word(1000012016);
+    data_t test;
+    test.data = read_double_word(1000012016);
 
     printf("0x%16x\n\n", test.data);
-
     printf("0x%08x\n", test.words.w1);
     printf("0x%08x\n\n", test.words.w2);
-
     printf("0x%04x\n", test.halfs.h1);
     printf("0x%04x\n", test.halfs.h2);
     printf("0x%04x\n", test.halfs.h3);
@@ -49,9 +46,11 @@ int main(int argc, char *argv[]) {
 
     Elf64_Ehdr* header = (Elf64_Ehdr*) create_hdr(argv[1]);
 
+    Elf64_Phdr* phdr = (Elf64_Phdr*) create_phdr(header);
+
     Elf64_Shdr* sec = (Elf64_Shdr*) create_shdr(header);
     //get_main(header, sec, argc - 1, &argv[1]);
-    
+
     printf("Success!");
     return EXIT_SUCCESS;
 }

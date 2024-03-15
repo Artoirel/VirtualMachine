@@ -54,6 +54,21 @@ void* create_hdr(char* file)
     return header;
 }
 
+void* create_phdr(void* header)
+{
+    int er = 0;
+    Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
+    Elf64_Shdr *phdr = (Elf64_Phdr*) malloc(temp->e_phentsize * temp->e_phnum);
+    lseek(fd, temp->e_phoff, SEEK_SET);
+    er = read(fd, sec, temp->e_phentsize * temp->e_phnum);
+    if(er == -1)
+    {
+        THROW_ERROR("Problem Reading Program Header");
+    }
+    return phdr;
+
+}
+
 void* create_shdr(void* header)
 {
     int er = 0;
