@@ -77,9 +77,9 @@ void* get_loadable_segment(void* header, void* phdr, uint32_t ptype)
 
     for(int i = 0; i < temp->e_phnum; i++)
     {
-        if(temp_phdr[i] == ptype)
+        if(temp_phdr[i]->p_type == ptype)
         {
-            return temp_phdr[i];
+            return &temp_phdr[i];
         }
     }
 
