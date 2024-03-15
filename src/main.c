@@ -53,7 +53,9 @@ int main(int argc, char *argv[]) {
 
     printf("p_type: %d\n", pt_load->p_type);
     printf("p_offset: %d\n", pt_load->p_offset);
-    printf("%d = %d\n", PT_TLS, pt_tls->p_type);
+
+    printf("p_type: %d\n", pt_tls->p_type);
+    printf("p_offset: %d\n", pt_tls->p_offset);
 
     Elf64_Shdr* sec = (Elf64_Shdr*) create_shdr(header);
     //get_main(header, sec, argc - 1, &argv[1]);
