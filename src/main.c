@@ -48,8 +48,9 @@ int main(int argc, char *argv[]) {
     }
 
     Elf64_Ehdr* header = (Elf64_Ehdr*) create_hdr(argv[1]);
+
     Elf64_Shdr* sec = (Elf64_Shdr*) create_shdr(header);
-    get_main(header, sec, argc - 1, &argv[1]);
+    //get_main(header, sec, argc - 1, &argv[1]);
     
     printf("Success!");
     return EXIT_SUCCESS;
