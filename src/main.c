@@ -51,7 +51,8 @@ int main(int argc, char *argv[]) {
     Elf64_Phdr* pt_load = (Elf64_Phdr*) get_loadable_segment(header, phdr, PT_LOAD);
     Elf64_Phdr* pt_tls = (Elf64_Phdr*) get_loadable_segment(header, phdr, PT_TLS);
 
-    printf("%d = %d\n", PT_LOAD, pt_load->p_type);
+    printf("p_type: %d\n", pt_load->p_type);
+    printf("p_offset: %d\n", pt_load->p_offset);
     printf("%d = %d\n", PT_TLS, pt_tls->p_type);
 
     Elf64_Shdr* sec = (Elf64_Shdr*) create_shdr(header);
