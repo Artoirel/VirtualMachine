@@ -6,6 +6,7 @@
 #include "data_type.h"
 #include "memory.h"
 #include "register_file.h"
+#include "rf_contents_type.h"
 
 int main(int argc, char *argv[]) {
     if(argc < 2)
@@ -13,11 +14,17 @@ int main(int argc, char *argv[]) {
         THROW_ERROR("No file provided, please specify file");
     }
 
-    write_fp_reg(2, 6495);
-    write_reg(2,8858);
+    rf_contents_t fp_val;
+    fp_val.fpdouble = 6495;
 
-    printf("FP Reg 2 : %d\n", read_fp_reg(2));
-    printf("Reg 2 : %d\n\n", read_reg(2));
+    rf_contents_t val;
+    val.intdouble = 8858
+
+    write_fp_reg(2, fp_val);
+    write_reg(2,val);
+
+    printf("FP Reg 2 : %d\n", read_fp_reg(2).fpdouble);
+    printf("Reg 2 : %d\n\n", read_reg(2).intdouble);
 
     char *file = argv[1];
 
