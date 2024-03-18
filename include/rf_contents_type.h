@@ -2,6 +2,7 @@
 #define __RF_CONTENTS_TYPE_H__
 
 #include "rf_contents_type.h"
+#include <stdint.h>
 
 typedef union {
     float fpsingle;

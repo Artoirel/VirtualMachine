@@ -13,8 +13,8 @@ void init_rf(rf_contents_t sp, rf_contents_t gp)
         reg_file[i] = value;
     }
 
-    reg[2] = sp;
-    reg[3] = gp;
+    reg_file[2] = sp;
+    reg_file[3] = gp;
 
     for(int i = 0; i < 32; i++)
     {
