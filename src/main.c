@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     fp_val.fpdouble = 6495;
 
     rf_contents_t val;
-    val.intdouble = 8858
+    val.intdouble = 8858;
 
     write_fp_reg(2, fp_val);
     write_reg(2,val);
