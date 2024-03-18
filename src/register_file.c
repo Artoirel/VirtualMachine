@@ -29,7 +29,7 @@ void write_fp_reg(uint8_t reg, rf_contents_t value)
     fp_reg_file[reg] = value;
 }
 
-void write_reg(uint_t reg, rf_contents_t value)
+void write_reg(uint8_t reg, rf_contents_t value)
 {
     if(reg == 0) return;
     reg_file[reg] = value;
