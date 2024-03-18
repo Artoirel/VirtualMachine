@@ -1,17 +1,23 @@
-    #include <elf.h>
-    #include <stdio.h>
-    #include "error.h"
-    #include "elf_helper.h"
-    #include "address_type.h"
-    #include "data_type.h"
-    #include "memory.h"
-
+#include <elf.h>
+#include <stdio.h>
+#include "error.h"
+#include "elf_helper.h"
+#include "address_type.h"
+#include "data_type.h"
+#include "memory.h"
+#include "register_file.h"
 
 int main(int argc, char *argv[]) {
     if(argc < 2)
     {
         THROW_ERROR("No file provided, please specify file");
     }
+
+    write_fp_reg(2, 6495);
+    write_reg(2,8858);
+
+    printf("FP Reg 2 : %d\n", read_fp_reg(2));
+    printf("Reg 2 : %d\n\n", read_reg(2));
 
     char *file = argv[1];
 
