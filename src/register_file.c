@@ -15,8 +15,6 @@ void init_rf(uint64_t sp, uint64_t gp)
         reg_file[i] = value;
     }
 
-    printf("here");
-
     rf_contents_t sp_data;
     sp_data.intdouble = sp;
 
@@ -28,13 +26,18 @@ void init_rf(uint64_t sp, uint64_t gp)
 
     for(int i = 0; i < 32; i++)
     {
-        rf_contents_t value;
-        value.intdouble = 0;
-        fp_reg_file[i] = value;
+        rf_contents_t fp_value;
+        fp_value.intdouble = 0;
+        fp_reg_file[i] = fp_value;
     }
 }
 
-void write_fp_reg(uint8_t reg, rf_contents_t value)
+void write_fp_reg_f(uint8_t reg, rf_contents_t value)
+{
+    fp_reg_file[reg] = value;
+}
+
+void write_fp_reg_d(uint8_t reg, rf_contents_t value)
 {
     fp_reg_file[reg] = value;
 }
