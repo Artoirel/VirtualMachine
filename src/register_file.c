@@ -1,5 +1,6 @@
 #include "register_file.h"
 #include "rf_contents_type.h"
+#include <stdio.h>
 
 rf_contents_t reg_file[32];
 rf_contents_t fp_reg_file[32];
