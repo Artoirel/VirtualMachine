@@ -37,10 +37,10 @@ void write_reg(uint8_t reg, rf_contents_t value)
 
 rf_contents_t read_fp_reg(uint8_t reg)
 {
-    return fp_reg_file[reg];
+    return &fp_reg_file[reg];
 }
 
 rf_contents_t read_reg(uint8_t reg)
 {
-    return reg_file[reg];
+    return &reg_file[reg];
 }

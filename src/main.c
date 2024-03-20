@@ -14,6 +14,8 @@ int main(int argc, char *argv[]) {
         THROW_ERROR("No file provided, please specify file");
     }
 
+    init_rf(0, 0);
+
     rf_contents_t fp_val;
     fp_val.fpdouble = 6495;
 
