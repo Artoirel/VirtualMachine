@@ -4,7 +4,7 @@
 #include "rf_contents_type.h"
 #include <stdint.h>
 
-void init_rf();
+void init_rf(uint64_t sp, uint64_t gp);
 
 void write_fp_reg(uint8_t reg, rf_contents_t value);
 void write_reg(uint8_t reg, rf_contents_t value);
