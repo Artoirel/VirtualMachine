@@ -13,6 +13,8 @@ void init_rf(rf_contents_t sp, rf_contents_t gp)
         reg_file[i] = value;
     }
 
+    printf("here");
+
     reg_file[2] = sp;
     reg_file[3] = gp;
 
