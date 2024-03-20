@@ -1,11 +1,12 @@
 #include "register_file.h"
 #include "rf_contents_type.h"
 #include <stdio.h>
+#include <stdint.h>
 
 rf_contents_t reg_file[32];
 rf_contents_t fp_reg_file[32];
 
-void init_rf(rf_contents_t sp, rf_contents_t gp)
+void init_rf(uint64_t sp, uint64_t gp)
 {
     for(int i = 0; i < 32; i++)
     {
@@ -16,8 +17,14 @@ void init_rf(rf_contents_t sp, rf_contents_t gp)
 
     printf("here");
 
-    reg_file[2] = sp;
-    reg_file[3] = gp;
+    rf_contents_t sp_data;
+    sp_data.intdouble = sp;
+
+    rf_contents_t gp_data;
+    gp_data.intdouble = gp;
+
+    reg_file[2] = sp_data;
+    reg_file[3] = gp_data;
 
     for(int i = 0; i < 32; i++)
     {
