@@ -19,10 +19,13 @@ int main(int argc, char *argv[]) {
     rf_contents_t fp_val;
     fp_val.fpdouble = 6495;
 
+    printf("PreWrite - FP: %d", fp_val.fpdouble);
+
+    write_fp_reg(2, fp_val);
+    
     rf_contents_t val;
     val.intdouble = 8858;
 
-    write_fp_reg(2, fp_val);
     write_reg(2,val);
 
     printf("FP Reg 2 : %d\n", read_fp_reg(2).fpdouble);
