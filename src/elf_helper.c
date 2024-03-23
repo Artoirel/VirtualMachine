@@ -99,14 +99,8 @@ void get_loadable_segment(void* header)
                     bytes[i] = 0;
                 }
             }
-
-
-
-            return &temp_phdr[i];
         }
     }
-
-    THROW_ERROR("ptype not found\n");
 }
 
 
