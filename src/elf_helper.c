@@ -6,9 +6,11 @@
 #include <sys/mman.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "error.h"
 #include "elf_helper.h"
+#include "memory.h"
 
 static int fd = -1;
 
@@ -62,10 +64,20 @@ void* create_phdr(void* header)
     printf("%d\n", temp->e_phnum);
     lseek(fd, temp->e_phoff, SEEK_SET);
     er = read(fd, phdr, temp->e_phentsize * temp->e_phnum);
+
     if(er == -1)
     {
         THROW_ERROR("Problem Reading Program Header");
     }
+
+    for(int i = 0; i < temp->e_phnum; i++)
+    {
+        if(phdr[i].p_type == PT_LOAD || phdr[i].p_type == PT_TLS)
+        {
+            uint8_t *loadable = (uint8*) malloc(sizeof(uint8_t))
+        }
+    }
+
     return phdr;
 }
 
@@ -79,6 +91,25 @@ void* get_loadable_segment(void* header, void* phdr, uint32_t ptype)
     {
         if(temp_phdr[i].p_type == ptype)
         {
+            uint8_t bytes[temp_phdr[i].p_memsz];
+            lseek(fd, temp_phdr[i].p_offset, SEEK_SET);
+            er = read(fd, bytes, temp_phdr[i].p_filesz);
+
+            if(er == -1)
+            {
+                THROW_ERROR("Problem Reading Program Header");
+            }
+
+            if(temp_phdr[i].p_filesz < temp_phdr[i].p_memsz)
+            {
+                (int i = temp_phdr[i].p_filesz; i < temp_phdr[i].p_memsz; i++)
+                {
+                    bytes[i] = 0;
+                }
+            }
+
+
+
             return &temp_phdr[i];
         }
     }

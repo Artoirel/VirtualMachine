@@ -17,5 +17,6 @@ uint64_t read_double_word(uint64_t addr);
 
 int check_addr_aligned(uint64_t addr, int size);
 void validate_mem_alloc(address_t address);
+void write_block(uint64_t start, uint8_t* data, uint64_t memsz);
 
 #endif

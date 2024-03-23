@@ -193,3 +193,11 @@ void validate_mem_alloc(address_t address)
         }
     }
 }
+
+void write_block(uint64_t start, uint8_t* data, uint64_t memsz)
+{
+    for(int i = 0; i < memsz; i++)
+    {
+        write_byte(start + i, data[i]);
+    }
+}
