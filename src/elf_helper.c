@@ -80,7 +80,7 @@ void get_loadable_segment(void* header)
 
     for (int i = 0; i < temp->e_phnum; i++)
     {
-        if(temp_phdr[i].p_type == ptype)
+        if(temp_phdr[i].p_type == PT_LOAD || temp_phdr[i].p_type == PT_TLS)
         {
             uint8_t bytes[temp_phdr[i].p_memsz];
             lseek(fd, temp_phdr[i].p_offset, SEEK_SET);
