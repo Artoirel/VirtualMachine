@@ -64,8 +64,6 @@ int main(int argc, char *argv[]) {
 
     Elf64_Ehdr* header = (Elf64_Ehdr*) create_hdr(argv[1]);
 
-    Elf64_Phdr* phdr = (Elf64_Phdr*) create_phdr(header);
-
     get_loadable_segment(header);
 
     //get_main(header, sec, argc - 1, &argv[1]);
