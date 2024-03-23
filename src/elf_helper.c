@@ -70,24 +70,15 @@ void* create_phdr(void* header)
         THROW_ERROR("Problem Reading Program Header");
     }
 
-    for(int i = 0; i < temp->e_phnum; i++)
-    {
-        if(phdr[i].p_type == PT_LOAD || phdr[i].p_type == PT_TLS)
-        {
-            uint8_t *loadable = (uint8*) malloc(sizeof(uint8_t))
-        }
-    }
-
     return phdr;
 }
 
-void* get_loadable_segment(void* header, void* phdr, uint32_t ptype)
+void* get_loadable_segment(void* header)
 {
     Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
-    Elf64_Phdr *temp_phdr = (Elf64_Phdr*) phdr;
-    Elf64_Phdr *phdr_loadable = (Elf64_Phdr*) malloc(temp->e_phentsize * 2);
+    Elf64_Phdr *temp_phdr = create_phdr(header);
 
-    for(int i = 0; i < temp->e_phnum; i++)
+    for (int i = 0; i < temp->e_phnum; i++)
     {
         if(temp_phdr[i].p_type == ptype)
         {
