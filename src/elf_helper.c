@@ -68,7 +68,7 @@ void* create_phdr(void* header)
     {
         THROW_ERROR("Problem Reading Program Header");
     }
-
+    printf("test");
     lseek(fd, 0, SEEK_SET);
     return phdr;
 }
@@ -77,7 +77,7 @@ void get_loadable_segment(void* header)
 {
     int er = 0;
     Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
-    Elf64_Phdr temp_phdr[temp->e_phnum] = create_phdr(header);
+    Elf64_Phdr *temp_phdr = create_phdr(header);
 
     for (int i = 0; i < temp->e_phnum; i++)
     {
