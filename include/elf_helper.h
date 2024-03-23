@@ -7,7 +7,7 @@ void* create_hdr(char* file);
 
 void* create_phdr(void* header);
 
-void* get_loadable_segment(void* header, void* phdr, uint32_t ptype);
+void get_loadable_segment(void* header);
 
 void* create_shdr(void *header);
 

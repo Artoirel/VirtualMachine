@@ -66,8 +66,7 @@ int main(int argc, char *argv[]) {
 
     Elf64_Phdr* phdr = (Elf64_Phdr*) create_phdr(header);
 
-    Elf64_Phdr* pt_load = (Elf64_Phdr*) get_loadable_segment(header, phdr, PT_LOAD);
-    Elf64_Phdr* pt_tls = (Elf64_Phdr*) get_loadable_segment(header, phdr, PT_TLS);
+    get_loadable_segment(header);
 
     printf("PT_LOAD\n");
     printf("p_type: %d\n", pt_load->p_type);

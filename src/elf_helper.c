@@ -73,7 +73,7 @@ void* create_phdr(void* header)
     return phdr;
 }
 
-void* get_loadable_segment(void* header)
+void get_loadable_segment(void* header)
 {
     Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
     Elf64_Phdr *temp_phdr = create_phdr(header);
