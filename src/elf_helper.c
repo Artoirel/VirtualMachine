@@ -70,7 +70,6 @@ void* create_phdr(void* header)
         THROW_ERROR("Problem Reading Program Header");
     }
     printf("test");
-    lseek(fd, 0, SEEK_SET);
     return phdr;
 }
 
