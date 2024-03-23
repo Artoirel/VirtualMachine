@@ -77,6 +77,7 @@ void* create_phdr(void* header)
 void get_loadable_segment(void* header)
 {
     int er = 0;
+    printf("test");
     Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
     Elf64_Phdr *temp_phdr = create_phdr(header);
 

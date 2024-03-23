@@ -68,7 +68,6 @@ int main(int argc, char *argv[]) {
 
     get_loadable_segment(header);
 
-    Elf64_Shdr* sec = (Elf64_Shdr*) create_shdr(header);
     //get_main(header, sec, argc - 1, &argv[1]);
 
     printf("Success!");
