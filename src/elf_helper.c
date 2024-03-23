@@ -58,11 +58,11 @@ void* create_hdr(char* file)
 
 void* create_phdr(void* header)
 {
-    printf("testa\n");
     int er = 0;
     Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
     Elf64_Phdr *phdr = (Elf64_Phdr*) malloc(temp->e_phentsize * temp->e_phnum);
     lseek(fd, temp->e_phoff, SEEK_SET);
+    printf("testa\n");
     er = read(fd, phdr, temp->e_phentsize * temp->e_phnum);
 
     if(er == -1)
