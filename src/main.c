@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 
     PC = header->e_entry;
 
-    printf("x8\n", PC);
+    printf("x16\n", read_double_word(PC));
 
     get_loadable_segment(header);
 
