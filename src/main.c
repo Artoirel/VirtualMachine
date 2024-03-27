@@ -8,6 +8,8 @@
 #include "register_file.h"
 #include "rf_contents_type.h"
 
+uint64_t PC = 0;
+
 int main(int argc, char *argv[]) {
     if(argc < 2)
     {
@@ -63,6 +65,10 @@ int main(int argc, char *argv[]) {
     }
 
     Elf64_Ehdr* header = (Elf64_Ehdr*) create_hdr(argv[1]);
+
+    PC = header->e_entry;
+
+    printf("x8\n", PC);
 
     get_loadable_segment(header);
 

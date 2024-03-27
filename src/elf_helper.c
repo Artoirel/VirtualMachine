@@ -91,7 +91,6 @@ void get_loadable_segment(void* header)
 
             if(temp_phdr[i].p_filesz < temp_phdr[i].p_memsz)
             {
-                printf("filesz %8x - memsz %8x\n", temp_phdr[i].p_filesz, temp_phdr[i].p_memsz);
                 for (int j = temp_phdr[i].p_filesz; j < temp_phdr[i].p_memsz; j++)
                 {
                     bytes[j] = 0;
@@ -102,8 +101,6 @@ void get_loadable_segment(void* header)
         }
     }
 }
-
-
 
 void* create_shdr(void* header)
 {
