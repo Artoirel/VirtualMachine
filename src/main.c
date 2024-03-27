@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
 
     get_loadable_segment(header);
 
-    printf("x8\n", read_word(PC));
+    printf("%x8\n", PC);
 
     //get_main(header, sec, argc - 1, &argv[1]);
 
