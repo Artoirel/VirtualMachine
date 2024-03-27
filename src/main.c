@@ -68,9 +68,9 @@ int main(int argc, char *argv[]) {
 
     PC = header->e_entry;
 
-    printf("x16\n", read_double_word(PC));
-
     get_loadable_segment(header);
+
+    printf("x8\n", read_word(PC));
 
     //get_main(header, sec, argc - 1, &argv[1]);
 
