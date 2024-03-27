@@ -81,7 +81,7 @@ void get_loadable_segment(void* header)
         printf("test in temp\n");
         if(temp_phdr[i].p_type == PT_LOAD || temp_phdr[i].p_type == PT_TLS)
         {
-            printf("test in type\n");
+            printf("%d\n", temp_phdr[i].p_type);
 
             uint8_t bytes[temp_phdr[i].p_memsz];
             lseek(fd, temp_phdr[i].p_offset, SEEK_SET);
