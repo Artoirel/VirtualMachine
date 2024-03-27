@@ -79,7 +79,7 @@ void write_double_word(uint64_t addr, uint64_t double_word)
 
 void write_arbitrary_bytes(uint8_t *bytes, uint64_t addr, uint64_t size)
 {
-    for(int i = 0; i < size, i++)
+    for(int i = 0; i < size; i++)
     {
         write_byte(addr + i, bytes[i]);
     }

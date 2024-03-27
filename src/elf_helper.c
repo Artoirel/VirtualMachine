@@ -94,15 +94,11 @@ void get_loadable_segment(void* header)
                 printf("filesz %8x - memsz %8x\n", temp_phdr[i].p_filesz, temp_phdr[i].p_memsz);
                 for (int j = temp_phdr[i].p_filesz; j < temp_phdr[i].p_memsz; j++)
                 {
-                    printf("test inside inside\n");
-
                     bytes[j] = 0;
                 }
             }
 
             write_arbitrary_bytes(bytes, temp_phdr[i].p_vaddr, temp_phdr[i].p_memsz);
-
-            printf("test\n");
         }
     }
 }
