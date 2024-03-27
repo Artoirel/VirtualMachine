@@ -17,6 +17,6 @@ uint64_t read_double_word(uint64_t addr);
 
 int check_addr_aligned(uint64_t addr, int size);
 void validate_mem_alloc(address_t address);
-void write_block(uint64_t start, uint8_t* data, uint64_t memsz);
+void write_arbitrary_bytes(uint8_t *bytes, uint64_t addr, uint64_t size);
 
 #endif

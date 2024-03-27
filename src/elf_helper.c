@@ -100,6 +100,8 @@ void get_loadable_segment(void* header)
                 }
             }
 
+            write_arbitrary_bytes(bytes, temp_phdr[i].p_vaddr, temp_phdr[i].p_memsz);
+
             printf("test\n");
         }
     }

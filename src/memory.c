@@ -77,6 +77,14 @@ void write_double_word(uint64_t addr, uint64_t double_word)
     write_word(addr + 4, data.words.w2);
 }
 
+void write_arbitrary_bytes(uint8_t *bytes, uint64_t addr, uint64_t size)
+{
+    for(int i = 0; i < size, i++)
+    {
+        write_byte(addr + i, bytes[i]);
+    }
+}
+
 uint8_t read_byte(uint64_t addr)
 {
     int aligned = check_addr_aligned(addr, 1);
