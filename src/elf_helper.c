@@ -68,6 +68,7 @@ void* create_phdr(void* header)
     {
         THROW_ERROR("Problem Reading Program Header");
     }
+    printf("test\n");
     return phdr;
 }
 
