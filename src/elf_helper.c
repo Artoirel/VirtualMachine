@@ -91,10 +91,11 @@ void get_loadable_segment(void* header)
 
             if(temp_phdr[i].p_filesz < temp_phdr[i].p_memsz)
             {
+                printf("filesz %8x - memsz %8x\n", temp_phdr[i].p_filesz, temp_phdr[i].p_memsz);
                 for (int i = temp_phdr[i].p_filesz; i < temp_phdr[i].p_memsz; i++)
                 {
                     printf("test inside inside\n");
-        
+
                     bytes[i] = 0;
                 }
             }
