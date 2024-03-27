@@ -68,7 +68,6 @@ void* create_phdr(void* header)
     {
         THROW_ERROR("Problem Reading Program Header");
     }
-    printf("test\n");
     return phdr;
 }
 
@@ -78,6 +77,7 @@ void get_loadable_segment(void* header)
     Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
     Elf64_Phdr *temp_phdr = (Elf64_Phdr*) create_phdr(header);
 
+    printf("test\n");
     for (int i = 0; i < temp->e_phnum; i++)
     {
         if(temp_phdr[i].p_type == PT_LOAD || temp_phdr[i].p_type == PT_TLS)
