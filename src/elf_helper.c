@@ -62,7 +62,6 @@ void* create_phdr(void* header)
     Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
     Elf64_Phdr *phdr = (Elf64_Phdr*) malloc(temp->e_phentsize * temp->e_phnum);
     lseek(fd, temp->e_phoff, SEEK_SET);
-    printf("testa\n");
     er = read(fd, phdr, temp->e_phentsize * temp->e_phnum);
 
     if(er == -1)
@@ -77,7 +76,7 @@ void get_loadable_segment(void* header)
 {
     int er = 0;
     Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
-    Elf64_Phdr *temp_phdr = create_phdr(header);
+    Elf64_Phdr *temp_phdr = (Elf64_Phdr) create_phdr(header);
 
     for (int i = 0; i < temp->e_phnum; i++)
     {
