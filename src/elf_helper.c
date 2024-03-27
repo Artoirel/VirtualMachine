@@ -84,7 +84,6 @@ void get_loadable_segment(void* header)
             lseek(fd, temp_phdr[i].p_offset, SEEK_SET);
             er = read(fd, bytes, temp_phdr[i].p_filesz);
 
-            printf("test\n");
             if(er == -1)
             {
                 THROW_ERROR("Problem Reading Program Header");
@@ -97,6 +96,8 @@ void get_loadable_segment(void* header)
                     bytes[i] = 0;
                 }
             }
+
+            printf("test\n");
         }
     }
 }
