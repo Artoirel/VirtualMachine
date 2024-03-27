@@ -91,6 +91,7 @@ void get_loadable_segment(void* header)
 
             if(temp_phdr[i].p_filesz < temp_phdr[i].p_memsz)
             {
+                printf("test inside\n");
                 for (int i = temp_phdr[i].p_filesz; i < temp_phdr[i].p_memsz; i++)
                 {
                     bytes[i] = 0;
