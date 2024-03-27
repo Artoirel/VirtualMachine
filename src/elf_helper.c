@@ -94,7 +94,7 @@ void get_loadable_segment(void* header)
             {
                 for (int i = temp_phdr[i].p_filesz; i < temp_phdr[i].p_memsz; i++)
                 {
-                    print("%d\n", i);
+                    printf("%d\n", i);
                     bytes[i] = 0;
                 }
             }
