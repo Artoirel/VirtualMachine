@@ -7,7 +7,6 @@
 #include "memory.h"
 #include "register_file.h"
 #include "rf_contents_type.h"
-#include <stdlib.h>
 
 uint64_t PC = 0;
 

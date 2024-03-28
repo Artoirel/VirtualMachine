@@ -2,6 +2,7 @@
 #include "rf_contents_type.h"
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 rf_contents_t *reg_file[32];
 rf_contents_t *fp_reg_file[32];
