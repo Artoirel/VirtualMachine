@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 
     printf("FP Reg 2 : %f\n", read_fp_reg(2)->fpdouble);
     printf("Reg 2 : %d\n\n", read_reg(2)->intdouble);
-    
+
     int valid = check_elf(argv[1]);
 
     if(valid != 64)
