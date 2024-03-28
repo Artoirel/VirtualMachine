@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 
     write_reg(2,val);
 
-    printf("FP Reg 2 : %8x\n", read_fp_reg(2)->fpdouble);
+    printf("FP Reg 2 : %8x\n", read_fp_reg(2)->intdouble);
     printf("Reg 2 : %d\n\n", read_reg(2)->intdouble);
 
     int valid = check_elf(argv[1]);
