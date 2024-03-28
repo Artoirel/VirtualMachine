@@ -39,7 +39,7 @@ void write_fp_reg(uint8_t reg, rf_contents_t *value)
 void write_reg(uint8_t reg, rf_contents_t *value)
 {
     if(reg == 0) return;
-    rf_contents_t temp = reg_file[reg];
+    rf_contents_t *temp = reg_file[reg];
     reg_file[reg] = value;
     free(temp);
 }
