@@ -21,7 +21,7 @@ int main(int argc, char *argv[], char *envp[]) {
 
     while(*envp)
     {
-        running_total =strlen(*envp) + 1;
+        running_total += strlen(*envp) + 1;
         printf("envp - %s\n", *envp++);
     }
 
