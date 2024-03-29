@@ -15,7 +15,7 @@ BIN = vm
 
 INCLUDE = -I./include
 
-all: CFLAGS =
+all: CFLAGS = -O3 -Wall -Wexa
 all: $(BDIR)/$(BIN)
 
 debug: CFLAGS = -g
