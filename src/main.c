@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 
     write_reg_int(2,8858);
 
-    printf("FP Reg 2 : %8x\n", read_fp_reg_float(2));
+    printf("FP Reg 2 : %8x\n", read_fp_reg_double(2));
     printf("FP Reg 2 : %8x\n", read_fp_reg_long(2));
 
     printf("Reg 2 : %8x\n", read_reg_double(2));
