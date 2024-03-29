@@ -32,7 +32,7 @@ void write_fp_reg_float(uint8_t reg, float value)
     fp_reg_file[reg].fpfloat = value;
 }
 
-void write_reg_word(uint8_t reg, uint32_t value)
+void write_reg_int(uint8_t reg, uint32_t value)
 {
     if(reg == 0) return;
     reg_file[reg].intword = value;
