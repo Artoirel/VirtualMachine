@@ -17,7 +17,7 @@ int main(int argc, char *argv[], char *envp[]) {
     }
 
 
-    printf("argc %d envp %s\n", envp[0]);
+    printf("argc %d envp %s\n", argc, envp[0]);
 
     init_rf(0x7ffffffff000);
 
