@@ -18,9 +18,9 @@ int main(int argc, char *argv[]) {
 
     init_rf(0x7ffffffff000);
 
-    write_fp_reg_float(14, 6495);
+    write_fp_reg_float(14, 45.2245);
 
-    write_reg_int(13,8858);
+    write_reg_int(13,46548461);
 
     printf("FP Reg 2 : %8x\n", read_fp_reg_double(14));
     printf("FP Reg 2 : %8x\n", read_fp_reg_long(14));
