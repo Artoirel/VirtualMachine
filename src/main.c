@@ -10,11 +10,13 @@
 
 uint64_t PC = 0;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[], char *envp[]) {
     if(argc < 2)
     {
         THROW_ERROR("No file provided, please specify file");
     }
+
+    printf("%s\n", envp[0]);
 
     init_rf(0x7ffffffff000);
 
