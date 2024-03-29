@@ -10,7 +10,7 @@ rf_contents_t *fp_reg_file;
 void init_rf(uint64_t sp)
 {
     reg_file = (rf_contents_t*) malloc(sizeof(rf_contents_t) * 32);
-    fp_reg_file = (rf_contents_t*) malloc(sizeof(rf_contents_t) * 32)
+    fp_reg_file = (rf_contents_t*) malloc(sizeof(rf_contents_t) * 32);
 
     reg_file[0].intdouble = 0;
     reg_file[2].intdouble = sp;
