@@ -17,11 +17,15 @@ int main(int argc, char *argv[], char *envp[]) {
         THROW_ERROR("No file provided, please specify file");
     }
 
+    int running_total = 0;
+
     while(*envp)
     {
-        printf("size of - envp %d\n", strlen(*envp));
+        running_total =strlen(*envp) + 1;
         printf("envp - %s\n", *envp++);
     }
+
+    printf("running total %d\n", running_total);
 
     init_rf(0x7ffffffff000);
 
