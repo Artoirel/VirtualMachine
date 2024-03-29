@@ -9,17 +9,8 @@ rf_contents_t fp_reg_file[32];
 
 void init_rf(uint64_t sp)
 {
-    for(int i = 0; i < 32; i++)
-    {
-        reg_file[i].intdouble = 0;
-    }
-
+    reg_file[0].intdouble = 0;
     reg_file[2].intdouble = sp;
-
-    for(int i = 0; i < 32; i++)
-    {
-        fp_reg_file[i].intdouble = 0;
-    }
 }
 
 void write_fp_reg_double(uint8_t reg, double value)
