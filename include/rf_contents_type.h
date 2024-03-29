@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 typedef union rf_contents_type {
-    float fpsingle;
+    float fpfloat;
     double fpdouble;
     uint32_t intword;
     uint64_t intdouble;

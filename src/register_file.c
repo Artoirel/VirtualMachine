@@ -14,7 +14,7 @@ void init_rf(uint64_t sp)
         reg_file[i].intdouble = 0;
     }
 
-    reg_file[2].intdouble = sp_data;
+    reg_file[2].intdouble = sp;
 
     for(int i = 0; i < 32; i++)
     {
@@ -41,12 +41,12 @@ void write_reg_int(uint8_t reg, uint32_t value)
 void write_reg_long(uint8_t reg, uint64_t value)
 {
     if(reg == 0) return;
-    reg_file[reg].intword = value;
+    reg_file[reg].intdouble = value;
 }
 
 float read_fp_reg_float(uint8_t reg)
 {
-    return fp_reg_file[reg].fpsingle;
+    return fp_reg_file[reg].fpfloat;
 }
 
 double read_fp_reg_double(uint8_t reg)
@@ -66,7 +66,7 @@ uint64_t read_fp_reg_long(uint8_t reg)
 
 float read_reg_float(uint8_t reg)
 {
-    return reg_file[reg].fpsingle;
+    return reg_file[reg].fpfloat;
 }
 
 double read_reg_double(uint8_t reg)
