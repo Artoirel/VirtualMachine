@@ -4,28 +4,21 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-rf_contents_t *reg_file[32];
-rf_contents_t *fp_reg_file[32];
+rf_contents_t reg_file[32];
+rf_contents_t fp_reg_file[32];
 
 void init_rf(uint64_t sp)
 {
     for(int i = 0; i < 32; i++)
     {
-        rf_contents_t *value = (rf_contents_t*) malloc(sizeof(rf_contents_t));
-        value->intdouble = 0;
-        reg_file[i] = value;
+        reg_file[i].intdouble = 0;
     }
 
-    rf_contents_t *sp_data = (rf_contents_t*) malloc(sizeof(rf_contents_t));
-    sp_data->intdouble = sp;
-
-    reg_file[2] = sp_data;
+    reg_file[2].intdouble = sp_data;
 
     for(int i = 0; i < 32; i++)
     {
-        rf_contents_t *fp_value = (rf_contents_t*) malloc(sizeof(rf_contents_t));
-        fp_value->intdouble = 0;
-        fp_reg_file[i] = fp_value;
+        fp_reg_file[i].intdouble = 0;
     }
 }
 
