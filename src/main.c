@@ -17,8 +17,10 @@ int main(int argc, char *argv[], char *envp[]) {
     }
 
     while(*envp)
+    {
         printf("size of - envp %d\n", sizeof(*envp));
-        printf("envp - %s\n",*envp++);
+        printf("envp - %s\n", *envp++);
+    }
 
     init_rf(0x7ffffffff000);
 
