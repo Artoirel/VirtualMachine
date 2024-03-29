@@ -17,20 +17,18 @@ int main(int argc, char *argv[], char *envp[]) {
     }
 
 
+
     while(*envp)
         printf("%s\n",*envp++);
 
     init_rf(0x7ffffffff000);
 
     write_fp_reg_float(14, 45.2245);
+    write_reg_int(10, argc - 1);
 
     write_reg_int(13,46548461);
 
-    printf("FP Reg 2 : %f\n", read_fp_reg_float(14));
-    printf("FP Reg 2 : %d\n", read_fp_reg_int(14));
-
-    printf("Reg 2 : %f\n", read_reg_float(13));
-    printf("Reg 2 : %d\n", read_reg_int(13));
+    printf("Read reg 10 - %d\n", read_reg_int(10));
 
 
     int valid = check_elf(argv[1]);
