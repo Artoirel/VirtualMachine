@@ -18,15 +18,15 @@ int main(int argc, char *argv[]) {
 
     init_rf(0x7ffffffff000);
 
-    write_fp_reg_float(2, 6495);
+    write_fp_reg_float(14, 6495);
 
-    write_reg_int(2,8858);
+    write_reg_int(13,8858);
 
-    printf("FP Reg 2 : %8x\n", read_fp_reg_double(2));
-    printf("FP Reg 2 : %8x\n", read_fp_reg_long(2));
+    printf("FP Reg 2 : %8x\n", read_fp_reg_double(14));
+    printf("FP Reg 2 : %8x\n", read_fp_reg_long(14));
 
-    printf("Reg 2 : %8x\n", read_reg_double(2));
-    printf("Reg 2 : %8x\n", read_reg_long(2));
+    printf("Reg 2 : %8x\n", read_reg_double(13));
+    printf("Reg 2 : %8x\n", read_reg_long(13));
 
 
     int valid = check_elf(argv[1]);
