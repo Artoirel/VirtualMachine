@@ -6,10 +6,20 @@
 
 void init_rf(uint64_t sp);
 
-void write_fp_reg(uint8_t reg, rf_contents_t *value);
-void write_reg(uint8_t reg, rf_contents_t *value);
+void write_fp_reg_double(uint8_t reg, double value);
+void write_fp_reg_float(uint8_t reg, float value);
 
-rf_contents_t *read_fp_reg(uint8_t reg);
-rf_contents_t *read_reg(uint8_t reg);
+void write_reg_word(uint8_t reg, uint32_t value);
+void write_reg_long(uint8_t reg, uint64_t value);
+
+float read_fp_reg_float(uint8_t reg);
+double read_fp_reg_double(uint8_t reg);
+uint32_t read_fp_reg_int(uint8_t reg);
+uint64_t read_fp_reg_long(uint8_t reg);
+
+float read_reg_float(uint8_t reg);
+double read_reg_double(uint8_t reg);
+uint32_t read_reg_int(uint8_t reg);
+uint64_t read_reg_long(uint8_t reg);
 
 #endif
