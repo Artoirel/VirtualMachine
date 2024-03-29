@@ -18,20 +18,16 @@ int main(int argc, char *argv[]) {
 
     init_rf(0x7ffffffff000);
 
-    rf_contents_t *fp_val = (rf_contents_t*) malloc(sizeof(rf_contents_t));
-    fp_val->fpdouble = 6495;
+    write_fp_reg_float(2, 6495);
 
-    printf("PreWrite - FP: %f", fp_val->fpdouble);
+    write_reg_int(2,8858);
 
-    write_fp_reg(2, fp_val);
+    printf("FP Reg 2 : %8x\n", read_fp_reg_float(2));
+    printf("FP Reg 2 : %8x\n", read_fp_reg_double(2));
 
-    rf_contents_t *val = (rf_contents_t*) malloc(sizeof(rf_contents_t));
-    val->intdouble = 8858;
+    printf("Reg 2 : %8x\n", read_reg(2).intdouble);
+    printf("Reg 2 : %8x\n", read_reg(2).fpdouble);
 
-    write_reg(2,val);
-
-    printf("FP Reg 2 : %8x\n", read_fp_reg(2)->intdouble);
-    printf("Reg 2 : %d\n\n", read_reg(2)->intdouble);
 
     int valid = check_elf(argv[1]);
 

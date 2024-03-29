@@ -22,27 +22,64 @@ void init_rf(uint64_t sp)
     }
 }
 
-void write_fp_reg(uint8_t reg, rf_contents_t *value)
+void write_fp_reg_double(uint8_t reg, double value)
 {
-    rf_contents_t *temp = fp_reg_file[reg];
-    fp_reg_file[reg] = value;
-    free(temp);
+    fp_reg_file[reg].fpdouble = value;
 }
 
-void write_reg(uint8_t reg, rf_contents_t *value)
+void write_fp_reg_float(uint8_t reg, float value)
+{
+    fp_reg_file[reg].fpfloat = value;
+}
+
+void write_reg_word(uint8_t reg, uint32_t value)
 {
     if(reg == 0) return;
-    rf_contents_t *temp = reg_file[reg];
-    reg_file[reg] = value;
-    free(temp);
+    reg_file[reg].intword = value;
 }
 
-rf_contents_t *read_fp_reg(uint8_t reg)
+void write_reg_long(uint8_t reg, uint64_t value)
 {
-    return fp_reg_file[reg];
+    if(reg == 0) return;
+    reg_file[reg].intword = value;
 }
 
-rf_contents_t *read_reg(uint8_t reg)
+float read_fp_reg_float(uint8_t reg)
 {
-    return reg_file[reg];
+    return fp_reg_file[reg].fpsingle;
+}
+
+double read_fp_reg_double(uint8_t reg)
+{
+    return fp_reg_file[reg].fpdouble;
+}
+
+uint32_t read_fp_reg_int(uint8_t reg)
+{
+    return fp_reg_file[reg].intword;
+}
+
+uint64_t read_fp_reg_long(uint8_t reg)
+{
+    return fp_reg_file[reg].intdouble;
+}
+
+float read_reg_float(uint8_t reg)
+{
+    return reg_file[reg].fpsingle;
+}
+
+double read_reg_double(uint8_t reg)
+{
+    return reg_file[reg].fpdouble;
+}
+
+uint32_t read_reg_int(uint8_t reg)
+{
+    return reg_file[reg].intword;
+}
+
+uint64_t read_reg_long(uint8_t reg)
+{
+    return reg_file[reg].intdouble;
 }
