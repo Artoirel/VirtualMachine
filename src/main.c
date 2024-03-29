@@ -16,17 +16,13 @@ int main(int argc, char *argv[], char *envp[]) {
         THROW_ERROR("No file provided, please specify file");
     }
 
-
-
     while(*envp)
-        printf("%s\n",*envp++);
+        printf("size of - envp%d\n", sizeof(envp));
+        printf("envp - %s\n",*envp++);
 
     init_rf(0x7ffffffff000);
 
-    write_fp_reg_float(14, 45.2245);
     write_reg_int(10, argc - 1);
-
-    write_reg_int(13,46548461);
 
     printf("Read reg 10 - %d\n", read_reg_int(10));
 
