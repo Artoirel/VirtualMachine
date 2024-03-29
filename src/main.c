@@ -1,5 +1,6 @@
 #include <elf.h>
 #include <stdio.h>
+#include <string.h>
 #include "error.h"
 #include "elf_helper.h"
 #include "address_type.h"
@@ -18,7 +19,7 @@ int main(int argc, char *argv[], char *envp[]) {
 
     while(*envp)
     {
-        printf("size of - envp %d\n", sizeof(**envp));
+        printf("size of - envp %d\n", strlen(*envp));
         printf("envp - %s\n", *envp++);
     }
 
