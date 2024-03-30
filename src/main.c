@@ -57,14 +57,17 @@ int main(int argc, char *argv[], char *envp[]) {
     printf("%s\n", argvguest);
 
     split = strtok(argvguest, " ");
-
+    int numsplit = 0;
     while(split != NULL)
     {
         printf("%s\n", split);
 
+        strcpy(*argg[numsplit], split);
+        printf("%s\n", *argg[numsplit]);
+
         split = strtok(NULL, " ");
-        strcpy(*argg[i], split);
-        printf("%s\n", *argg[i]);
+        numsplit++;
+
     }
 
     while(*envp)
