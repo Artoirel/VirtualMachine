@@ -31,7 +31,11 @@ int main(int argc, char *argv[], char *envp[]) {
         read(argvFile, *argvguest, 100);
     }
 
-    printf("%s\n", *argvFile);
+    while(*argvFile)
+    {
+        running_total += strlen(*argvFile) + 1;
+        printf("argv - %s\n", *argvFile++);
+    }
 
     int running_total = 0;
 
