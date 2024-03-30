@@ -32,14 +32,13 @@ int main(int argc, char *argv[], char *envp[]) {
         do
         {
             val = read(argvFile, temp, 1);
+            printf("%d\n", val);
             printf("%s\n", argvguest);
         } while(val == 1);
     }
 
-    printf("test val = %d\n", val);
-
-    printf("size %d\n,",strlen(*argvguest) + 1);
-    printf("argv - %s\n", *argvguest);
+    //printf("size %d\n,",strlen(*argvguest) + 1);
+    //printf("argv - %s\n", *argvguest);
 
     int running_total = 0;
 
