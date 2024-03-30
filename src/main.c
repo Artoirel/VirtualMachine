@@ -33,7 +33,7 @@ int main(int argc, char *argv[], char *envp[]) {
         {
             val = read(argvFile, temp, 1);
             printf("%s\n", argvguest);
-        } while(val == 1)
+        } while(val == 1);
     }
 
     printf("test val = %d\n", val);
