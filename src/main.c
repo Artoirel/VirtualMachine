@@ -51,18 +51,17 @@ int main(int argc, char *argv[], char *envp[]) {
     {
         if(argvguest[i] == ' ')
         {
-            argvguest[i] = 0;
             total_args++;
         }
     }
 
-    printf("%s\n", argvguest);
-
     char *argg[total_args - 1];
-    argg[0]= argvguest;
-
+    char *split = strtok(argvguest, ' ');
     for(int i = 0; i < total_args - 1; i++)
+    {
+        *argg[i] = strcpy(split[i]);
         printf("%s\n", *argg[i]);
+    }
 
     while(*envp)
     {
