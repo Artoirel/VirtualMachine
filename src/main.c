@@ -25,10 +25,12 @@ int main(int argc, char *argv[], char *envp[]) {
     int argvFile;
     char argvguest[4096];
     int val = 0;
+    int total_args = 1;
 
     if(argc > 2)
     {
         int i = 0;
+        total_args++;
         argvFile = open(argv[argc - 1], O_RDONLY);
         printf("%d", argvFile);
         char* temp = argvguest;
@@ -49,8 +51,16 @@ int main(int argc, char *argv[], char *envp[]) {
     {
         if(argvguest[i] == ' ')
         {
-            printf("test\n");
+            argvguest[i] = 0;
+            total_args++;
         }
+    }
+
+    char **argg = argvguest;
+
+    while(*argg)
+    {
+        printf("argg - %s\n", *argg++);
     }
 
     while(*envp)
