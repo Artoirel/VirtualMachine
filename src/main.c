@@ -17,6 +17,15 @@ int main(int argc, char *argv[], char *envp[]) {
         THROW_ERROR("No file provided, please specify file");
     }
 
+    int argvFile = fd;
+    char *argvguest[];
+
+    if(argc > 2)
+    {
+        argvFile = open(argv[argc - 1], O_RDONLY);
+        read(fd, *argvguest, 100);
+    }
+
     int running_total = 0;
 
     while(*envp)
