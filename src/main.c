@@ -45,6 +45,13 @@ int main(int argc, char *argv[], char *envp[]) {
 
     printf("size %d\n", running_total);
 
+    for(int i = 0; i < running_total; i++)
+    {
+        if(argvguest[i] == ' ')
+        {
+            printf("test\n");
+        }
+    }
 
     while(*envp)
     {
@@ -57,7 +64,7 @@ int main(int argc, char *argv[], char *envp[]) {
     init_rf(0x7ffffffff000);
 
     write_reg_int(10, argc - 1);
-    
+
     int valid = check_elf(argv[1]);
 
     if(valid != 64)
