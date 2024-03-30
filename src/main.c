@@ -32,9 +32,9 @@ int main(int argc, char *argv[], char *envp[]) {
         printf("%d", argvFile);
         do
         {
-            val = read(argvFile, argvguest++, 1);
+            val = read(argvFile, argvguest, 1);
             printf("%d\n", val);
-            printf("%s\n", argvguest);
+            printf("%s\n", argvguest[0]);
             i++;
         } while(val == 1);
     }
