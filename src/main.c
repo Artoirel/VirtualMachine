@@ -54,25 +54,23 @@ int main(int argc, char *argv[], char *envp[]) {
 
     char *split;
 
-    printf("%s\n", argvguest);
-
     split = strtok(argvguest, " ");
     int numsplit = 0;
     while(split != NULL)
     {
-        printf("%s\n", split);
-
         argg[numsplit] = strdup(split);
         printf("%s\n", argg[numsplit]);
 
         split = strtok(NULL, " ");
         numsplit++;
-
+        running_total += strlen(argg[numsplit]) + 9;
     }
+
+    running_total += 40;
 
     while(*envp)
     {
-        running_total += strlen(*envp) + 1;
+        running_total += strlen(*envp) + 9;
         printf("envp - %s\n", *envp++);
     }
 
