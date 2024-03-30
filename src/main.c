@@ -22,7 +22,7 @@ int main(int argc, char *argv[], char *envp[]) {
     }
 
     int argvFile;
-    char **argvguest = (char**) malloc(100);
+    char *argvguest[100];
 
 
     if(argc > 2)
@@ -31,10 +31,10 @@ int main(int argc, char *argv[], char *envp[]) {
         read(argvFile, *argvguest, 100);
     }
 
-    while(*argvFile)
+    while(*argvguest)
     {
-        running_total += strlen(*argvFile) + 1;
-        printf("argv - %s\n", *argvFile++);
+        running_total += strlen(*argvguest) + 1;
+        printf("argv - %s\n", *argvguest++);
     }
 
     int running_total = 0;
