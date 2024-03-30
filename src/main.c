@@ -30,7 +30,7 @@ int main(int argc, char *argv[], char *envp[]) {
         int i = 0;
         argvFile = open(argv[argc - 1], O_RDONLY);
         printf("%d", argvFile);
-        char* temp = argvguest
+        char* temp = argvguest;
         do
         {
             val = read(argvFile, temp++, 1);
