@@ -58,7 +58,7 @@ int main(int argc, char *argv[], char *envp[]) {
 
     printf("%s\n", argvguest);
 
-    char **argg = &argvguest[0];
+    char *argg[total_args - 1] = argvguest;
 
     while(*argg)
     {
