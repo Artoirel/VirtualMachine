@@ -29,11 +29,11 @@ int main(int argc, char *argv[], char *envp[]) {
     {
         argvFile = open(argv[argc - 1], O_RDONLY);
         printf("%d", argvFile);
-        while(val == 1)
+        do
         {
             val = read(argvFile, temp, 1);
             printf("%s\n", argvguest);
-        }
+        } while(val == 1)
     }
 
     printf("test val = %d\n", val);
