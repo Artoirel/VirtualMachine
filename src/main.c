@@ -22,13 +22,20 @@ int main(int argc, char *argv[], char *envp[]) {
     }
 
     int argvFile;
-    char *argvguest[100];
+    char *argvguest = (char*) malloc(4096);
     int val = 0;
 
     if(argc > 2)
     {
+        int i = 0;
         argvFile = open(argv[argc - 1], O_RDONLY);
-        val = read(argvFile, *argvguest, 100);
+        char* temp = argvguest;
+        val = read(argvFile, temp++, 1);
+        while(temp[i] != NULL)
+        {
+            val = read(argvFile, temp++, 1);
+            printf("%s\n", argvguest);
+        }
     }
 
     printf("test val = %d\n", val);
