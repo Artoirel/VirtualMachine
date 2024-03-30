@@ -56,7 +56,7 @@ int main(int argc, char *argv[], char *envp[]) {
 
     printf("%s\n", argvguest);
 
-    split = strtok(argvguest, ' ');
+    split = strtok(argvguest, " ");
 
     while(split != NULL)
     {
