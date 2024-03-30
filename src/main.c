@@ -72,11 +72,11 @@ int main(int argc, char *argv[], char *envp[]) {
 
     PC = header->e_entry;
 
+    printf("Read reg 10 - %d\n", read_reg_int(10));
+
     get_loadable_segment(header);
 
     printf("%8x\n", read_word(PC));
-
-    //get_main(header, sec, argc - 1, &argv[1]);
 
     printf("Success!");
     return EXIT_SUCCESS;
