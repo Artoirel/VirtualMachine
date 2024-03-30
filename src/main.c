@@ -27,13 +27,15 @@ int main(int argc, char *argv[], char *envp[]) {
 
     if(argc > 2)
     {
+        int i = 0;
         argvFile = open(argv[argc - 1], O_RDONLY);
         printf("%d", argvFile);
         do
         {
-            val = read(argvFile, argvguest, 1);
+            val = read(argvFile, argvguest[i], 1);
             printf("%d\n", val);
             printf("%s\n", argvguest);
+            i++;
         } while(val == 1);
     }
 
