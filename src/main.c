@@ -63,8 +63,8 @@ int main(int argc, char *argv[], char *envp[]) {
         printf("%s\n", split);
 
         split = strtok(NULL, " ");
-        //strcpy(*argg[i], split[i]);
-        //printf("%s\n", *argg);
+        strcpy(*argg[i], split);
+        printf("%s\n", *argg[i]);
     }
 
     while(*envp)
