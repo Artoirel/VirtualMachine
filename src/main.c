@@ -8,6 +8,9 @@
 #include "memory.h"
 #include "register_file.h"
 #include "rf_contents_type.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 uint64_t PC = 0;
 
@@ -17,8 +20,8 @@ int main(int argc, char *argv[], char *envp[]) {
         THROW_ERROR("No file provided, please specify file");
     }
 
-    int argvFile = fd;
-    char *argvguest[];
+    int argvFile;
+    char **argvguest;
 
     if(argc > 2)
     {
