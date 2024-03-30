@@ -62,8 +62,8 @@ int main(int argc, char *argv[], char *envp[]) {
     {
         printf("%s\n", split);
 
-        *argg[numsplit] = strdup(split);
-        printf("%s\n", *argg[numsplit]);
+        argg[numsplit] = strdup(split);
+        printf("%s\n", argg[numsplit]);
 
         split = strtok(NULL, " ");
         numsplit++;
