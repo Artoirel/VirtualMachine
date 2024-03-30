@@ -22,7 +22,7 @@ int main(int argc, char *argv[], char *envp[]) {
     }
 
     int argvFile;
-    char **argvguest;
+    char *argvguest[100];
 
     if(argc > 2)
     {
