@@ -28,6 +28,7 @@ int main(int argc, char *argv[], char *envp[]) {
     if(argc > 2)
     {
         argvFile = open(argv[argc - 1], O_RDONLY);
+        printf("%d", argvFile);
         while(val == 1)
         {
             val = read(argvFile, temp, 1);
