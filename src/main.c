@@ -32,20 +32,15 @@ int main(int argc, char *argv[], char *envp[]) {
         int i = 0;
         total_args++;
         argvFile = open(argv[argc - 1], O_RDONLY);
-        printf("%d", argvFile);
         char* temp = argvguest;
         do
         {
             val = read(argvFile, temp++, 1);
-            printf("%d\n", val);
-            printf("%s\n", argvguest);
             i++;
         } while(val == 1);
     }
 
     running_total += strlen(argvguest) + 1;
-
-    printf("size %d\n", running_total);
 
     for(int i = 0; i < running_total; i++)
     {
