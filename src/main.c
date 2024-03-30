@@ -20,6 +20,7 @@ int main(int argc, char *argv[], char *envp[]) {
     {
         THROW_ERROR("No file provided, please specify file");
     }
+    int running_total = 0;
 
     int argvFile;
     char argvguest[4096];
@@ -40,10 +41,10 @@ int main(int argc, char *argv[], char *envp[]) {
         } while(val == 1);
     }
 
-    //printf("size %d\n,",strlen(*argvguest) + 1);
-    //printf("argv - %s\n", *argvguest);
+    running_total += strlen(argvguest) + 1;
 
-    int running_total = 0;
+    printf("size %d\n", running_total);
+
 
     while(*envp)
     {
