@@ -28,10 +28,10 @@ int main(int argc, char *argv[], char *envp[]) {
     if(argc > 2)
     {
         argvFile = open(argv[argc - 1], O_RDONLY);
-        read(argvFile, *argvguest, 100);
+        int val = read(argvFile, *argvguest, 100);
     }
 
-    printf("test\n");
+    printf("test val = %d\n", val);
 
     printf("size %d\n,",strlen(*argvguest) + 1);
     printf("argv - %s\n", *argvguest);
