@@ -56,7 +56,7 @@ int main(int argc, char *argv[], char *envp[]) {
         }
     }
 
-    char **argg = argvguest;
+    char **argg = &argvguest[0];
 
     while(*argg)
     {
