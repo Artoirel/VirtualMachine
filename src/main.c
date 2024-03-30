@@ -26,7 +26,7 @@ int main(int argc, char *argv[], char *envp[]) {
     if(argc > 2)
     {
         argvFile = open(argv[argc - 1], O_RDONLY);
-        read(fd, *argvguest, 100);
+        read(argvFile, *argvguest, 100);
     }
 
     int running_total = 0;
