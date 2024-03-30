@@ -56,7 +56,11 @@ int main(int argc, char *argv[], char *envp[]) {
     }
 
     char *argg[total_args - 1];
-    char *split = strtok(argvguest, ' ');
+
+    char *split;
+
+    split = strtok(argvguest, ' ');
+
     while(split != NULL)
     {
         printf("%s\n", split);
