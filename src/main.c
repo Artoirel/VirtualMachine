@@ -57,10 +57,7 @@ int main(int argc, char *argv[], char *envp[]) {
     init_rf(0x7ffffffff000);
 
     write_reg_int(10, argc - 1);
-
-    printf("Read reg 10 - %d\n", read_reg_int(10));
-
-
+    
     int valid = check_elf(argv[1]);
 
     if(valid != 64)
@@ -72,9 +69,9 @@ int main(int argc, char *argv[], char *envp[]) {
 
     PC = header->e_entry;
 
-    printf("Read reg 10 - %d\n", read_reg_int(10));
-
     get_loadable_segment(header);
+
+    printf("Read reg 10 - %d\n", read_reg_int(10));
 
     printf("%8x\n", read_word(PC));
 
