@@ -1,6 +1,7 @@
 #include <elf.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "error.h"
 #include "elf_helper.h"
 #include "address_type.h"
