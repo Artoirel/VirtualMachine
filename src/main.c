@@ -60,8 +60,8 @@ int main(int argc, char *argv[], char *envp[]) {
     printf("%s\n", split);
     for(int i = 0; i < total_args - 1; i++)
     {
-        strcpy(*argg[i], split[i]);
-        printf("%s\n", *argg++);
+        //strcpy(*argg[i], split[i]);
+        //printf("%s\n", *argg);
     }
 
     while(*envp)
