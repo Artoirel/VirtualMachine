@@ -50,9 +50,11 @@ int main(int argc, char *argv[], char *envp[]) {
         }
     }
 
-    char *argg[total_args - 1];
+    //char *argg[total_args - 1];
 
     char *split;
+
+    printf("%s\n", argvguest);
 
     split = strtok(argvguest, ' ');
 
