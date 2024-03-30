@@ -60,10 +60,8 @@ int main(int argc, char *argv[], char *envp[]) {
 
     char *argg[total_args - 1] = argvguest;
 
-    while(*argg)
-    {
-        printf("argg - %s\n", *argg++);
-    }
+    for(int i = 0; i < total_args - 1; i++)
+        printf("%s\n", *argg++);
 
     while(*envp)
     {
