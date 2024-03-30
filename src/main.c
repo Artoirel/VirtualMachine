@@ -59,7 +59,7 @@ int main(int argc, char *argv[], char *envp[]) {
     char *split = strtok(argvguest, ' ');
     for(int i = 0; i < total_args - 1; i++)
     {
-        *argg[i] = strcpy(split[i]);
+        strcpy(*argg[i], split[i]);
         printf("%s\n", *argg[i]);
     }
 
