@@ -30,11 +30,12 @@ int main(int argc, char *argv[], char *envp[]) {
         int i = 0;
         argvFile = open(argv[argc - 1], O_RDONLY);
         printf("%d", argvFile);
+        char* temp = argvguest
         do
         {
-            val = read(argvFile, argvguest, 1);
+            val = read(argvFile, temp++, 1);
             printf("%d\n", val);
-            printf("%s\n", argvguest[0]);
+            printf("%s\n", argvguest);
             i++;
         } while(val == 1);
     }
