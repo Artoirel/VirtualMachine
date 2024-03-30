@@ -23,12 +23,12 @@ int main(int argc, char *argv[], char *envp[]) {
 
     int argvFile;
     char *argvguest[100];
-
+    int val = 0;
 
     if(argc > 2)
     {
         argvFile = open(argv[argc - 1], O_RDONLY);
-        int val = read(argvFile, *argvguest, 100);
+        val = read(argvFile, *argvguest, 100);
     }
 
     printf("test val = %d\n", val);
