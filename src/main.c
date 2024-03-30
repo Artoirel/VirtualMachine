@@ -62,8 +62,8 @@ int main(int argc, char *argv[], char *envp[]) {
         printf("%s\n", argg[numsplit]);
 
         split = strtok(NULL, " ");
-        numsplit++;
         running_total += strlen(argg[numsplit]) + 9;
+	numsplit++;
     }
 
     running_total += 40;
