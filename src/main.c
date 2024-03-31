@@ -63,7 +63,7 @@ int main(int argc, char *argv[], char *envp[]) {
 
         split = strtok(NULL, " ");
         running_total += strlen(argg[numsplit]) + 9;
-	numsplit++;
+	    numsplit++;
     }
 
     running_total += 40;
@@ -78,7 +78,7 @@ int main(int argc, char *argv[], char *envp[]) {
 
     init_rf(0x7ffffffff000);
 
-    printf("%x16\n", read_reg_long(2));
+    printf("0x%x16\n", read_reg_long(2));
 
     write_reg_int(10, argc - 1);
 
