@@ -78,7 +78,7 @@ int main(int argc, char *argv[], char *envp[]) {
 
     init_rf(0x7ffffffff000);
 
-    printf("0x%8x%8x\n", read_reg_long(2) >> 8, read_reg_long(2));
+    printf("0x%8x%8x\n", (read_reg_long(2))>> 8, read_reg_long(2) & 0xffffffff);
 
     write_reg_int(10, argc - 1);
 
