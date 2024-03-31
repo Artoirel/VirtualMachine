@@ -22,12 +22,14 @@ int main(int argc, char *argv[], char *envp[]) {
     while(*envp)
     {
         running_total += strlen(*envp) + 1;
-        printf("envp - %s\n", *envp++);
+        //printf("envp - %s\n", *envp++);
     }
 
     printf("running total %d\n", running_total);
 
     init_rf(0x7ffffffff000);
+
+    printf("%x16\n", read_reg_long(2));
 
     write_reg_int(10, argc - 1);
 
