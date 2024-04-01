@@ -78,7 +78,7 @@ int main(int argc, char *argv[], char *envp[]) {
 
     init_rf(0x7ffffffff000);
 
-    write_double_word(read_reg_long(2));
+    //write_double_word(read_reg_long(2));
 
     write_reg_int(10, argc - 1);
 
