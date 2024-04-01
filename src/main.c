@@ -103,7 +103,7 @@ int main(int argc, char *argv[], char *envp[]) {
 
     printf("Success!");
 
-    printf("%16lx\n", read_word(PC));
+    printf("%.16lx\n", read_word(PC));
     return EXIT_SUCCESS;
 }
 
