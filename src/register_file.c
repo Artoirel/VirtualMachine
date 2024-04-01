@@ -83,10 +83,10 @@ uint64_t read_reg_long(uint8_t reg)
 
 void print_reg(uint8_t reg)
 {
-    printf("0x%8x%8x\n", read_reg_long(reg) >> 32, read_reg_long(reg) & 0xffffffff);
+    printf("0x16lx\n", read_reg_long(reg));
 }
 
 void print_fp_reg(uint8_t reg)
 {
-    printf("0x%8x%8x\n", read_fp_reg_long(reg) >> 32, read_fp_reg_long(reg) & 0xffffffff);
+    printf("0x16lx\n", read_fp_reg_long(reg));
 }
