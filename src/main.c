@@ -20,12 +20,8 @@ int main(int argc, char *argv[], char *envp[]) {
     {
         THROW_ERROR("No file provided, please specify file");
     }
-    int running_total = 0;
 
-    int argvFile;
-    char argvguest[4096];
-    int val = 0;
-    int total_args = 1;
+    int argvFile = -1;
 
     if(argc > 2)
     {
