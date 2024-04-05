@@ -29,7 +29,6 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     do
     {
         val = read(fd, temp++, 1);
-        i++;
     } while(val == 1);
 
     running_total += strlen(argvguest) + 1;
@@ -48,7 +47,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     argg[0] = argv[argc - 2];
     total_argv_bytes += strlen(argg[0]);
     argg[total_args] = 0;
-    
+
     split = strtok(argvguest, " ");
     int numsplit = 1;
     while(split != NULL)
