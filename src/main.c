@@ -12,67 +12,16 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include "util.h"
 
 uint64_t PC = 0;
 
 int main(int argc, char *argv[], char *envp[]) {
-    if(argc < 2)
-    {
-        THROW_ERROR("No file provided, please specify file");
-    }
+    init_rf(0x7ffffffff000);
 
-    int argvFile = -1;
-
-    if(argc > 2)
-    {
-        int i = 0;
-        total_args++;
-        argvFile = open(argv[argc - 1], O_RDONLY);
-        char* temp = argvguest;
-        do
-        {
-            val = read(argvFile, temp++, 1);
-            i++;
-        } while(val == 1);
-    }
-
-    running_total += strlen(argvguest) + 1;
-
-    for(int i = 0; i < running_total; i++)
-    {
-        if(argvguest[i] == ' ')
-        {
-            total_args++;
-        }
-    }
-
-    char *argg[total_args - 1];
-
-    char *split;
-
-    split = strtok(argvguest, " ");
-    int numsplit = 0;
-    while(split != NULL)
-    {
-        argg[numsplit] = strdup(split);
-        printf("%s\n", argg[numsplit]);
-
-        split = strtok(NULL, " ");
-        running_total += strlen(argg[numsplit]) + 9;
-	    numsplit++;
-    }
-
-    running_total += 40;
-
-    while(*envp)
-    {
-        running_total += strlen(*envp) + 9;
-        printf("envp - %s\n", *envp++);
-    }
+    load_stack(argc, argv, envp, 0x7ffffffff000)
 
     printf("running total %d\n", running_total);
-
-    init_rf(0x7ffffffff000);
 
     //write_double_word(read_reg_long(2));
 
