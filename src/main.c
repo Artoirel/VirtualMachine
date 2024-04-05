@@ -19,7 +19,7 @@ uint64_t PC = 0;
 int main(int argc, char *argv[], char *envp[]) {
     init_rf(0x7ffffffff000);
 
-    load_stack(argc, argv, envp, 0x7ffffffff000)
+    load_stack(argc, argv, envp, 0x7ffffffff000);
 
     printf("running total %d\n", running_total);
 
