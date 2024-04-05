@@ -46,7 +46,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     sp_addr += 8;
 
     argg[0] = argv[argc - 2];
-    total_argv_bytes += strlen(argg[0])
+    total_argv_bytes += strlen(argg[0]);
     argg[total_args] = 0;
 
     char *split;
