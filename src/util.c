@@ -6,6 +6,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <string.h>
+#include "error.h"
+
 
 int running_total = 0;
 
