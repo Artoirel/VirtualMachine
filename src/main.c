@@ -9,9 +9,6 @@
 #include "memory.h"
 #include "register_file.h"
 #include "rf_contents_type.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "util.h"
 
 uint64_t PC = 0;

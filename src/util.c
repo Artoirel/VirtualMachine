@@ -2,6 +2,9 @@
 #include "memory.h"
 #include "register_file.h"
 #include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 int running_total = 0;
 
