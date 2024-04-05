@@ -12,7 +12,7 @@ int running_total = 0;
 void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 {
     int fd = -1;
-    uint8_t argvguest[4096];
+    char* argvguest[4096];
     int val = 0;
     uint64_t total_args = 1;
     int running_total = 0;
