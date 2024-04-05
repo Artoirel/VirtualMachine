@@ -84,8 +84,3 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     }
 }
 
-uint8_t get_argc(int fd)
-{
-
-}
-
