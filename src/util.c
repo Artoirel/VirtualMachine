@@ -7,6 +7,8 @@
 #include <fcntl.h>
 #include <string.h>
 #include "error.h"
+#include <unistd.h>
+
 
 
 int running_total = 0;
