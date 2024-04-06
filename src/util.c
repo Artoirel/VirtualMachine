@@ -69,7 +69,6 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         printf("%s\n", argg[numsplit]);
 
         split = strtok(NULL, " ");
-        printf("%s\n",split);
         running_total += strlen(argg[numsplit]) + 9;
         numsplit++;
     }
