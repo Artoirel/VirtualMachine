@@ -70,7 +70,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         numsplit++;
     }
 
-    uint8_t *arg_bytes = (uint8_t*) argg[0];
+    uint8_t *arg_bytes = (uint8_t*) argg[1];
 
     printf("%d\n", total_args);
 
