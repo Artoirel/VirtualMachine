@@ -40,6 +40,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         val = read(fd, temp++, 1);
     } while(val == 1);
 
+    printf("%s\n", argvguest);
+    
     running_total += strlen(argvguest) + 1;
 
     for(int i = 0; i < running_total; i++)
@@ -73,7 +75,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     uint8_t *arg_bytes = (uint8_t*) argg[0];
 
     printf("%d\n", total_args);
-    for(int i = 0; i < total_args + 2; i++)
+    for(int i = 0; i < total_args + 1; i++)
     {
         printf("%s\n",argg[i]);
     }

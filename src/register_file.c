@@ -30,14 +30,14 @@ void write_fp_reg_float(uint8_t reg, float value)
 void write_reg_int(uint8_t reg, uint32_t value)
 {
     if(reg == 0) return;
-    printf("writing value - 0x%16x\n", value);
+    printf("writing value - 0x%.16lx\n", value);
     reg_file[reg].intword = value;
 }
 
 void write_reg_long(uint8_t reg, uint64_t value)
 {
     if(reg == 0) return;
-    printf("writing value - 0x%16x\n", value);
+    printf("writing value - 0x%.16lx\n", value);
     reg_file[reg].intdouble = value;
 }
 
