@@ -21,7 +21,6 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     uint64_t total_args = 2;
     int running_total = 0;
     char *temp = argvguest;
-    char *argg[total_args + 1];
     char *split;
     int total_argv_bytes = 0;
 
@@ -51,6 +50,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
             total_args++;
         }
     }
+
+    char *argg[total_args + 1];
 
     write_double_word(sp_addr, total_args);
     sp_addr += 8;
