@@ -41,7 +41,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     } while(val == 1);
 
     printf("%s\n", argvguest);
-    
+
     running_total += strlen(argvguest) + 1;
 
     for(int i = 0; i < running_total; i++)
@@ -68,6 +68,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         printf("%s\n", argg[numsplit]);
 
         split = strtok(NULL, " ");
+        printf("%s\n",split);
         running_total += strlen(argg[numsplit]) + 9;
         numsplit++;
     }
