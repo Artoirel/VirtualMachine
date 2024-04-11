@@ -104,6 +104,6 @@ uint64_t get_argc(char* args)
     }
 
     // return total number of spaces in file + 1 for the first last arg + 1 for the executable itself
-    return total_args + 2
+    return total_args + 2;
 }
 
