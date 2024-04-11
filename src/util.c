@@ -40,7 +40,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     {
         val = read(fd, temp++, 1);
     } while(val == 1);
-    
+
     arg_gc = get_argc(argvguest);
     write_double_word(sp_addr, arg_gc);
     printf("Guest argc - %d\n", read_double_word(sp_addr));
@@ -68,7 +68,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     int i = 0;
     do
     {
-        uint64_t addr = read_double_word(data_addr + i);
+        uint64_t addr = read_double_word(data_addr) + 1;
         printf("address - 0x%.16lx\n", addr);
         byte = read_byte(addr);
         printf("test\n");
