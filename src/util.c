@@ -61,7 +61,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     argg[0] = strdup(argv[argc - 2]);
     test = strdup(argv[argc - 2]);
     int num = strlen(argv[argc - 2]) + 1;
-    data_addr +=
+    //data_addr +=
     write_block(data_addr, strdup(argv[argc - 2]), num);
 
     char read[4096];
@@ -69,7 +69,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     int i = 0;
     do
     {
-        printf("address - 0x%.16lx\n", data_addr);
+        printf("address - 0x%.16lx\n", data_addr++);
         byte = read_byte(data_addr);
         printf("%c\n", byte);
         read[i] = byte;
