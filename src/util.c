@@ -96,6 +96,7 @@ char* get_argv_string(int fd)
 
 uint64_t get_argc(char* args)
 {
+    printf("Test\n");
     int total_args = 0;
     int running_total = strlen(args) + 1;
 
