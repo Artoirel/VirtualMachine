@@ -59,11 +59,12 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 
     split = strtok(argvguest, " ");
     int numsplit = 1;
-    while(split != NULL)
-    {
+    while(split != NULL) {
         argg[numsplit] = strdup(split);
-        if(numsplit != arg_gc)
+        if (strlen(argg[numsplit]) > 1)
+        {
             argv_bytes += strlen(argg[numsplit]) + 1;
+        }
         printf("'%s' length is %d\n", argg[numsplit], strlen(argg[numsplit]) + 1);
 
         split = strtok(NULL, " ");
