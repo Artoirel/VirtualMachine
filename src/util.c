@@ -53,7 +53,25 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     printf("Total offset to write bytes - %d\n", total_offset_data);
 
     char *argg[arg_gc];
+    uint8_t * test;
+    uint64_t data_addr = sp_addr + total_offset_data;
+    write_double_word(sp_addr, data_addr);
     argg[0] = strdup(argv[argc - 2]);
+    test = strdup(argv[argc - 2]);
+    int num = strlen(argg[0]) + 1;
+    write_arbitrary_bytes(data_addr, test, num);
+
+    char read[4096];
+    char byte;
+    int i = 0;
+    do
+    {
+        byte = read_byte(read_double_word(data_addr));
+        read[i] = byte;
+    } while(byte != NULL);
+
+    printf("READ FROM MEMORY - %s\n", read);
+
     argv_bytes += strlen(argg[0]) + 1;
     printf("'%s' length is %d\n", argg[0], strlen(argg[0]) + 1);
 
@@ -61,6 +79,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     int numsplit = 1;
     while(split != NULL && numsplit != arg_gc)
     {
+
+        write_double_word();
         printf("numsplit - %d | arg_gc - %d\n", numsplit, arg_gc);
         argg[numsplit] = strdup(split);
         argv_bytes += strlen(argg[numsplit]) + 1;
@@ -70,7 +90,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         numsplit++;
     }
 
-    int envp_offset = (argv_bytes / 8) * 8;
+    int envp_offset = total_offset_data + ((argv_bytes / 8) * 8);
     int envp_bc = get_envp_bytes_count(envp);
 
     printf("memory alignment %d\n", envp_offset);
