@@ -80,16 +80,15 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 
 char* get_argv_string(int fd)
 {
-    char argvguest[4096];
-    char *temp = argvguest;
+    char *temp = (char*) malloc(sizeof(char) * 4096);
     int val = 0;
 
     do
     {
         val = read(fd, temp++, 1);
     } while(val == 1);
-    
-    return argvguest;
+
+    return temp;
 }
 
 uint64_t get_argc(char* args)
