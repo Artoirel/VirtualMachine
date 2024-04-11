@@ -57,11 +57,10 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     uint64_t data_addr = sp_addr + total_offset_data;
     write_double_word(sp_addr, data_addr);
     argg[0] = strdup(argv[argc - 2]);
-    printf("test\n");
     test = strdup(argv[argc - 2]);
-    printf("test\n");
     int num = strlen(argg[0]) + 1;
     write_arbitrary_bytes(data_addr, test, num);
+    printf("test\n");
 
     char read[4096];
     char byte;
