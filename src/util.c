@@ -69,23 +69,17 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         numsplit++;
     }
 
+    printf("Total bytes for argv - %d\n", argv_bytes);
+
     uint8_t *arg_bytes = (uint8_t*) argg[1];
 
     for(int i = 0; i < argv_bytes; i++)
     {
         printf("%2x\n", arg_bytes[i]);
     }
-
-    running_total += 40;
-
-    while(*envp)
-    {
-        running_total += strlen(*envp) + 9;
-        printf("envp - %s\n", *envp++);
-    }
 }
 
-char* get_argv_string(int fd)
+char* get_argv_bytes(char** argv)
 {
 
 }
