@@ -41,7 +41,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         val = read(fd, temp++, 1);
     } while(val == 1);
 
-    printf("%.16lx\n", sp_addr);
+    printf("Test - SPADDR %.16lx\n", sp_addr);
 
     arg_gc = get_argc(argvguest);
     write_double_word(sp_addr, arg_gc);
