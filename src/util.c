@@ -68,7 +68,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 
     uint8_t *arg_bytes = (uint8_t*) argg[1];
 
-    for(int i = 0; i < total_argv_bytes; i++)
+    for(int i = 0; i < argv_bytes; i++)
     {
         printf("%2x\n", arg_bytes[i]);
     }
