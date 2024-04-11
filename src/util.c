@@ -55,6 +55,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     char *argg[arg_gc + 1];
     argg[0] = strdup(argv[argc - 2]);
     argv_bytes += strlen(argg[0]);
+    printf("'%s' length is %d\n", argg[0], strlen(argg[0]))
     argg[arg_gc] = 0;
 
     split = strtok(argvguest, " ");
@@ -63,6 +64,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     {
         argg[numsplit] = strdup(split);
         argv_bytes += strlen(argg[numsplit]) + 1;
+        printf("'%s' length is %d\n", argg[numsplit], strlen(argg[numsplit]))
 
         split = strtok(NULL, " ");
         running_total += strlen(argg[numsplit]) + 9;
