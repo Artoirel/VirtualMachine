@@ -98,7 +98,7 @@ uint64_t get_argc(char* args)
 {
     int total_args = 0;
     int running_total = strlen(args) + 1;
-    printf("%s\n", args);
+    //printf("%s\n", args);
     printf("TEST\n");
     printf("%d\n", running_total);
 
