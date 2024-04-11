@@ -12,4 +12,6 @@ uint64_t get_argc(char* args);
 
 uint64_t get_envp_count(char** envp);
 
+uint64_t get_envp_bytes_count(char** envp);
+
 #endif
