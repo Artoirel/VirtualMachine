@@ -18,6 +18,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     int fd = -1;
     char argvguest[4096];
     char *temp;
+    int val = 0;
     int arg_gc;
     uint64_t total_args = 2;
     int running_total = 0;
@@ -34,9 +35,14 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         fd = open(argv[argc - 1], O_RDONLY);
     }
 
-    //temp = get_argv_string(fd);
-    printf("%s\n", get_argv_string(fd));
-    arg_gc = get_argc(*argvguest);
+    do
+    {
+        val = read(fd, temp++, 1);
+    } while(val == 1);
+
+    printf("%s\n", argvguest);
+
+    arg_gc = get_argc(argvguest);
 
     printf("Guest argc - %d\n", arg_gc);
 
@@ -81,18 +87,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 
 char* get_argv_string(int fd)
 {
-    char argvguest[4096];
-    char *temp = argvguest;
-    int val = 0;
 
-    do
-    {
-        val = read(fd, temp++, 1);
-    } while(val == 1);
-
-    printf("%s\n", argvguest);
-
-    return &argvguest[0];
 }
 
 uint64_t get_argc(char* args)
