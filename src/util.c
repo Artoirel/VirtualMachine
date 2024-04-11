@@ -84,11 +84,12 @@ char* get_argv_string(int fd)
 
     do
     {
-        val = read(fd, argvguest++, 1);
+        val = read(fd, temp++, 1);
     } while(val == 1);
 
     printf("Guest argc - %d\n", get_argc(argvguest));
 
+    return argvguest;
 }
 
 uint64_t get_argc(char* args)
