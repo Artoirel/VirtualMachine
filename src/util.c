@@ -104,8 +104,8 @@ uint64_t get_argc(char* args)
         }
     }
 
-    // return total number of spaces in file + 1 for the first last arg + 1 for the executable itself
-    return total_args + 2;
+    // return total number of spaces in file + 1 for the first last arg + 1 for the executable itself -1 for space at end of file
+    return total_args + 1;
 }
 
 uint64_t get_envp_count(char** envp)
