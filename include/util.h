@@ -10,8 +10,8 @@ char* get_argv_string(int fd);
 
 uint64_t get_argc(char* args);
 
-uint64_t get_envp_count(char** envp);
+int get_envp_count(char** envp);
 
-uint64_t get_envp_bytes_count(char** envp);
+int get_envp_bytes_count(char** envp);
 
 #endif
