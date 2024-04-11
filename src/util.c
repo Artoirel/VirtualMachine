@@ -60,14 +60,17 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     test = strdup(argv[argc - 2]);
     int num = strlen(argg[0]) + 1;
     write_block(data_addr, argg[0], num);
-    printf("test\n");
 
     char read[4096];
     char byte;
     int i = 0;
     do
     {
-        byte = read_byte(read_double_word(data_addr));
+        uint64_t addr = read_double_word(data_addr + i);
+        printf("address - %.16xl\n", addr);
+        byte = read_byte(addr);
+        printf("test\n");
+
         read[i] = byte;
     } while(byte != NULL);
 
