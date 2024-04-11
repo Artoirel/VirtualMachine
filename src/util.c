@@ -88,6 +88,8 @@ char* get_argv_string(int fd)
         val = read(fd, temp++, 1);
     } while(val == 1);
 
+    printf("%s\n", temp);
+
     return temp;
 }
 
