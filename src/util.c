@@ -80,7 +80,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 
 char* get_argv_string(int fd)
 {
-    char *temp = (char*) malloc(sizeof(char) * 4096);
+    char argvguest[4096]
+    char *temp = argvguest;
     int val = 0;
 
     do
@@ -88,7 +89,7 @@ char* get_argv_string(int fd)
         val = read(fd, temp++, 1);
     } while(val == 1);
 
-    printf("%s\n", temp);
+    printf("%s\n", argvguest);
 
     return temp;
 }
