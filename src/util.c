@@ -61,7 +61,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     argg[0] = strdup(argv[argc - 2]);
     test = strdup(argv[argc - 2]);
     int num = strlen(argg[0]) + 1;
-    write_block(data_addr, argg[0], num);
+    write_block(data_addr, strdup(argv[argc - 2]), num);
 
     char read[4096];
     char byte;
