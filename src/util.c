@@ -70,7 +70,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         numsplit++;
     }
 
-    printf("memory alignment %d\n", argv_bytes / 8);
+    int envp_offset = (argv_bytes / 8) * 8
+    printf("memory alignment %d\n", envp_offset);
 
     printf("Total bytes for argv - %d\n", argv_bytes);
 
