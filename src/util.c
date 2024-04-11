@@ -37,6 +37,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     argvguest = get_argv_string(fd);
     arg_gc = get_argc(argvguest);
 
+    printf("Guest argc - %d\n", arg_gc);
+
     char *argg[total_args + 1];
 
     write_double_word(sp_addr, total_args);
@@ -86,8 +88,6 @@ char* get_argv_string(int fd)
     {
         val = read(fd, temp++, 1);
     } while(val == 1);
-
-    printf("Guest argc - %d\n", get_argc(argvguest));
 
     return argvguest;
 }
