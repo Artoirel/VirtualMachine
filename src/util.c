@@ -39,15 +39,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         val = read(fd, temp++, 1);
     } while(val == 1);
 
-    running_total += strlen(argvguest) + 1;
-
-    for(int i = 0; i < running_total; i++)
-    {
-        if(argvguest[i] == ' ')
-        {
-            total_args++;
-        }
-    }
+    printf("Guest argc - %d\n", get_argc(argvguest));
 
     char *argg[total_args + 1];
 
@@ -86,5 +78,26 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         running_total += strlen(*envp) + 9;
         printf("envp - %s\n", *envp++);
     }
+}
+
+char* get_argv_string(int fd)
+{
+
+}
+
+uint64_t get_argc(char* args)
+{
+    int running_total += strlen(args) + 1;
+
+    for(int i = 0; i < running_total; i++)
+    {
+        if(args[i] == ' ')
+        {
+            total_args++;
+        }
+    }
+
+    // return total number of spaces in file + 1 for the first last arg + 1 for the executable itself
+    return total_args + 2
 }
 
