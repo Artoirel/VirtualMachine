@@ -93,8 +93,8 @@ char* get_argv_string(int fd)
 
 uint64_t get_argc(char* args)
 {
-    total_args = 0;
-    int running_total += strlen(args) + 1;
+    int total_args = 0;
+    int running_total = strlen(args) + 1;
 
     for(int i = 0; i < running_total; i++)
     {
