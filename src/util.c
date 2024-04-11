@@ -88,9 +88,7 @@ char* get_argv_string(int fd)
     {
         val = read(fd, temp++, 1);
     } while(val == 1);
-
-    printf("%s\n", argvguest);
-
+    
     return argvguest;
 }
 
@@ -98,7 +96,8 @@ uint64_t get_argc(char* args)
 {
     int total_args = 0;
     int running_total = strlen(args) + 1;
-
+    printf("%s\n", args);
+    printf("TEST\n");
     printf("%d\n", running_total);
 
     for(int i = 0; i < running_total; i++)
