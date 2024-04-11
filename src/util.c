@@ -58,36 +58,17 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     write_double_word(sp_addr, data_addr);
     printf("address - 0x%.16lx\n", read_double_word(sp_addr));
 
+    sp_addr += 8;
+
     argg[0] = strdup(argv[argc - 2]);
-    test = strdup(argv[argc - 2]);
-    int num = strlen(argv[argc - 2]) + 1;
-    //data_addr +=
-    write_block(data_addr, strdup(argv[argc - 2]), num);
-
-    char read[4096];
-    char *byte = read;
-    int i = 0;
-    do
-    {
-        printf("address - 0x%.16lx\n", data_addr + i);
-        byte = read_byte(data_addr + i);
-        printf("%c\n", byte);
-        read[i] = byte;
-        i++;
-
-    } while(byte != NULL);
-
-    printf("READ FROM MEMORY - %s\n", read);
-
-    argv_bytes += strlen(argg[0]) + 1;
-    printf("'%s' length is %d\n", argg[0], strlen(argg[0]) + 1);
-
+    data_addr += strlen(argv[argc - 2]) + 1
+    write_block(data_addr, strdup(argv[argc - 2]), strlen(argv[argc - 2]) + 1);
     split = strtok(argvguest, " ");
     int numsplit = 1;
+
     while(split != NULL && numsplit != arg_gc)
     {
-
-        //write_double_word();
+        write_double_word(sp_addr, data_addr);
         printf("numsplit - %d | arg_gc - %d\n", numsplit, arg_gc);
         argg[numsplit] = strdup(split);
         argv_bytes += strlen(argg[numsplit]) + 1;
