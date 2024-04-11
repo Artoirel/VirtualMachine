@@ -63,15 +63,14 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     {
         printf("numsplit - %d | arg_gc - %d\n", numsplit, arg_gc);
         argg[numsplit] = strdup(split);
-        if (strlen(argg[numsplit]) > 1)
-        {
-            argv_bytes += strlen(argg[numsplit]) + 1;
-        }
+        argv_bytes += strlen(argg[numsplit]) + 1;
         printf("'%s' length is %d\n", argg[numsplit], strlen(argg[numsplit]) + 1);
 
         split = strtok(NULL, " ");
         numsplit++;
     }
+
+    printf("memory alignment %f\n", argv_bytes / 8);
 
     printf("Total bytes for argv - %d\n", argv_bytes);
 
