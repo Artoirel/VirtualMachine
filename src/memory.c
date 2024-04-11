@@ -130,7 +130,7 @@ uint32_t read_word(uint64_t addr)
     data.halfs.h1 = read_half(addr);
     data.halfs.h2 = read_half(addr + 2);
 
-    return (uint32_t) data.data;
+    return data.data;
 }
 
 uint64_t read_double_word(uint64_t addr)
@@ -145,6 +145,8 @@ uint64_t read_double_word(uint64_t addr)
 
     data.words.w1 = read_word(addr);
     data.words.w2 = read_word(addr + 4);
+
+    printf("%.16xl\n", data.data);
 
     return data.data;
 }
