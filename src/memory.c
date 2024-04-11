@@ -65,7 +65,7 @@ void write_double_word(uint64_t addr, uint64_t double_word)
     address.address = addr;
 
     data_t data;
-    data.data = (uint64_t) double_word;
+    data.data = double_word;
 
     int aligned = check_addr_aligned(addr, 8);
     if(aligned > 0)
