@@ -119,6 +119,7 @@ int get_envp_count(char** envp)
     while(*envp)
     {
         i++;
+        *envp++;
     }
     return i;
 }
@@ -129,6 +130,7 @@ int get_envp_bytes_count(char** envp)
     while(*envp)
     {
         i += strlen(*envp) + 1;
+        *envp++;
     }
     return i;
 }
