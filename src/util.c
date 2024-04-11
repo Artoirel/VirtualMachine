@@ -16,7 +16,7 @@ int running_total = 0;
 void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 {
     int fd = -1;
-    char *argvguest;
+    char argvguest[];
     int arg_gc;
     uint64_t total_args = 2;
     int running_total = 0;
