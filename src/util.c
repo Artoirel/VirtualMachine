@@ -35,8 +35,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     }
 
     argvguest = get_argv_string(fd);
-    printf("%s\n", argvguest);
-    arg_gc = get_argc(argvguest);
+    printf("%s\n", *argvguest);
+    arg_gc = get_argc(*argvguest);
 
     printf("Guest argc - %d\n", arg_gc);
 
