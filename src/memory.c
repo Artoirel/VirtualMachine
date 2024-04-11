@@ -210,7 +210,7 @@ void write_block(uint64_t start, uint8_t* data, uint64_t memsz)
 {
     for(int i = 0; i < memsz; i++)
     {
-        printf("0x%.16x - 0x%.2x\n", start + i, data[i]);
+        printf("0x%.16lx - 0x%.2x\n", start + i, data[i]);
         write_byte(start + i, data[i]);
     }
 }

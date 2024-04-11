@@ -15,9 +15,6 @@ uint64_t PC = 0;
 
 int main(int argc, char *argv[], char *envp[])
 {
-    uint64_t sp_addr = 0x7ffffffff000;
-
-
     init_rf(0x7ffffffff000);
 
     load_stack(argc, argv, envp, 0x7ffffffff000);
