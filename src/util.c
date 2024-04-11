@@ -63,6 +63,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     while(split != NULL)
     {
         argg[numsplit] = strdup(split);
+        int size = strlen(argg[numsplit]);
+        argg[numsplit][size] = NULL;
         argv_bytes += strlen(argg[numsplit]) + 1;
         printf("'%s' length is %d\n", argg[numsplit], strlen(argg[numsplit]) + 1);
 
