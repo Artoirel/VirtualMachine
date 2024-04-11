@@ -52,14 +52,14 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     printf("Total env vars - %d\n", env_gc);
     printf("Total offset to write bytes - %x\n", total_offset_data);
 
-    char *argg[arg_gc + 1];
+    char *argg[arg_gc];
     argg[0] = strdup(argv[argc - 2]);
-    argv_bytes += strlen(argg[0]);
+    argv_bytes += strlen(argg[0]) + 1;
     printf("'%s' length is %d\n", argg[0], strlen(argg[0]) + 1);
 
     split = strtok(argvguest, " ");
     int numsplit = 1;
-    while(split != NULL) {
+    while(split != NULL && numsplit < arg_gc) {
         argg[numsplit] = strdup(split);
         if (strlen(argg[numsplit]) > 1)
         {
@@ -68,12 +68,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         printf("'%s' length is %d\n", argg[numsplit], strlen(argg[numsplit]) + 1);
 
         split = strtok(NULL, " ");
-        running_total += strlen(argg[numsplit]) + 9;
         numsplit++;
     }
-
-    argg[arg_gc] = 0;
-
 
     printf("Total bytes for argv - %d\n", argv_bytes);
 
