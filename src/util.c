@@ -90,7 +90,7 @@ char* get_argv_string(int fd)
         val = read(fd, temp++, 1);
     } while(val == 1);
 
-    return argvguest;
+    return temp;
 }
 
 uint64_t get_argc(char* args)
