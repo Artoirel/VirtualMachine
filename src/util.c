@@ -47,7 +47,10 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     sp_addr += 8;
 
     env_gc = get_envp_count(envp);
+
+    int total_offset_data = ((arg_gc + 1) + (env_gc + 1) + 4) * 8
     printf("Total env vars - %d\n", env_gc);
+    printf("Total offset to write bytes - %d", total_offset_data);
 
     char *argg[arg_gc + 1];
     argg[0] = strdup(argv[argc - 2]);
