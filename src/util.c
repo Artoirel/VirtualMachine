@@ -19,11 +19,12 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     char argvguest[4096];
     char *temp = argvguest;
     int val = 0;
+
     int arg_gc;
-    uint64_t total_args = 2;
-    int running_total = 0;
+    int env_gc;
+    int argv_bytes = 0;
+
     char *split;
-    int total_argv_bytes = 0;
 
     if(argc < 2)
     {
@@ -45,18 +46,20 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     printf("Guest argc - %d\n", read_double_word(sp_addr));
     sp_addr += 8;
 
-    char *argg[arg_gc + 1];
+    env_gc = get_envp_count(envp);
+    printf("Total env vars - %d\n", env_gc);
 
+    char *argg[arg_gc + 1];
     argg[0] = strdup(argv[argc - 2]);
-    total_argv_bytes += strlen(argg[0]);
-    argg[total_args] = 0;
+    argv_bytes += strlen(argg[0]);
+    argg[arg_gc] = 0;
 
     split = strtok(argvguest, " ");
     int numsplit = 1;
     while(split != NULL)
     {
         argg[numsplit] = strdup(split);
-        total_argv_bytes += strlen(argg[numsplit]) + 1;
+        argv_bytes += strlen(argg[numsplit]) + 1;
 
         split = strtok(NULL, " ");
         running_total += strlen(argg[numsplit]) + 9;
@@ -108,10 +111,13 @@ uint64_t get_argc(char* args)
 
 uint64_t get_envp_count(char** envp)
 {
+    int i = 0;
     while(*envp)
     {
         running_total += strlen(*envp) + 9;
         printf("envp - %s\n", *envp++);
+        i++;
     }
+    return i;
 }
 
