@@ -59,7 +59,9 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 
     split = strtok(argvguest, " ");
     int numsplit = 1;
-    while(split != NULL && numsplit < arg_gc) {
+    while(split != NULL && numsplit != arg_gc)
+    {
+        printf("numsplit - %d | arg_gc - %d\n", numsplit, arg_gc);
         argg[numsplit] = strdup(split);
         if (strlen(argg[numsplit]) > 1)
         {
