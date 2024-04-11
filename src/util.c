@@ -80,7 +80,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     while(split != NULL && numsplit != arg_gc)
     {
 
-        write_double_word();
+        //write_double_word();
         printf("numsplit - %d | arg_gc - %d\n", numsplit, arg_gc);
         argg[numsplit] = strdup(split);
         argv_bytes += strlen(argg[numsplit]) + 1;
