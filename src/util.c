@@ -113,7 +113,7 @@ uint64_t get_argc(char* args)
     return total_args + 1;
 }
 
-uint64_t get_envp_count(char** envp)
+int get_envp_count(char** envp)
 {
     int i = 0;
     while(*envp)
@@ -125,7 +125,7 @@ uint64_t get_envp_count(char** envp)
     return i;
 }
 
-uint64_t get_envp_bytes_count(char** envp)
+int get_envp_bytes_count(char** envp)
 {
     int i = 0;
     while(*envp)
