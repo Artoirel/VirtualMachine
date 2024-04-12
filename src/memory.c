@@ -147,9 +147,7 @@ uint64_t read_double_word(uint64_t addr)
 
     data.words.w1 = read_word(addr);
     data.words.w2 = read_word(addr + 4);
-
-    printf("%.16xl\n", data.data);
-
+    
     return data.data;
 }
 
