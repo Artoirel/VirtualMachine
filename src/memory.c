@@ -214,3 +214,19 @@ void write_block(uint64_t start, uint8_t* data, uint64_t memsz)
         write_byte(start + i, data[i]);
     }
 }
+
+void print_arbitrary_bytes(uint64_t start)
+{
+    for(int i = 0; i < 4096; i++)
+    {
+        char temp = read_byte(start + i);
+        if(temp == NULL)
+        {
+            printf("\n");
+        }
+        else
+        {
+            printf("%c", temp);
+        }
+    }
+}

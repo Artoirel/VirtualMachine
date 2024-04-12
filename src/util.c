@@ -69,13 +69,26 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     while(split != NULL && numsplit != arg_gc)
     {
         write_double_word(sp_addr, data_addr);
-        printf("numsplit - %d | arg_gc - %d\n", numsplit, arg_gc);
         temp = strdup(split);
         argv_bytes = strlen(temp) + 1;
+
+        write_block(data_addr, temp, argv_bytes);
+
         printf("'%s' length is %d\n", temp, argv_bytes);
+
+        data_addr += argv_bytes;
+        sp_addr += 8;
 
         split = strtok(NULL, " ");
         numsplit++;
+    }
+
+    write_double_word(sp_addr, 0);
+    sp_addr += 8;
+
+    while(*envp)
+    {
+        printf("%s\n", *envp++);
     }
 
     int envp_offset = total_offset_data + ((argv_bytes / 8) * 8);
