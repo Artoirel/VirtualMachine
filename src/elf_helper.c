@@ -97,7 +97,7 @@ void get_loadable_segment(void* header)
                 }
             }
 
-            write_block(bytes, temp_phdr[i].p_vaddr, temp_phdr[i].p_memsz);
+            write_block(temp_phdr[i].p_vaddr, bytes, temp_phdr[i].p_memsz);
         }
     }
 }
