@@ -9,7 +9,7 @@ typedef union instruction_type
 
 typedef struct encoding_type
 {
-    
+
 };
 
 #endif
