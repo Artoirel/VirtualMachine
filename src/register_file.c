@@ -13,9 +13,7 @@ void init_rf(uint64_t sp)
     fp_reg_file = (rf_contents_t*) malloc(sizeof(rf_contents_t) * 32);
 
     reg_file[0].intdouble = 0;
-
-    printf("%.16xl\n", sp);
-
+    
     write_reg_long(2, sp);
 }
 
@@ -32,14 +30,12 @@ void write_fp_reg_float(uint8_t reg, float value)
 void write_reg_int(uint8_t reg, uint32_t value)
 {
     if(reg == 0) return;
-    printf("writing value - 0x%.16lx\n", value);
     reg_file[reg].intword = value;
 }
 
 void write_reg_long(uint8_t reg, uint64_t value)
 {
     if(reg == 0) return;
-    printf("writing value - 0x%.16lx\n", value);
     reg_file[reg].intdouble = value;
 }
 
