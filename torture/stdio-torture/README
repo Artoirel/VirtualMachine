@@ -1,0 +1,19 @@
+Some of the stdio torture tests have overlapping functionality.  So, if any of these tests fail, find the first test that fails from the following list.  Whichever test is the first in this list to fail should be the starting point for debugging.  Once you fix the issue with that test, that fix may also fix the later tests.
+
+1.  fopen.c
+2.  fclose.c
+3.  fputc.c
+4.  fwrite.c
+5.  fprintf.c
+6.  fputs.c
+7.  fread.c
+8.  fflush.c
+9.  unlink.c
+10. fgetc.c
+11. fgets.c
+12. fscanf.c
+13. fseek.c
+14. rename.c
+15. feof.c
+16. ungetc.c
+17. fgetpos.c
