@@ -72,9 +72,7 @@ void write_double_word(uint64_t addr, uint64_t double_word)
     {
         THROW_ERROR("Address unaligned");
     }
-
-    printf("Double Word Being Written - %.16lx\n", data.data);
-
+    
     write_word(addr, data.words.w1);
     write_word(addr + 4, data.words.w2);
 }
@@ -208,7 +206,6 @@ void write_block(uint64_t start, uint8_t* data, uint64_t memsz)
 {
     for(int i = 0; i < memsz; i++)
     {
-        printf("0x%.16lx - %c\n", start + i, data[i]);
         write_byte(start + i, data[i]);
     }
 }

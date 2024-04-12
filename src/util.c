@@ -43,20 +43,17 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 
     arg_gc = get_argc(argvguest);
     write_double_word(sp_addr, arg_gc);
-    printf("Guest argc - %d\n", read_double_word(sp_addr));
+
     sp_addr += 8;
 
     env_gc = get_envp_count(envp);
 
     int total_offset_data = ((arg_gc + 1) + (env_gc + 1) + 4) * 8;
-    printf("Total env vars - %d\n", env_gc);
-    printf("Total offset to write bytes - %d\n", total_offset_data);
 
     char *argg[arg_gc];
     uint8_t * test;
     uint64_t data_addr = sp_addr + total_offset_data;
     write_double_word(sp_addr, data_addr);
-    printf("address - 0x%.16lx\n", read_double_word(sp_addr));
 
     sp_addr += 8;
 
@@ -74,8 +71,6 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 
         write_block(data_addr, temp, argv_bytes);
 
-        printf("'%s' length is %d\n", temp, argv_bytes);
-
         data_addr += argv_bytes;
         sp_addr += 8;
 
@@ -90,7 +85,6 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     {
         write_double_word(sp_addr, data_addr);
         write_block(data_addr, *envp, strlen(*envp) + 1);
-        printf("%s has length %d\n", *envp, strlen(*envp) + 1);
 
         sp_addr += 8;
         data_addr += strlen(*envp) + 1;
@@ -99,8 +93,6 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     }
 
     write_double_word(sp_addr, 0);
-
-    print_arbitrary_bytes(0x7ffffffff000);
 }
 
 char* get_argv_bytes(char** argv)

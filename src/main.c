@@ -38,13 +38,10 @@ int main(int argc, char *argv[], char *envp[])
 
     get_loadable_segment(header);
 
-    printf("Read reg 10 - %d\n", read_reg_int(10));
-
     printf("%8x\n", read_word(PC));
 
     printf("Success!");
 
-    printf("%.16lx\n", read_word(PC));
     return EXIT_SUCCESS;
 }
 

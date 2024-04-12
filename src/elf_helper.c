@@ -175,7 +175,6 @@ void get_main(void* header,void* sec, int argc, char * argv[])
             {
                main2 = (int (*)(int, char**)) symtab[i].st_value;
                int test = main2(argc, argv);
-               printf("%p\n", main2);
             }
         }
     }
