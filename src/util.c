@@ -91,14 +91,14 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
         write_double_word(sp_addr, data_addr);
         write_block(data_addr, *envp, strlen(*envp) + 1);
         printf("%s has length %d\n", *envp, strlen(*envp) + 1);
-        *envp++;
 
         sp_addr += 8;
         data_addr += strlen(*envp) + 1;
 
+        *envp++;
     }
 
-
+    write_double_word(sp_addr, 0);
 }
 
 char* get_argv_bytes(char** argv)
