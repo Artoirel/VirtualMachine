@@ -88,25 +88,13 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
 
     while(*envp)
     {
-        printf("%s\n", *envp++);
+        write_double_word(sp_addr, data_addr);
+        write_block(data_addr, *envp, strlen(*envp) + 1);
+        printf("%s has length %d\n", *envp, strlen(*envp) + 1);
+        *envp++;
     }
 
-    int envp_offset = total_offset_data + ((argv_bytes / 8) * 8);
-    int envp_bc = get_envp_bytes_count(envp);
 
-    printf("memory alignment %d\n", envp_offset);
-
-    printf("Total bytes for argv - %d\n", argv_bytes);
-    printf("Total bytes for envp - %d\n", envp_bc);
-
-
-
-    uint8_t *arg_bytes = (uint8_t*) argg[1];
-
-    for(int i = 0; i < argv_bytes; i++)
-    {
-        printf("%2x\n", arg_bytes[i]);
-    }
 }
 
 char* get_argv_bytes(char** argv)
