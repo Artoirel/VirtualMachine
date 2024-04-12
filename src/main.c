@@ -19,12 +19,6 @@ int main(int argc, char *argv[], char *envp[])
 
     load_stack(argc, argv, envp, 0x7ffffffff000);
 
-    //write_double_word(read_reg_long(2));
-
-    write_reg_int(10, argc - 1);
-
-    print_reg(10);
-
     int valid = check_elf(argv[1]);
 
     if(valid != 64)
@@ -38,7 +32,7 @@ int main(int argc, char *argv[], char *envp[])
 
     get_loadable_segment(header);
 
-    printf("%8x\n", read_word(PC));
+    printf("%.8x\n", read_word(PC));
 
     printf("Success!");
 

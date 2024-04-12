@@ -13,7 +13,7 @@ void init_rf(uint64_t sp)
     fp_reg_file = (rf_contents_t*) malloc(sizeof(rf_contents_t) * 32);
 
     reg_file[0].intdouble = 0;
-    
+
     write_reg_long(2, sp);
 }
 
@@ -81,10 +81,10 @@ uint64_t read_reg_long(uint8_t reg)
 
 void print_reg(uint8_t reg)
 {
-    printf("0x.16lx\n", read_reg_long(reg));
+    printf("0x%.16lx\n", read_reg_long(reg));
 }
 
 void print_fp_reg(uint8_t reg)
 {
-    printf("0x.16lx\n", read_fp_reg_long(reg));
+    printf("0x%.16lx\n", read_fp_reg_long(reg));
 }
