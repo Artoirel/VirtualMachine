@@ -99,6 +99,8 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     }
 
     write_double_word(sp_addr, 0);
+
+    print_arbitrary_bytes(0x7ffffffff000);
 }
 
 char* get_argv_bytes(char** argv)
