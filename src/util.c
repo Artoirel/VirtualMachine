@@ -61,7 +61,7 @@ void load_stack(int argc, char* argv[], char*envp[], uint64_t sp_addr)
     sp_addr += 8;
 
     argg[0] = strdup(argv[argc - 2]);
-    data_addr += strlen(argv[argc - 2]) + 1
+    data_addr += strlen(argv[argc - 2]) + 1;
     write_block(data_addr, strdup(argv[argc - 2]), strlen(argv[argc - 2]) + 1);
     split = strtok(argvguest, " ");
     int numsplit = 1;
