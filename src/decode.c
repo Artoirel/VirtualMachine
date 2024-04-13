@@ -13,8 +13,7 @@ void decode_loop(uint64_t PC)
     {
         inst_t instruction;
         instruction.instruction = read_word(PC);
-        printf("0x%.7b\n", instruction.encoding.opcode);
-
+        dispatch(instruction);
         PC += 4;
         end++;
     }
