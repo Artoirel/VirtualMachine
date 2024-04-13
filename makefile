@@ -5,7 +5,8 @@ OBJS = obj/main.o\
        obj/elf_helper.o\
        obj/memory.o\
        obj/register_file.o\
-       obj/decode.o
+       obj/decode.o\
+       obj/util.c
 
 TOBJS = test/helloworld.o
 
