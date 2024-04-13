@@ -4,7 +4,8 @@ RCC = riscv-unknown-linux-gcc
 OBJS = obj/main.o\
        obj/elf_helper.o\
        obj/memory.o\
-       obj/register_file.o
+       obj/register_file.o\
+       obj/decode
 
 TOBJS = test/helloworld.o
 
