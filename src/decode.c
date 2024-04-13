@@ -1,6 +1,9 @@
 #include "decode.h"
 #include "memory.h"
 #include "register_file.h"
+#include <stdio.h>
+#include <stdint.h>
+#include "inst_type.h"
 
 decode(uint64_t PC)
 {
