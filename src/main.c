@@ -34,6 +34,8 @@ int main(int argc, char *argv[], char *envp[])
 
     printf("%.8x\n", read_word(PC));
 
+    decode(PC);
+
     printf("Success!");
 
     return EXIT_SUCCESS;
