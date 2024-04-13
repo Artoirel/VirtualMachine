@@ -35,7 +35,7 @@ int main(int argc, char *argv[], char *envp[])
 
     printf("%.8x\n", read_word(PC));
 
-    decode_loop(PC);
+    //decode_loop(PC);
 
     printf("Success!");
 
