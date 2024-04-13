@@ -15,5 +15,6 @@ void decode_loop(uint64_t PC)
         printf("0x%.7b\n", instruction.encoding.opcode);
 
         PC += 4;
+        end++;
     }
 }
