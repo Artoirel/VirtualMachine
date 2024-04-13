@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-void decode_loop(uint64_t PC);
+int decode_loop(uint64_t PC);
 
 #endif
