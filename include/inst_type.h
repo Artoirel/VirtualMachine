@@ -1,18 +1,7 @@
 #ifndef __INST_TYPE_H__
 #define __INST_TYPE_H__
 
-typedef union instruction_type
-{
-    uint32_t instruction;
-    encoding_t encoding;
-    r_inst_t r_type;
-    i_inst_t i_type;
-    s_inst_t s_type;
-    b_inst_t b_type;
-    u_inst_t u_type;
-    j_inst_t j_type;
-
-} inst_t;
+#include <stdint.h>
 
 typedef struct encoding_type
 {
@@ -77,5 +66,18 @@ typedef struct j_instruction_type
     uint32_t imm4 : 1
 
 } j_inst_t;
+
+typedef union instruction_type
+{
+    uint32_t instruction;
+    encoding_t encoding;
+    r_inst_t r_type;
+    i_inst_t i_type;
+    s_inst_t s_type;
+    b_inst_t b_type;
+    u_inst_t u_type;
+    j_inst_t j_type;
+
+} inst_t;
 
 #endif
