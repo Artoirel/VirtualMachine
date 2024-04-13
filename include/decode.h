@@ -5,4 +5,6 @@
 
 int decode_loop(uint64_t PC);
 
+int dispatch(inst_t instruction);
+
 #endif
