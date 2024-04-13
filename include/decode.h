@@ -2,6 +2,7 @@
 #define __DECODE_H__
 
 #include <stdint.h>
+#include "inst_type.h"
 
 void decode_loop(uint64_t PC);
 
