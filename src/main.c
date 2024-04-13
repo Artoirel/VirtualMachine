@@ -10,6 +10,7 @@
 #include "register_file.h"
 #include "rf_contents_type.h"
 #include "util.h"
+#include "decode.h"
 
 uint64_t PC = 0;
 
@@ -34,7 +35,7 @@ int main(int argc, char *argv[], char *envp[])
 
     printf("%.8x\n", read_word(PC));
 
-    decode(PC);
+    decode_loop(PC);
 
     printf("Success!");
 

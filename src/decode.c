@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include "inst_type.h"
 
-decode(uint64_t PC)
+decode_loop(uint64_t PC)
 {
     uint64_t end = 0;
     while(!end)
