@@ -84,8 +84,6 @@ int dispatch(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
-            printf("%d\n", PC);
-            printf("%lx\n", PC);
             pretty_print(instruction, PC);
             assert(0 && "RV64_OP_JAL\n");
             return 0; //0x6f    /* 1101111 */
