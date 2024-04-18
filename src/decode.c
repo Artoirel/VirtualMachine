@@ -11,7 +11,7 @@ uint64_t PC_g = 0;
 
 void decode_loop(uint64_t PC)
 {
-    PC_g = PC
+    PC_g = PC;
     uint64_t end = 0;
     while(!end)
     {
