@@ -96,7 +96,7 @@ int dispatch(inst_t instruction, uint64_t PC)
 
 void pretty_print(inst_t instruction, uint64_t PC)
 {
-    printf("%x\ttest", PC);
+    printf("%lx\ttest", PC);
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
