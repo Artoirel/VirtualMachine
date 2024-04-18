@@ -165,13 +165,19 @@ void pretty_print(inst_t instruction, uint64_t PC)
     }
 }
 
-uint32_t j_imm(j_inst_t j)
+uint64_t j_imm(j_inst_t j)
 {
-    uint32_t val1 = j.imm1 << 1;
-    uint32_t val2 = j.imm2 << 11;
-    uint32_t val3 = j.imm3 << 12;
-    uint32_t val4 = j.imm4 << 20;
-    uint32_t val = val1 | val2 | val3 | val4;
+    uint64_t val1 = j.imm1 << 1;
+    uint64_t val2 = j.imm2 << 11;
+    uint64_t val3 = j.imm3 << 12;
+    uint64_t val4 = j.imm4 << 20;
+
+    if(imm4)
+    {
+        imm4 = 0xFFFFFFFF;
+    }
+
+    uint64_t val = val1 | val2 | val3 | val4;
     printf("%lx\n", val);
     return val;
 }
