@@ -8,6 +8,6 @@ void decode_loop(uint64_t PC);
 
 int dispatch(inst_t instruction);
 
-void pretty_print(i_inst_t instruction);
+void pretty_print(inst_t instruction);
 
 #endif
