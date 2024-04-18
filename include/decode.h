@@ -8,4 +8,6 @@ void decode_loop(uint64_t PC);
 
 int dispatch(inst_t instruction);
 
+void load(i_inst_t instruction);
+
 #endif
