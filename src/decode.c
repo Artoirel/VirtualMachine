@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include "inst_type.h"
 #include "rv64_opcodes.h"
+#include <assert.h>
 
 void decode_loop(uint64_t PC)
 {
