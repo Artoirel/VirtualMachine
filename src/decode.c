@@ -176,7 +176,7 @@ uint64_t j_imm(j_inst_t j)
     uint64_t val1 = j.imm1;
     uint64_t val2 = j.imm2 << 10;
     uint64_t val3 = j.imm3 << 11;
-    uint64_t val4 = val4 << 19;
+    val4 = val4 << 19;
 
     uint64_t val = val1 | val2 | val3 | val4;
     printf("%lx\n", val << 1);
