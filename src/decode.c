@@ -85,7 +85,7 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
             pretty_print(instruction, PC);
-            assert(0 && "RV64_OP_JAL\n");
+            //assert(0 && "RV64_OP_JAL\n");
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
