@@ -164,7 +164,7 @@ void pretty_print(inst_t instruction)
     }
 }
 
-uint32_t j_imm(j_inst_type j)
+uint32_t j_imm(j_inst_t j)
 {
     uint32_t val1 = j.imm1 << 1;
     uint32_t val2 = j.imm2 << 11;
