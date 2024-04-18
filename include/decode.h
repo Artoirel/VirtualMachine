@@ -6,9 +6,9 @@
 
 void decode_loop(uint64_t PC);
 
-int dispatch(inst_t instruction);
+int dispatch(inst_t instruction, uint64_t PC);
 
-void pretty_print(inst_t instruction);
+void pretty_print(inst_t instruction, uint64_t PC);
 
 uint32_t j_imm(j_inst_t j);
 

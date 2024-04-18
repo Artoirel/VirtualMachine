@@ -11,18 +11,18 @@ uint64_t PC_g = 0;
 
 void decode_loop(uint64_t PC)
 {
-    PC_g = PC;
+    PC;
     uint64_t end = 0;
     while(!end)
     {
         inst_t instruction;
         instruction.instruction = read_word(PC);
-        end = dispatch(instruction);
-        PC_g += 4;
+        end = dispatch(instruction, PC);
+        PC += 4;
     }
 }
 
-int dispatch(inst_t instruction)
+int dispatch(inst_t instruction, uint64_t PC)
 {
     switch(instruction.encoding.opcode)
     {
@@ -84,7 +84,7 @@ int dispatch(inst_t instruction)
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
-            pretty_print(instruction);
+            pretty_print(instruction, PC);
             assert(0 && "RV64_OP_JAL\n");
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
@@ -94,7 +94,7 @@ int dispatch(inst_t instruction)
     }
 }
 
-void pretty_print(inst_t instruction)
+void pretty_print(inst_t instruction, uint64_t PC)
 {
     switch(instruction.encoding.opcode)
     {
@@ -155,7 +155,7 @@ void pretty_print(inst_t instruction)
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
-            printf("%8x:\t%8x\tjal\t%8x", PC_g, instruction.instruction, PC_g + 4 + j_imm(instruction.j_type));
+            printf("%8x:\t%8x\tjal\t%8x", PC_g, instruction.instruction, PC + 4 + j_imm(instruction.j_type));
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
