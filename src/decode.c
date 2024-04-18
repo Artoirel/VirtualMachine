@@ -7,15 +7,18 @@
 #include "rv64_opcodes.h"
 #include <assert.h>
 
+uint64_t PC_g = 0;
+
 void decode_loop(uint64_t PC)
 {
+    PC_g = PC
     uint64_t end = 0;
     while(!end)
     {
         inst_t instruction;
         instruction.instruction = read_word(PC);
         end = dispatch(instruction);
-        PC += 4;
+        PC_g += 4;
     }
 }
 
@@ -81,6 +84,7 @@ int dispatch(inst_t instruction)
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
+            pretty_print(instruction);
             assert(0 && "RV64_OP_JAL\n");
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
@@ -151,11 +155,20 @@ void pretty_print(inst_t instruction)
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
-            assert(0 && "RV64_OP_JAL\n");
+            printf("%8x:    %8x     jal    %8x", PC_g, instruction.instruction, PC_g + 4 + j_imm(j_instruction_type j));
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
             return 0; //0x73    /* 1110011 */
         default: return 1;
     }
+}
+
+uint32_t j_imm(j_instruction_type j)
+{
+    uint32_t val1 = j.imm1 << 1;
+    uint32_t val2 = j.imm2 << 11;
+    uint32_t val3 = j.imm3 << 19;
+    uint32_t val4 = j.imm4 << 20;
+    return val1 | val2 | val3 | val4;
 }
