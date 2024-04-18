@@ -167,7 +167,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
 
 uint64_t j_imm(j_inst_t j)
 {
-    uint64_t = 0;
+    uint64_t val4 = 0;
     if(j.imm4);
     {
         val4 = 0xFFFFFFFF;
