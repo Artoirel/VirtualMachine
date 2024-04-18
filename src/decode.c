@@ -96,7 +96,6 @@ int dispatch(inst_t instruction, uint64_t PC)
 
 void pretty_print(inst_t instruction, uint64_t PC)
 {
-    printf("%lx test", PC);
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
@@ -156,7 +155,8 @@ void pretty_print(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
-            printf("%8x:\t%8x\tjal\t%8x\n", PC, instruction.instruction, PC + 4 + j_imm(instruction.j_type) + read_reg_double(instruction.j_type.rd));
+            uint32_t imm = j_imm(instruction.j_type);
+            printf("%8x:\t%8x\tjal\t%8x\n", PC, instruction.instruction, PC + 4 + imm + read_reg_double(instruction.j_type.rd));
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
