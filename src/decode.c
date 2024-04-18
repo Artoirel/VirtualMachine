@@ -179,6 +179,6 @@ uint64_t j_imm(j_inst_t j)
     val4 = val4 << 19;
 
     uint64_t val = val1 | val2 | val3 | val4;
-    printf("%lx\n", val << 1);
+    printf("%d\n", val << 1);
     return val;
 }
