@@ -94,7 +94,6 @@ void pretty_print(inst_t instruction)
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
-            load(instruction.i_type);
             return 0; //0x03    /* 0000011 */
         case RV64_OP_LOAD_FP:
             Assert(0 && "RV64_OP_LOAD_FP\n");
