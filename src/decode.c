@@ -171,5 +171,7 @@ uint32_t j_imm(j_inst_t j)
     uint32_t val2 = j.imm2 << 11;
     uint32_t val3 = j.imm3 << 19;
     uint32_t val4 = j.imm4 << 20;
-    return val1 | val2 | val3 | val4;
+    uint32_t val = val1 | val2 | val3 | val4;
+    printf("%lx\n", val);
+    return val;
 }
