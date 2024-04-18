@@ -155,7 +155,7 @@ void pretty_print(inst_t instruction)
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
-            printf("%8x:    %8x     jal    %8x", PC_g, instruction.instruction, PC_g + 4 + j_imm(j_instruction_type j));
+            printf("%8x:    %8x     jal    %8x", PC_g, instruction.instruction, PC_g + 4 + j_imm(instruction.j_type));
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
@@ -164,7 +164,7 @@ void pretty_print(inst_t instruction)
     }
 }
 
-uint32_t j_imm(j_instruction_type j)
+uint32_t j_imm(j_inst_type j)
 {
     uint32_t val1 = j.imm1 << 1;
     uint32_t val2 = j.imm2 << 11;

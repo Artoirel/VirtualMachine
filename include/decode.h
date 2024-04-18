@@ -10,6 +10,6 @@ int dispatch(inst_t instruction);
 
 void pretty_print(inst_t instruction);
 
-uint32_t j_imm(j_instruction_type j);
+uint32_t j_imm(j_inst_type j);
 
 #endif
