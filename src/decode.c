@@ -169,7 +169,7 @@ uint32_t j_imm(j_inst_t j)
 {
     uint32_t val1 = j.imm1 << 1;
     uint32_t val2 = j.imm2 << 11;
-    uint32_t val3 = j.imm3 << 19;
+    uint32_t val3 = j.imm3 << 12;
     uint32_t val4 = j.imm4 << 20;
     uint32_t val = val1 | val2 | val3 | val4;
     printf("%lx\n", val);
