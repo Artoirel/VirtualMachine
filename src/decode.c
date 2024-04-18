@@ -172,9 +172,9 @@ uint64_t j_imm(j_inst_t j)
     uint64_t val3 = j.imm3 << 12;
     uint64_t val4 = j.imm4 << 20;
 
-    if(imm4)
+    if(val4)
     {
-        imm4 = 0xFFFFFFFF;
+        val4 = 0xFFFFFFFF;
     }
 
     uint64_t val = val1 | val2 | val3 | val4;
