@@ -88,9 +88,6 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_SRLI :
                     assert(0 && "RV64_OP_OP_IMM - SRLI\n");
                     return; //0x5
-                case RV64_FUNCT3_SRAI :
-                    assert(0 && "RV64_OP_OP_IMM - SRAI\n");
-                    return;//0x5
             }
             assert(0 && "UNKNOWN IMM INST");
             return 0; //0x13    /* 0010011 */
