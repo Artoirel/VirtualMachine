@@ -28,6 +28,17 @@ typedef struct i_instruction_type
     uint32_t sext : 1;
 } i_inst_t;
 
+typedef struct is_instruction_type
+{
+    uint32_t opcode : 7;
+    uint32_t rd : 5;
+    uint32_t funct3 : 3;
+    uint32_t rs1 : 5;
+    uint32_t shamt : 5;
+    uint32_t shamt_ext: 1;
+    uint32_t funct6 : 6;
+} is_inst_t;
+
 typedef struct s_type_instruction
 {
     uint32_t opcode : 7;
@@ -75,6 +86,7 @@ typedef union instruction_type
     encoding_t encoding;
     r_inst_t r_type;
     i_inst_t i_type;
+    is_inst_t is_type;
     s_inst_t s_type;
     b_inst_t b_type;
     u_inst_t u_type;

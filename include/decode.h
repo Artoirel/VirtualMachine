@@ -16,4 +16,6 @@ uint64_t u_imm(u_inst_t u);
 
 uint64_t i_imm(i_inst_t i);
 
+uint64_t is_imm(is_inst_t i);
+
 #endif
