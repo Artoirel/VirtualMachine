@@ -225,6 +225,6 @@ uint64_t i_imm(i_inst_t i)
         val = 0xFFFFFFFF;
     }
 
-    return val << 12 | i.imm;
+    return val << 11 | i.imm;
 }
 
