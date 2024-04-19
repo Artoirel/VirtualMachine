@@ -126,16 +126,26 @@ void pretty_print(inst_t instruction, uint64_t PC)
             printf("\n");
             switch (instruction.i_type.funct3) {
                 case RV64_FUNCT3_LB  :
+                    assert(0 && "RV64_OP_LOAD - LB\n");
                     return; //0x0
                 case RV64_FUNCT3_LH  :
+                    assert(0 && "RV64_OP_LOAD - LH\n");
                     return; //0x1
                 case RV64_FUNCT3_LW  :
+                    assert(0 && "RV64_OP_LOAD - LW\n");
                     return; //0x2
                 case RV64_FUNCT3_LBU :
+                    assert(0 && "RV64_OP_LOAD - LBU\n");
                     return; //0x4
                 case RV64_FUNCT3_LHU :
+                    assert(0 && "RV64_OP_LOAD - LHU\n");
                     return; //0x5
+                case RV64_FUNCT3_LWU :
+                    return; //0x6
+                case RV64_FUNCT3_LD  :
+                    return; //0x3
             }
+            assert(0 && "UNKNOWN LOAD OP");
             return 0; //0x03    /* 0000011 */
         case RV64_OP_LOAD_FP:
             assert(0 && "RV64_OP_LOAD_FP\n");
@@ -151,14 +161,19 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     printf("addi\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x0
                 case RV64_FUNCT3_SLTI :
+                    assert(0 && "RV64_OP_OP_IMM - SLTI\n");
                     return;// 0x2
                 case RV64_FUNCT3_SLTIU:
+                    assert(0 && "RV64_OP_OP_IMM - SLTIU\n");
                     return;// 0x3
                 case RV64_FUNCT3_XORI :
+                    assert(0 && "RV64_OP_OP_IMM - XORI\n");
                     return;// 0x4
                 case RV64_FUNCT3_ORI  :
+                    assert(0 && "RV64_OP_OP_IMM - ORI\n");
                     return;// 0x6
                 case RV64_FUNCT3_ANDI :
+                    assert(0 && "RV64_OP_OP_IMM - ANDI\n");
                     return;// 0x7
             }
 
