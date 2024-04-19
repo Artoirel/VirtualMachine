@@ -134,7 +134,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             switch(instruction.i_type.funct3)
             {
                 case RV64_FUNCT3_ADDI :
-                    printf("addi\t$r%d\t$r%d\t%d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
+                    printf("addi\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x0
                 case RV64_FUNCT3_SLTI :
                     return;// 0x2
@@ -151,7 +151,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x13    /* 0010011 */
 
         case RV64_OP_AUIPC:
-            printf("auipc\t$r%d\t0x%lx\n", instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
+            printf("auipc\t$r%d, 0x%lx\n", instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
             return; //0x17    /* 0010111 */
 
         case RV64_OP_OP_IMM32:
@@ -195,13 +195,13 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x63    /* 1100011 */
 
         case RV64_OP_JALR:
-            printf("\n");
+            printf("jalr\t$r%d, $r%d, 0x%lx\n", instruction.i_type.rd, instruction.i_type.rs1, 0);
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
 
         case RV64_OP_JAL:
             uint64_t imm = j_imm(instruction.j_type);
-            printf("jal\t\t0x%x\n", PC + imm);
+            printf("jal\t0x%x\n", PC + imm);
             return; //0x6f    /* 1101111 */
 
         case RV64_OP_SYSTEM:
