@@ -84,7 +84,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SHIFT_IMM_SLLI :
                     assert(0 && "RV64_OP_OP_IMM - SLLI\n");
                     return PC + 4; //0x00
-                case RV64_SHIFT_IMM_SRLI :
+                //case RV64_SHIFT_IMM_SRLI :
                     //switch(instruction.is_type.funct6)
                     //{
                         //case RV64_SHIFT_IMM_SRLI :
@@ -92,8 +92,8 @@ int dispatch(inst_t instruction, uint64_t PC)
                         //case RV64_SHIFT_IMM_SRAI  :
                            // return PC + 4; //0x10
                    // }
-                    assert(0 && "RV64_OP_OP_IMM - SRLI\n");
-                    return PC + 4; //0x00
+                //    assert(0 && "RV64_OP_OP_IMM - SRLI\n");
+                //    return PC + 4; //0x00
                 //case RV64_SHIFT_IMM_SLLIW :
                     //assert(0 && "RV64_OP_OP_IMM - SLLIW\n");
                     //return PC + 4; //0x00
