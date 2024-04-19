@@ -219,6 +219,7 @@ uint64_t u_imm(u_inst_t u)
 uint64_t i_imm(i_inst_t i)
 {
     uint64_t val = 0;
+    printf("%b\n", i.sext);
     if(i.sext == 1)
     {
         val = 0xFFFFFFFF;
