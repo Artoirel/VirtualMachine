@@ -103,8 +103,7 @@ int dispatch(inst_t instruction, uint64_t PC)
 
         case RV64_OP_JALR:
             write_reg_long(instruction.i_type.rd, PC + 4);
-            printf("reg val = 0x%lx\n", read_reg_long(instruction.i_type.rs1));
-            PC = read_reg_long(instruction.i_type.rs1) + 4;
+            PC = read_reg_long(instruction.i_type.rs1);
             return PC; //0x67    /* 1100111 */
 
         case RV64_OP_JAL:
