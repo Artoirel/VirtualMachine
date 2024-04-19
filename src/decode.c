@@ -124,7 +124,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
     {
         case RV64_OP_LOAD:
             printf("\n");
-            switch (expression) {
+            switch (instruction.i_type.funct3) {
                 case RV64_FUNCT3_LB  :
                     return; //0x0
                 case RV64_FUNCT3_LH  :
