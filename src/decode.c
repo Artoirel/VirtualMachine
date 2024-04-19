@@ -16,6 +16,7 @@ void decode_loop(uint64_t PC)
         inst_t instruction;
         instruction.instruction = read_word(PC);
         PC = dispatch(instruction, PC);
+        inst_count++;
     }
 }
 
