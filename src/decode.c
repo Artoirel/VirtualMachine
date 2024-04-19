@@ -109,7 +109,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             //printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
             return 0; //0x13    /* 0010011 */
         case RV64_OP_AUIPC:
-            printf("\nimm val - %lx\n", (instruction.u_type.imm << 12) + PC & 0xFFF);
+            printf("\nimm val - %lx\n", u_imm(instruction.u_type) << 12 + PC);
             printf("auipc  $r%d\n", instruction.u_type.rd);
             assert(0 && "RV64_OP_AUIPC\n");
             return 0; //0x17    /* 0010111 */
@@ -189,3 +189,17 @@ uint64_t j_imm(j_inst_t j)
     uint64_t val = (val1 | val2 | val3 | val4) << 1;
     return val;
 }
+
+uint64_t u_imm(u_inst_t u)
+{
+    uint64_t val = 0;
+    if(u.sext == 1)
+    {
+        val = 0xFFFFFFFF;
+    }
+
+    val = (val << 20) | u.imm;
+
+    return val;
+}
+

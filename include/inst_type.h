@@ -53,7 +53,8 @@ typedef struct u_instruction_type
 {
     uint32_t opcode : 7;
     uint32_t rd : 5;
-    uint32_t imm : 20;
+    uint32_t imm : 19;
+    uint32_t sext : 1;
 } u_inst_t;
 
 typedef struct j_instruction_type
