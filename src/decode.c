@@ -37,8 +37,8 @@ int dispatch(inst_t instruction, uint64_t PC)
             {
                 case RV64_FUNCT3_ADDI :
                     write_reg_long(instruction.i_type.rd, read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type));
-                    printf("addi\t$r%d\t$r%d\t%d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return PC + 4;// 0x0
+                    
                 case RV64_FUNCT3_SLTI :
                     assert(0 && "RV64_OP_OP_IMM - SLTI\n");
                     return;// 0x2
