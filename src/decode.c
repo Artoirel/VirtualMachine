@@ -111,7 +111,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x0f    /* 0001111 */
 
         case RV64_OP_OP_IMM:
-
             switch(instruction.i_type.funct3)
             {
                 case RV64_FUNCT3_ADDI :
@@ -128,8 +127,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_ANDI :
                     return;// 0x7
             }
-            printf("%8x\n", instruction.instruction);
-            //printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
+            
             return 0; //0x13    /* 0010011 */
 
         case RV64_OP_AUIPC:
