@@ -5,36 +5,36 @@
 
 typedef struct encoding_type
 {
-    uint8_t opcode : 7;
+    uint32_t opcode : 7;
 } encoding_t;
 
 typedef struct r_instruction_type
 {
-    uint8_t opcode : 7;
-    uint8_t rd : 5;
-    uint8_t funct3 : 3;
-    uint8_t rs1 : 5;
-    uint8_t rs2 : 5;
-    uint8_t funct7 : 7;
+    uint32_t opcode : 7;
+    uint32_t rd : 5;
+    uint32_t funct3 : 3;
+    uint32_t rs1 : 5;
+    uint32_t rs2 : 5;
+    uint32_t funct7 : 7;
 } r_inst_t;
 
 typedef struct i_instruction_type
 {
-    uint8_t opcode : 7;
-    uint8_t rd : 5;
-    uint8_t funct3 : 3;
-    uint8_t rs1 : 5;
-    uint16_t imm : 12;
+    uint32_t opcode : 7;
+    uint32_t rd : 5;
+    uint32_t funct3 : 3;
+    uint32_t rs1 : 5;
+    uint32_t imm : 12;
 } i_inst_t;
 
 typedef struct s_type_instruction
 {
-    uint8_t opcode : 7;
-    uint8_t imm1 : 5;
-    uint8_t funct3 : 3;
-    uint8_t rs1 : 5;
-    uint8_t rs2 : 5;
-    uint8_t imm2 : 7;
+    uint32_t opcode : 7;
+    uint32_t imm1 : 5;
+    uint32_t funct3 : 3;
+    uint32_t rs1 : 5;
+    uint32_t rs2 : 5;
+    uint32_t imm2 : 7;
 } s_inst_t;
 
 typedef struct b_instruction_type

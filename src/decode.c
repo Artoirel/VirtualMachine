@@ -85,7 +85,8 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
             pretty_print(instruction, PC);
-            assert(0 && "RV64_OP_JAL\n");
+            write_reg_long(instruction.j_type.rd, PC + 4 + j_imm(instruction.j_type));
+            printf("reg value - %d\n", read_reg_long(instruction.j_type.rd));
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
@@ -157,7 +158,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
             uint32_t imm = j_imm(instruction.j_type);
-            printf("%8x:\t%8x\tjal\t%8x\n", PC, instruction.instruction, PC + 4 + imm + read_reg_double(instruction.j_type.rd));
+            printf("%8x:\t%8x\tjal\t$r%d\n", PC, instruction.instruction, PC + 4 + imm);
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
@@ -174,8 +175,6 @@ uint64_t j_imm(j_inst_t j)
     printf("imm2 - %.1b\n", j.imm2);
     printf("imm1 - %.10b\n", j.imm1);
     printf("imm4 - %.1b\n\n", j.imm4);
-    printf("%.1b %.8b %.1b %.10b\n", j.imm4, j.imm3, j.imm2, j.imm1 << 1);
-    printf("%.1b %.10b %.1b %.8b\n", j.imm4, j.imm1 , j.imm2, j.imm3);
 
     uint64_t val4 = 0;
     if(j.imm4 == 1)
