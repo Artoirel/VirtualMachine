@@ -93,7 +93,7 @@ int dispatch(inst_t instruction, uint64_t PC)
 
 void pretty_print(inst_t instruction, uint64_t PC)
 {
-    printf("\n%.32b\n", instruction.instruction);
+    printf("%8x:\t%8x\t", PC, instruction.instruction);
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
@@ -109,7 +109,9 @@ void pretty_print(inst_t instruction, uint64_t PC)
             //printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
             return 0; //0x13    /* 0010011 */
         case RV64_OP_AUIPC:
-            printf("%8x\n", instruction.instruction);
+            printf("imm val - %lx\n", (instruction.u_type.imm << 12) + PC & 0xFFF);
+            printf("auipc  $r%d,  ")
+            printf()
             assert(0 && "RV64_OP_AUIPC\n");
             return 0; //0x17    /* 0010111 */
         case RV64_OP_OP_IMM32:
@@ -156,7 +158,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
             uint64_t imm = j_imm(instruction.j_type);
-            printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
+            printf("jal\t%x\n", PC + imm);
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
