@@ -179,11 +179,8 @@ uint64_t j_imm(j_inst_t j)
     uint64_t val4 = 0;
     if(j.imm4 == 1)
     {
-        printf("%b\n",j.imm4);
         val4 = 0xFFFFFFFF;
     }
-
-    printf("%x\n", val4);
 
     uint64_t val1 = j.imm1;
     uint64_t val2 = j.imm2 << 10;
@@ -191,6 +188,6 @@ uint64_t j_imm(j_inst_t j)
     val4 = val4 << 19;
 
     uint64_t val = val1 | val2 | val3 | val4;
-    printf("%x\n", val << 1);
+    printf("imm val - %x\n", val << 1);
     return val;
 }
