@@ -123,6 +123,19 @@ void pretty_print(inst_t instruction, uint64_t PC)
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
+            printf("\n");
+            switch (expression) {
+                case RV64_FUNCT3_LB  :
+                    return; //0x0
+                case RV64_FUNCT3_LH  :
+                    return; //0x1
+                case RV64_FUNCT3_LW  :
+                    return; //0x2
+                case RV64_FUNCT3_LBU :
+                    return; //0x4
+                case RV64_FUNCT3_LHU :
+                    return; //0x5
+            }
             return 0; //0x03    /* 0000011 */
         case RV64_OP_LOAD_FP:
             assert(0 && "RV64_OP_LOAD_FP\n");
