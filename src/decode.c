@@ -33,6 +33,7 @@ int dispatch(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_MISC_MEM\n");
             return 0; //0x0f    /* 0001111 */
         case RV64_OP_OP_IMM:
+            pretty_print(instruction, PC);
             assert(0 && "RV64_OP_OP_IMM\n");
             return 0; //0x13    /* 0010011 */
         case RV64_OP_AUIPC:
@@ -84,7 +85,6 @@ int dispatch(inst_t instruction, uint64_t PC)
             pretty_print(instruction, PC);
             write_reg_long(instruction.j_type.rd, PC + 4);
             PC =  PC + j_imm(instruction.j_type);
-            printf("reg value - %x\n", read_reg_long(instruction.j_type.rd));
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
@@ -107,7 +107,8 @@ void pretty_print(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_MISC_MEM\n");
             return 0; //0x0f    /* 0001111 */
         case RV64_OP_OP_IMM:
-            assert(0 && "RV64_OP_OP_IMM\n");
+            printf("%8x\n", instruction.instruction);
+            printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
             return 0; //0x13    /* 0010011 */
         case RV64_OP_AUIPC:
             assert(0 && "RV64_OP_AUIPC\n");
@@ -186,6 +187,5 @@ uint64_t j_imm(j_inst_t j)
     val4 = val4 << 19;
 
     uint64_t val = (val1 | val2 | val3 | val4) << 1;
-    printf("imm val - %x\n", val);
     return val;
 }
