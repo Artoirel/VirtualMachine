@@ -103,6 +103,7 @@ int dispatch(inst_t instruction, uint64_t PC)
 
         case RV64_OP_JALR:
             write_reg_long(instruction.i_type.rd, PC + 4);
+            printf("reg val = 0x%lx\n", read_reg_long(instruction.i_type.rs1));
             PC = read_reg_long(instruction.i_type.rs1) + 4;
             return PC; //0x67    /* 1100111 */
 
@@ -201,7 +202,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
 
         case RV64_OP_JAL:
             uint64_t imm = j_imm(instruction.j_type);
-            printf("jal\t$%d, 0x%x\n", instruction.j_type.rd, PC + imm);
+            printf("jal\t$r%d, 0x%x\n", instruction.j_type.rd, PC + imm);
             return; //0x6f    /* 1101111 */
 
         case RV64_OP_SYSTEM:
