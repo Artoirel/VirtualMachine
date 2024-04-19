@@ -7,6 +7,8 @@
 #include "rv64_opcodes.h"
 #include <assert.h>
 
+int inst_count = 0;
+
 void decode_loop(uint64_t PC)
 {
     while(PC)
@@ -257,6 +259,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_STORE - SW\n");
                     return; //0x2
                 case RV64_FUNCT3_SD:
+                    printf("sd\t $r%d, %d($r%d)\n", instruction.s_type.rs2, s_imm(instruction.s_type), instruction.s_type.rs1);
                     assert(0 && "RV64_OP_STORE - SD\n");
                     return; //0x3
             }
