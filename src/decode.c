@@ -33,7 +33,28 @@ int dispatch(inst_t instruction, uint64_t PC)
 
         case RV64_OP_OP_IMM:
             pretty_print(instruction, PC);
-            assert(0 && "RV64_OP_OP_IMM\n");
+            switch(instruction.i_type.funct3)
+            {
+                case RV64_FUNCT3_ADDI :
+                    write_reg_long(instruction.i_type.rd, read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type));
+                    printf("addi\t$r%d\t$r%d\t%d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
+                    return PC + 4;// 0x0
+                case RV64_FUNCT3_SLTI :
+                    assert(0 && "RV64_OP_OP_IMM - SLTI\n");
+                    return;// 0x2
+                case RV64_FUNCT3_SLTIU:
+                    assert(0 && "RV64_OP_OP_IMM - SLTIU\n");
+                    return;// 0x3
+                case RV64_FUNCT3_XORI :
+                    assert(0 && "RV64_OP_OP_IMM - XORI\n");
+                    return;// 0x4
+                case RV64_FUNCT3_ORI  :
+                    assert(0 && "RV64_OP_OP_IMM - ORI\n");
+                    return;// 0x6
+                case RV64_FUNCT3_ANDI :
+                    assert(0 && "RV64_OP_OP_IMM - ANDI\n");
+                    return;// 0x7
+            }
             return 0; //0x13    /* 0010011 */
 
         case RV64_OP_AUIPC:
@@ -219,7 +240,6 @@ uint64_t u_imm(u_inst_t u)
 uint64_t i_imm(i_inst_t i)
 {
     uint64_t val = 0;
-    printf("%b\n", i.sext);
     if(i.sext == 1)
     {
         val = 0xFFFFFFFF;
