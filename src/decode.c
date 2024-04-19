@@ -45,7 +45,6 @@ int dispatch(inst_t instruction, uint64_t PC)
 
                 case RV64_FUNCT3_LD  :
                     write_reg_long(instruction.i_type.rd, read_double_word(read_reg_long(instruction.i_type.rs1)) + i_imm(instruction.i_type));
-                    assert(0 && "RV64_OP_LOAD - LD\n");
                     return PC + 4; //0x3
 
             }
