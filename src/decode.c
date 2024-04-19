@@ -33,6 +33,7 @@ int dispatch(inst_t instruction, uint64_t PC)
 
         case RV64_OP_OP_IMM:
             pretty_print(instruction, PC);
+            printf("TEST\n");
             assert(0 && "RV64_OP_OP_IMM\n");
             return 0; //0x13    /* 0010011 */
 
@@ -127,7 +128,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_ANDI :
                     return;// 0x7
             }
-            
+
             return 0; //0x13    /* 0010011 */
 
         case RV64_OP_AUIPC:
