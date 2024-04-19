@@ -171,6 +171,7 @@ uint64_t j_imm(j_inst_t j)
     uint64_t val4 = 0;
     if(j.imm4 == 1);
     {
+        printf("%b",j.imm4);
         val4 = 0xFFFFFFFF;
     }
 
