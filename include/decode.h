@@ -14,4 +14,6 @@ uint64_t j_imm(j_inst_t j);
 
 uint64_t u_imm(u_inst_t u);
 
+uint64_t i_imm(i_inst_t i);
+
 #endif

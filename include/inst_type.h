@@ -24,7 +24,8 @@ typedef struct i_instruction_type
     uint32_t rd : 5;
     uint32_t funct3 : 3;
     uint32_t rs1 : 5;
-    uint32_t imm : 12;
+    uint32_t imm : 11;
+    uint32_t sext : 1;
 } i_inst_t;
 
 typedef struct s_type_instruction

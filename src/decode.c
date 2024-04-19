@@ -30,14 +30,17 @@ int dispatch(inst_t instruction, uint64_t PC)
         case RV64_OP_MISC_MEM:
             assert(0 && "RV64_OP_MISC_MEM\n");
             return 0; //0x0f    /* 0001111 */
+
         case RV64_OP_OP_IMM:
             pretty_print(instruction, PC);
             assert(0 && "RV64_OP_OP_IMM\n");
             return 0; //0x13    /* 0010011 */
+
         case RV64_OP_AUIPC:
             pretty_print(instruction, PC);
             write_reg_long(instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
             return PC + 4; //0x17    /* 0010111 */
+
         case RV64_OP_OP_IMM32:
             assert(0 && "RV64_OP_OP_IMM32\n");
             return 0; //0x1b    /* 0011011 */
@@ -80,10 +83,12 @@ int dispatch(inst_t instruction, uint64_t PC)
         case RV64_OP_JALR:
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
+
         case RV64_OP_JAL:
             pretty_print(instruction, PC);
             write_reg_long(instruction.j_type.rd, PC + 4);
             return PC + j_imm(instruction.j_type);; //0x6f    /* 1101111 */
+
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
             return 0; //0x73    /* 1110011 */
@@ -104,13 +109,33 @@ void pretty_print(inst_t instruction, uint64_t PC)
         case RV64_OP_MISC_MEM:
             assert(0 && "RV64_OP_MISC_MEM\n");
             return 0; //0x0f    /* 0001111 */
+
         case RV64_OP_OP_IMM:
+
+            switch(instruction.i_type.funct3)
+            {
+                case RV64_FUNCT3_ADDI :
+                    printf("addi\t$r%d\t$r%d\t%d", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
+                    return;// 0x0
+                case RV64_FUNCT3_SLTI :
+                    return;// 0x2
+                case RV64_FUNCT3_SLTIU:
+                    return;// 0x3
+                case RV64_FUNCT3_XORI :
+                    return;// 0x4
+                case RV64_FUNCT3_ORI  :
+                    return;// 0x6
+                case RV64_FUNCT3_ANDI :
+                    return;// 0x7
+            }
             printf("%8x\n", instruction.instruction);
             //printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
             return 0; //0x13    /* 0010011 */
+
         case RV64_OP_AUIPC:
             printf("auipc\t$r%d\t0x%lx\n", instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
             return; //0x17    /* 0010111 */
+
         case RV64_OP_OP_IMM32:
             assert(0 && "RV64_OP_OP_IMM32\n");
             return 0; //0x1b    /* 0011011 */
@@ -192,5 +217,16 @@ uint64_t u_imm(u_inst_t u)
     val = (val << 20) | u.imm;
 
     return val;
+}
+
+uint64_t i_imm(i_inst_t i)
+{
+    uint64_t val = 0;
+    if(i.sext == 1)
+    {
+        val = 0xFFFFFFFF;
+    }
+
+    return val & ((i.sext << 11) | i.imm)
 }
 
