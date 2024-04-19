@@ -84,7 +84,7 @@ int dispatch(inst_t instruction, uint64_t PC)
 
                 case RV64_FUNCT3_SLLI :
                     write_reg_long(instruction.is_type.rd, read_reg_long(instruction.is_type.rs1) << is_imm_64(instruction.is_type));
-                    return;
+                    return PC + 4;
                 case RV64_FUNCT3_SRLI :
                     assert(0 && "RV64_OP_OP_IMM - SRLI\n");
                     return; //0x5
