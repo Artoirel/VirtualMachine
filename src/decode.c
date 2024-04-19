@@ -141,8 +141,10 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_LOAD - LHU\n");
                     return; //0x5
                 case RV64_FUNCT3_LWU :
+                    assert(0 && "RV64_OP_LOAD - LWU\n");
                     return; //0x6
                 case RV64_FUNCT3_LD  :
+                    assert(0 && "RV64_OP_LOAD - LD\n");
                     return; //0x3
             }
             assert(0 && "UNKNOWN LOAD OP");
