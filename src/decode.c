@@ -77,7 +77,10 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP_IMM - ORI\n");
                     return;// 0x6
                 case RV64_FUNCT3_ANDI :
-
+                    uint64_t val = read_reg_long(instruction.i_type.rs1);
+                    uint64_t imm = i_imm(instruction.i_type)
+                    write_reg_long(instruction.i_type.rd, val & imm);
+                    printf("%lx, %d", val, imm);
                     assert(0 && "RV64_OP_OP_IMM - ANDI\n");
                     return;// 0x7
             }
@@ -199,9 +202,9 @@ void pretty_print(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_ORI  :
                     assert(0 && "RV64_OP_OP_IMM - ORI\n");
                     return;// 0x6
+
                 case RV64_FUNCT3_ANDI :
                     printf("andi\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
-                    assert(0 && "RV64_OP_OP_IMM - ANDI\n");
                     return;// 0x7
             }
 
