@@ -19,6 +19,7 @@ void decode_loop(uint64_t PC)
 
 int dispatch(inst_t instruction, uint64_t PC)
 {
+    pretty_print(instruction, PC);
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
@@ -32,7 +33,6 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x0f    /* 0001111 */
 
         case RV64_OP_OP_IMM:
-            pretty_print(instruction, PC);
             switch(instruction.i_type.funct3)
             {
                 case RV64_FUNCT3_ADDI :
@@ -58,7 +58,6 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x13    /* 0010011 */
 
         case RV64_OP_AUIPC:
-            pretty_print(instruction, PC);
             write_reg_long(instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
             return PC + 4; //0x17    /* 0010111 */
 
@@ -103,12 +102,10 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x63    /* 1100011 */
 
         case RV64_OP_JALR:
-            pretty_print(instruction, PC);
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
 
         case RV64_OP_JAL:
-            pretty_print(instruction, PC);
             write_reg_long(instruction.j_type.rd, PC + 4);
             return PC + j_imm(instruction.j_type);; //0x6f    /* 1101111 */
 
