@@ -223,6 +223,7 @@ uint64_t i_imm(i_inst_t i)
     if(i.sext == 1)
     {
         val = 0xFFFFFFFF;
+        printf("%d\n", val & i.imm);
         return val & i.imm;
     }
 
