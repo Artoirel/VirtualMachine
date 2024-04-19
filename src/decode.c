@@ -215,7 +215,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
 
                 case RV64_FUNCT3_SLLI :
                     printf("slli\t$r%d, $r%d, %d\n", instruction.is_type.rd, instruction.is_type.rs1, is_imm_64(instruction.is_type));
-                    assert(0 && "RV64_OP_OP_IMM - SLLI\n");
                     return;
 
                 case RV64_FUNCT3_SRLI :
