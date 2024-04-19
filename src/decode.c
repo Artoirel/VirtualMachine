@@ -46,7 +46,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_LD  :
                     assert(0 && "RV64_OP_LOAD - LD\n");
                     return; //0x3
-                    
+
             }
             return 0; //0x03    /* 0000011 */
 
@@ -169,6 +169,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_LOAD - LWU\n");
                     return; //0x6
                 case RV64_FUNCT3_LD  :
+                    printf("ld $r%d, %d($r%d)\n", instruction.i_type.rd, i_imm(instruction.i_type), instruction.i_type.rs1);
                     assert(0 && "RV64_OP_LOAD - LD\n");
                     return; //0x3
             }
