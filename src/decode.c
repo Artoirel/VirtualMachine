@@ -200,7 +200,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP_IMM - ORI\n");
                     return;// 0x6
                 case RV64_FUNCT3_ANDI :
-                    printf("andi\t$r%d, $r%d, %d", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
+                    printf("andi\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     assert(0 && "RV64_OP_OP_IMM - ANDI\n");
                     return;// 0x7
             }
