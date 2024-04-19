@@ -96,7 +96,7 @@ int dispatch(inst_t instruction, uint64_t PC)
 
 void pretty_print(inst_t instruction, uint64_t PC)
 {
-    printf("\n%.20b\n", instruction.instruction >> 12);
+    printf("\n%.32b\n", instruction.instruction);
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
