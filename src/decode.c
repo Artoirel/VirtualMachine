@@ -7,11 +7,8 @@
 #include "rv64_opcodes.h"
 #include <assert.h>
 
-uint64_t PC_g = 0;
-
 void decode_loop(uint64_t PC)
 {
-    PC;
     uint64_t end = 0;
     while(!end)
     {
@@ -85,7 +82,8 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
             pretty_print(instruction, PC);
-            write_reg_long(instruction.j_type.rd, PC + 4 + j_imm(instruction.j_type));
+            write_reg_long(instruction.j_type.rd, PC + 4);
+            PC =  PC + j_imm(instruction.j_type)
             printf("reg value - %x\n", read_reg_long(instruction.j_type.rd));
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
@@ -158,7 +156,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
             uint32_t imm = j_imm(instruction.j_type);
-            printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + 4 + imm);
+            printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
