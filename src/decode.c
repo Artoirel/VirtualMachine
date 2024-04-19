@@ -80,7 +80,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     uint64_t val = read_reg_long(instruction.i_type.rs1);
                     uint64_t imm = i_imm(instruction.i_type);
                     write_reg_long(instruction.i_type.rd, val & imm);
-                    printf("%lx, %d", val, imm);
+                    printf("%lx, %d\n", val, imm);
                     assert(0 && "RV64_OP_OP_IMM - ANDI\n");
                     return;// 0x7
             }
