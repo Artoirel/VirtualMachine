@@ -35,6 +35,7 @@ int dispatch(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_OP_IMM\n");
             return 0; //0x13    /* 0010011 */
         case RV64_OP_AUIPC:
+            pretty_print(instruction, PC);
             assert(0 && "RV64_OP_AUIPC\n");
             return 0; //0x17    /* 0010111 */
         case RV64_OP_OP_IMM32:
@@ -108,6 +109,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             //printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
             return 0; //0x13    /* 0010011 */
         case RV64_OP_AUIPC:
+            printf("%8x\n", instruction.instruction);
             assert(0 && "RV64_OP_AUIPC\n");
             return 0; //0x17    /* 0010111 */
         case RV64_OP_OP_IMM32:
