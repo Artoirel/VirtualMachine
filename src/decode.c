@@ -210,11 +210,10 @@ uint64_t u_imm(u_inst_t u)
     if(u.sext == 1)
     {
         val = 0xFFFFFFFF;
+        return (val << 20) | u.imm;
     }
 
-    val = (val << 20) | u.imm;
-
-    return val;
+    return u.sext << 20 | u.imm;
 }
 
 uint64_t i_imm(i_inst_t i)
@@ -223,8 +222,9 @@ uint64_t i_imm(i_inst_t i)
     if(i.sext == 1)
     {
         val = 0xFFFFFFFF;
+        return val & i.imm;
     }
 
-    return val & ((i.sext << 11) | i.imm);
+    return i.sext << 11 | i.imm;
 }
 
