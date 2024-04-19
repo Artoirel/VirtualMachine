@@ -328,10 +328,10 @@ uint64_t i_imm(i_inst_t i)
 uint64_t is_imm(is_inst_t i)
 {
     uint64_t val = 0;
-    if(i.sext == 1)
-    {
-        val = 0xFFFFFFFF;
-    }
+    //if(i.sext == 1)
+    //{
+    //    val = 0xFFFFFFFF;
+    //}
 
     return 0;//val << 11 | i.imm;
 }
