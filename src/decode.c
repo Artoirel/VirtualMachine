@@ -102,8 +102,9 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x63    /* 1100011 */
 
         case RV64_OP_JALR:
-            assert(0 && "RV64_OP_JALR\n");
-            return 0; //0x67    /* 1100111 */
+            write_reg_long(instruction.i_type.rd, PC + 4);
+            PC = read_reg_long(instruction.i_type.rs1) + 4;
+            return PC; //0x67    /* 1100111 */
 
         case RV64_OP_JAL:
             write_reg_long(instruction.j_type.rd, PC + 4);
@@ -195,8 +196,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x63    /* 1100011 */
 
         case RV64_OP_JALR:
-            printf("jalr\t$r%d, 0x%lx($r%d)%lx\n", instruction.i_type.rd, i_imm(instruction.i_type), instruction.i_type.rs1, 0);
-            assert(0 && "RV64_OP_JALR\n");
+            printf("jalr\t$r%d, %d($r%d)\n", instruction.i_type.rd, i_imm(instruction.i_type), instruction.i_type.rs1, 0);
             return 0; //0x67    /* 1100111 */
 
         case RV64_OP_JAL:
