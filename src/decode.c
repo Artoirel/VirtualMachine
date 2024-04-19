@@ -169,7 +169,7 @@ uint64_t j_imm(j_inst_t j)
 {
     printf("%.1b%.8b%.1b%.10b\n", j.imm4, j.imm3 << 1, j.imm2, j.imm1);
     uint64_t val4 = 0;
-    if(j.imm4);
+    if(j.imm4 == 1);
     {
         val4 = 0xFFFFFFFF;
     }
