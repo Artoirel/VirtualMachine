@@ -201,7 +201,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
 
         case RV64_OP_JAL:
             uint64_t imm = j_imm(instruction.j_type);
-            printf("jal\t0x%x\n", PC + imm);
+            printf("jal\t$%d, 0x%x\n", instruction.j_type.rd, PC + imm);
             return; //0x6f    /* 1101111 */
 
         case RV64_OP_SYSTEM:
