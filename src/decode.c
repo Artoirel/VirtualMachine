@@ -105,7 +105,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x0f    /* 0001111 */
         case RV64_OP_OP_IMM:
             printf("%8x\n", instruction.instruction);
-            printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
+            //printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
             return 0; //0x13    /* 0010011 */
         case RV64_OP_AUIPC:
             assert(0 && "RV64_OP_AUIPC\n");
