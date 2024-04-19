@@ -77,11 +77,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP_IMM - ORI\n");
                     return;// 0x6
                 case RV64_FUNCT3_ANDI :
-                    uint64_t val = read_reg_long(instruction.i_type.rs1);
-                    uint64_t imm = i_imm(instruction.i_type);
-                    write_reg_long(instruction.i_type.rd, val & imm);
-                    printf("%lx, %d\n", val, imm);
-                    assert(0 && "RV64_OP_OP_IMM - ANDI\n");
+                    write_reg_long(instruction.i_type.rd, read_reg_long(instruction.i_type.rs1) & i_imm(instruction.i_type));
                     return;// 0x7
             }
             return 0; //0x13    /* 0010011 */
