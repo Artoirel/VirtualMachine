@@ -58,10 +58,10 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x0f    /* 0001111 */
 
         case RV64_OP_OP_IMM:
-            switch(instruction.i_type.funct3)
-            {
+            switch(instruction.i_type.funct3) {
                 case RV64_FUNCT3_ADDI :
-                    write_reg_long(instruction.i_type.rd, read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type));
+                    write_reg_long(instruction.i_type.rd,
+                                   read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type));
                     return PC + 4;// 0x0
 
                 case RV64_FUNCT3_SLTI :
@@ -78,25 +78,19 @@ int dispatch(inst_t instruction, uint64_t PC)
                     return;// 0x6
 
                 case RV64_FUNCT3_ANDI :
-                    write_reg_long(instruction.i_type.rd, read_reg_long(instruction.i_type.rs1) & i_imm(instruction.i_type));
+                    write_reg_long(instruction.i_type.rd,
+                                   read_reg_long(instruction.i_type.rs1) & i_imm(instruction.i_type));
                     return PC + 4;// 0x7
 
-                //case RV64_SHIFT_IMM_SLLI :
-                //    assert(0 && "RV64_OP_OP_IMM - SLLI\n");
-                //    return PC + 4; //0x00
-                //case RV64_SHIFT_IMM_SRLI :
-                    //switch(instruction.is_type.funct6)
-                    //{
-                        //case RV64_SHIFT_IMM_SRLI :
-                           // return PC+ 4; //0x00
-                        //case RV64_SHIFT_IMM_SRAI  :
-                           // return PC + 4; //0x10
-                   // }
-                //    assert(0 && "RV64_OP_OP_IMM - SRLI\n");
-                //    return PC + 4; //0x00
-                //case RV64_SHIFT_IMM_SLLIW :
-                    //assert(0 && "RV64_OP_OP_IMM - SLLIW\n");
-                    //return PC + 4; //0x00
+                case RV64_FUNCT3_SLLI :
+                    assert(0 && "RV64_OP_OP_IMM - SLLI\n");
+                    return;
+                case RV64_FUNCT3_SRLI :
+                    assert(0 && "RV64_OP_OP_IMM - SRLI\n");
+                    return; //0x5
+                case RV64_FUNCT3_SRAI :
+                    assert(0 && "RV64_OP_OP_IMM - SRAI\n");
+                    return;//0x5
             }
             assert(0 && "UNKNOWN IMM INST");
             return 0; //0x13    /* 0010011 */
