@@ -18,4 +18,8 @@ uint64_t i_imm(i_inst_t i);
 
 uint64_t is_imm(is_inst_t i);
 
+uint64_t is_imm_64(is_inst_t i);
+
+uint32_t is_imm_32(is_inst_t i);
+
 #endif

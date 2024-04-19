@@ -83,6 +83,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     return PC + 4;// 0x7
 
                 case RV64_FUNCT3_SLLI :
+
                     assert(0 && "RV64_OP_OP_IMM - SLLI\n");
                     return;
                 case RV64_FUNCT3_SRLI :
@@ -212,6 +213,15 @@ void pretty_print(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_ANDI :
                     printf("andi\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x7
+
+                case RV64_FUNCT3_SLLI :
+                    printf("slli\t$r%d, $r%d, %d", instruction.is_type.rd, instruction.is_type.rs1, is_imm_64(instruction.is_type));
+                    assert(0 && "RV64_OP_OP_IMM - SLLI\n");
+                    return;
+
+                case RV64_FUNCT3_SRLI :
+                    assert(0 && "RV64_OP_OP_IMM - SRLI\n");
+                    return; //0x5
             }
 
             return 0; //0x13    /* 0010011 */
@@ -316,14 +326,13 @@ uint64_t i_imm(i_inst_t i)
     return val << 11 | i.imm;
 }
 
-uint64_t is_imm(is_inst_t i)
+uint64_t is_imm_64(is_inst_t i)
 {
-    uint64_t val = 0;
-    //if(i.sext == 1)
-    //{
-    //    val = 0xFFFFFFFF;
-    //}
+    return i.shamt_ext << 6 | i.shamt;//val << 11 | i.imm;
+}
 
-    return 0;//val << 11 | i.imm;
+uint32_t is_imm_32(is_inst_t i)
+{
+    return 0;
 }
 
