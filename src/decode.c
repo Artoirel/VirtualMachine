@@ -195,7 +195,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x63    /* 1100011 */
 
         case RV64_OP_JALR:
-            printf("jalr\t$r%d, $r%d, 0x%lx\n", instruction.i_type.rd, instruction.i_type.rs1, 0);
+            printf("jalr\t$r%d, 0x%lx($r%d)%lx\n", instruction.i_type.rd, i_imm(instruction.i_type), instruction.i_type.rs1, 0);
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
 
