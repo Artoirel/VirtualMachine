@@ -148,7 +148,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
-            printf("\n");
             switch (instruction.i_type.funct3) {
                 case RV64_FUNCT3_LB  :
                     assert(0 && "RV64_OP_LOAD - LB\n");
