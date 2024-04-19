@@ -333,6 +333,6 @@ uint64_t is_imm(is_inst_t i)
         val = 0xFFFFFFFF;
     }
 
-    return val << 11 | i.imm;
+    return 0;//val << 11 | i.imm;
 }
 
