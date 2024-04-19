@@ -94,9 +94,9 @@ int dispatch(inst_t instruction, uint64_t PC)
                    // }
                     assert(0 && "RV64_OP_OP_IMM - SRLI\n");
                     return PC + 4; //0x00
-                case RV64_SHIFT_IMM_SLLIW :
-                    assert(0 && "RV64_OP_OP_IMM - SLLIW\n");
-                    return PC + 4; //0x00
+                //case RV64_SHIFT_IMM_SLLIW :
+                    //assert(0 && "RV64_OP_OP_IMM - SLLIW\n");
+                    //return PC + 4; //0x00
             }
             assert(0 && "UNKNOWN IMM INST");
             return 0; //0x13    /* 0010011 */
