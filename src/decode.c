@@ -114,7 +114,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             switch(instruction.i_type.funct3)
             {
                 case RV64_FUNCT3_ADDI :
-                    printf("addi\t$r%d\t$r%d\t%d", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
+                    printf("addi\t$r%d\t$r%d\t%d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x0
                 case RV64_FUNCT3_SLTI :
                     return;// 0x2
