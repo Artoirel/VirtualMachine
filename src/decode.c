@@ -23,7 +23,7 @@ int dispatch(inst_t instruction, uint64_t PC)
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
-            assert(0 && "LOAD");
+            //assert(0 && "LOAD");
             return 0; //0x03    /* 0000011 */
         case RV64_OP_LOAD_FP:
             assert(0 && "LOAD FP");
