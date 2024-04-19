@@ -23,8 +23,33 @@ int dispatch(inst_t instruction, uint64_t PC)
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
-            //assert(0 && "LOAD");
+            switch (instruction.i_type.funct3) {
+                case RV64_FUNCT3_LB  :
+                    assert(0 && "RV64_OP_LOAD - LB\n");
+                    return; //0x0
+                case RV64_FUNCT3_LH  :
+                    assert(0 && "RV64_OP_LOAD - LH\n");
+                    return; //0x1
+                case RV64_FUNCT3_LW  :
+                    assert(0 && "RV64_OP_LOAD - LW\n");
+                    return; //0x2
+                case RV64_FUNCT3_LBU :
+                    assert(0 && "RV64_OP_LOAD - LBU\n");
+                    return; //0x4
+                case RV64_FUNCT3_LHU :
+                    assert(0 && "RV64_OP_LOAD - LHU\n");
+                    return; //0x5
+                case RV64_FUNCT3_LWU :
+                    assert(0 && "RV64_OP_LOAD - LWU\n");
+                    return; //0x6
+
+                case RV64_FUNCT3_LD  :
+                    assert(0 && "RV64_OP_LOAD - LD\n");
+                    return; //0x3
+                    
+            }
             return 0; //0x03    /* 0000011 */
+
         case RV64_OP_LOAD_FP:
             assert(0 && "LOAD FP");
             return 0; //0x07    /* 0000111 */
