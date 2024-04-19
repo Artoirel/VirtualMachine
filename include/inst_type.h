@@ -39,27 +39,27 @@ typedef struct s_type_instruction
 
 typedef struct b_instruction_type
 {
-    uint8_t opcode : 7;
-    uint8_t imm3 : 1;
-    uint8_t imm1 : 4;
-    uint8_t funct3 : 3;
-    uint8_t rs1 : 5;
-    uint8_t rs2 : 5;
-    uint8_t imm2 : 6;
-    uint8_t imm4 : 1;
+    uint32_t opcode : 7;
+    uint32_t imm3 : 1;
+    uint32_t imm1 : 4;
+    uint32_t funct3 : 3;
+    uint32_t rs1 : 5;
+    uint32_t rs2 : 5;
+    uint32_t imm2 : 6;
+    uint32_t imm4 : 1;
 } b_inst_t;
 
 typedef struct u_instruction_type
 {
-    uint8_t opcode : 7;
-    uint8_t rd : 5;
+    uint32_t opcode : 7;
+    uint32_t rd : 5;
     uint32_t imm : 20;
 } u_inst_t;
 
 typedef struct j_instruction_type
 {
-    uint8_t opcode : 7;
-    uint8_t rd : 5;
+    uint32_t opcode : 7;
+    uint32_t rd : 5;
     uint32_t imm3 : 8;
     uint32_t imm2 : 1;
     uint32_t imm1 : 10;
