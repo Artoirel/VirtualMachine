@@ -86,7 +86,7 @@ int dispatch(inst_t instruction, uint64_t PC)
         case RV64_OP_JAL:
             pretty_print(instruction, PC);
             write_reg_long(instruction.j_type.rd, PC + 4 + j_imm(instruction.j_type));
-            printf("reg value - %d\n", read_reg_long(instruction.j_type.rd));
+            printf("reg value - %x\n", read_reg_long(instruction.j_type.rd));
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
