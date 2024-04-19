@@ -168,8 +168,8 @@ void pretty_print(inst_t instruction, uint64_t PC)
 
 uint64_t j_imm(j_inst_t j)
 {
-    printf("opcode - %.7b\n", j.opcode);
-    printf("rd - %.5b\n", j.rd);
+    printf("opcode - %.8b\n", j.opcode);
+    printf("rd - %.6b\n", j.rd);
     printf("imm3 - %.8b\n", j.imm3);
     printf("imm2 - %.1b\n", j.imm2);
     printf("imm1 - %.10b\n", j.imm1);
