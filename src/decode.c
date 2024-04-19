@@ -81,9 +81,9 @@ int dispatch(inst_t instruction, uint64_t PC)
                     write_reg_long(instruction.i_type.rd, read_reg_long(instruction.i_type.rs1) & i_imm(instruction.i_type));
                     return PC + 4;// 0x7
 
-                case RV64_SHIFT_IMM_SLLI :
-                    assert(0 && "RV64_OP_OP_IMM - SLLI\n");
-                    return PC + 4; //0x00
+                //case RV64_SHIFT_IMM_SLLI :
+                //    assert(0 && "RV64_OP_OP_IMM - SLLI\n");
+                //    return PC + 4; //0x00
                 //case RV64_SHIFT_IMM_SRLI :
                     //switch(instruction.is_type.funct6)
                     //{
