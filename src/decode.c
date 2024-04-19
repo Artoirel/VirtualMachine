@@ -110,7 +110,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             //printf("%8x:\t%8x\tjal\t%x\n", PC, instruction.instruction, PC + imm);
             return 0; //0x13    /* 0010011 */
         case RV64_OP_AUIPC:
-            printf("auipc  $r%d  0x%lx\n", instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
+            printf("auipc\t$r%d\t0x%lx\n", instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
             assert(0 && "RV64_OP_AUIPC\n");
             return 0; //0x17    /* 0010111 */
         case RV64_OP_OP_IMM32:
@@ -157,7 +157,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x67    /* 1100111 */
         case RV64_OP_JAL:
             uint64_t imm = j_imm(instruction.j_type);
-            printf("jal\t0x%x\n", PC + imm);
+            printf("jal\t\t0x%x\n", PC + imm);
             return 0; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
