@@ -100,6 +100,20 @@ int dispatch(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_OP_IMM32\n");
             return 0; //0x1b    /* 0011011 */
         case RV64_OP_STORE:
+            switch (instruction.s_type.funct3) {
+                case RV64_FUNCT3_SB :
+                    assert(0 && "RV64_OP_STORE - SB\n");
+                    return; //0x0
+                case RV64_FUNCT3_SH :
+                    assert(0 && "RV64_OP_STORE - SH\n");
+                    return; //0x1
+                case RV64_FUNCT3_SW :
+                    assert(0 && "RV64_OP_STORE - SW\n");
+                    return; //0x2
+                case RV64_FUNCT3_SD:
+                    assert(0 && "RV64_OP_STORE - SD\n");
+                    return; //0x3
+            }
             assert(0 && "RV64_OP_STORE\n");
             return 0; //0x23    /* 0100011 */
         case RV64_OP_STORE_FP:
@@ -232,6 +246,20 @@ void pretty_print(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_OP_IMM32\n");
             return 0; //0x1b    /* 0011011 */
         case RV64_OP_STORE:
+            switch (instruction.s_type.funct3) {
+                case RV64_FUNCT3_SB :
+                    assert(0 && "RV64_OP_STORE - SB\n");
+                    return; //0x0
+                case RV64_FUNCT3_SH :
+                    assert(0 && "RV64_OP_STORE - SH\n");
+                    return; //0x1
+                case RV64_FUNCT3_SW :
+                    assert(0 && "RV64_OP_STORE - SW\n");
+                    return; //0x2
+                case RV64_FUNCT3_SD:
+                    assert(0 && "RV64_OP_STORE - SD\n");
+                    return; //0x3
+            }
             assert(0 && "RV64_OP_STORE\n");
             return 0; //0x23    /* 0100011 */
         case RV64_OP_STORE_FP:
@@ -332,5 +360,16 @@ uint64_t is_imm_64(is_inst_t i)
 uint32_t is_imm_32(is_inst_t i)
 {
     return 0;
+}
+
+uint64_t s_imm(s_inst_t s)
+{
+    uint64_t val = 0;
+    if(s.sext == 1)
+    {
+        val = 0xFFFFFFFF;
+    }
+
+    return val << 11 | s.imm2 << 5 | s.imm1;
 }
 
