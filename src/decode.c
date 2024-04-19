@@ -193,13 +193,17 @@ void pretty_print(inst_t instruction, uint64_t PC)
         case RV64_OP_BRANCH:
             assert(0 && "RV64_OP_BRANCH\n");
             return 0; //0x63    /* 1100011 */
+
         case RV64_OP_JALR:
+            printf("\n");
             assert(0 && "RV64_OP_JALR\n");
             return 0; //0x67    /* 1100111 */
+
         case RV64_OP_JAL:
             uint64_t imm = j_imm(instruction.j_type);
             printf("jal\t\t0x%x\n", PC + imm);
             return; //0x6f    /* 1101111 */
+
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
             return 0; //0x73    /* 1110011 */
