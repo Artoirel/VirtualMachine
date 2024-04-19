@@ -9,13 +9,11 @@
 
 void decode_loop(uint64_t PC)
 {
-    uint64_t end = 0;
-    while(!end)
+    while(PC)
     {
         inst_t instruction;
         instruction.instruction = read_word(PC);
-        end = dispatch(instruction, PC);
-        PC += 4;
+        PC = dispatch(instruction, PC);
     }
 }
 
@@ -84,12 +82,11 @@ int dispatch(inst_t instruction, uint64_t PC)
         case RV64_OP_JAL:
             pretty_print(instruction, PC);
             write_reg_long(instruction.j_type.rd, PC + 4);
-            PC =  PC + j_imm(instruction.j_type);
-            return 0; //0x6f    /* 1101111 */
+            return PC + j_imm(instruction.j_type);; //0x6f    /* 1101111 */
         case RV64_OP_SYSTEM:
             assert(0 && "RV64_OP_SYSTEM\n");
             return 0; //0x73    /* 1110011 */
-        default: return 1;
+        default: return 0;
     }
 }
 
