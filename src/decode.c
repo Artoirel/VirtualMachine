@@ -288,6 +288,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             printf("auipc\t$r%d, 0x%lx\n", instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
             printf("inst - %lb\n", instruction.instruction);
             printf("imm - %lx\n", (instruction.u_type.sext << 20) | instruction.u_type.imm);
+            printf("imm - %lx\n", u_imm(instruction.u_type));
 
             return; //0x17    /* 0010111 */
 
@@ -417,7 +418,6 @@ uint64_t u_imm(u_inst_t u)
     uint64_t val = 0;
     if(u.sext == 1)
     {
-        printf("extended\n");
         val = 0xFFFFFFFF;
         return (val << 20) | u.imm;
     }
