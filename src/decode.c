@@ -130,7 +130,7 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x2f    /* 0101111 */
 
         case RV64_OP_OP:
-<<<<<<< HEAD
+
             switch(instruction.r_type.funct3)
             {
 
