@@ -496,7 +496,7 @@ uint64_t s_imm(s_inst_t s)
 
 uint64_t b_imm(b_inst_t b)
 {
-    uint64 val = 0;
+    uint64_t val = 0;
     if(b.sext == 1)
     {
         val = 0xFFFFFFFFFFFFl;
