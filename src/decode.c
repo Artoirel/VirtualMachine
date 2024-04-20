@@ -101,6 +101,7 @@ int dispatch(inst_t instruction, uint64_t PC)
         case RV64_OP_OP_IMM32:
             assert(0 && "RV64_OP_OP_IMM32\n");
             return 0; //0x1b    /* 0011011 */
+
         case RV64_OP_STORE:
             switch (instruction.s_type.funct3) {
                 case RV64_FUNCT3_SB :
@@ -118,15 +119,55 @@ int dispatch(inst_t instruction, uint64_t PC)
             }
             assert(0 && "RV64_OP_STORE\n");
             return 0; //0x23    /* 0100011 */
+
         case RV64_OP_STORE_FP:
             assert(0 && "RV64_OP_STORE_FP\n");
             return 0; //0x27    /* 0100111 */
+
         case RV64_OP_AMO:
             assert(0 && "RV64_OP_AMO\n");
             return 0; //0x2f    /* 0101111 */
+
         case RV64_OP_OP:
+            switch(instruction.r_type.funct3)
+            {
+                
+                case RV64_FUNCT3_ADD   :
+                    switch(instruction.r_type.funct7)
+                    {
+                        case RV64_FUNCT7_ADD :
+                            assert(0 && "RV64_OP_OP - ADD\n");
+                            return PC + 4; //0x00
+                        case RV64_FUNCT7_SUB :
+                            assert(0 && "RV64_OP_OP - SUB\n");
+                            return PC + 4; //0x20
+                    }
+
+                case RV64_FUNCT3_SLL   :
+                    assert(0 && "RV64_OP_OP - SLL\n");
+                    return PC + 4; // 0x1
+                case RV64_FUNCT3_SLT   :
+                    assert(0 && "RV64_OP_OP - SLT\n");
+                    return PC + 4; // 0x2
+                case RV64_FUNCT3_SLTU  :
+                    assert(0 && "RV64_OP_OP - SLTU\n");
+                    return PC + 4; // 0x3
+                case RV64_FUNCT3_XOR   :
+                    assert(0 && "RV64_OP_OP - XOR\n");
+                    return PC + 4; // 0x4
+                case RV64_FUNCT3_SRL   :
+                    assert(0 && "RV64_OP_OP - SRL\n");
+                    return PC + 4; // 0x5
+                case RV64_FUNCT3_OR    :
+                    assert(0 && "RV64_OP_OP - OR\n");
+                    return PC + 4; // 0x6
+                case RV64_FUNCT3_AND   :
+                    assert(0 && "RV64_OP_OP - AND\n");
+                    return PC + 4; // 0x7
+            }
             assert(0 && "RV64_OP_OP\n");
             return 0; //0x33    /* 0110011 */
+
         case RV64_OP_LUI:
             assert(0 && "RV64_OP_LUI\n");
             return 0; //0x37    /* 0110111 */
