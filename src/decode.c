@@ -199,19 +199,19 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_BRANCH - BEQ\n");
                     return; //0x0
                 case RV64_FUNCT3_BNE  :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BNE\n");
                     return; //  0x1
                 case RV64_FUNCT3_BLT  :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BLT\n");
                     return; //  0x4
                 case RV64_FUNCT3_BGE  :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BGE\n");
                     return; //  0x5
                 case RV64_FUNCT3_BLTU :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BLTU\n");
                     return; //  0x6
                 case RV64_FUNCT3_BGEU :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BGEU\n");
                     return; //  0x7
             }
             return 0; //0x63    /* 1100011 */
@@ -399,19 +399,19 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_BRANCH - BEQ\n");
                     return; //0x0
                 case RV64_FUNCT3_BNE  :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BNE\n");
                     return; //  0x1
                 case RV64_FUNCT3_BLT  :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BLT\n");
                     return; //  0x4
                 case RV64_FUNCT3_BGE  :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BGE\n");
                     return; //  0x5
                 case RV64_FUNCT3_BLTU :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BLTU\n");
                     return; //  0x6
                 case RV64_FUNCT3_BGEU :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    assert(0 && "RV64_OP_BRANCH - BGEU\n");
                     return; //  0x7
             }
             assert(0 && "RV64_OP_BRANCH\n");
