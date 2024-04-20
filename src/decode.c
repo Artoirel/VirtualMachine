@@ -89,8 +89,8 @@ int dispatch(inst_t instruction, uint64_t PC)
                     write_reg_long(instruction.is_type.rd, read_reg_long(instruction.is_type.rs1) << is_imm_64(instruction.is_type));
                     return PC + 4;
                 case RV64_FUNCT3_SRLI :
-                    assert(0 && "RV64_OP_OP_IMM - SRLI\n");
-                    return; //0x5
+                    write_reg_long(instruction.is_type.rd, read_reg_long(instruction.is_type.rs1) >> is_imm_64(instruction.is_type));
+                    return PC + 4; //0x5
             }
             assert(0 && "UNKNOWN IMM INST");
             return 0; //0x13    /* 0010011 */
@@ -327,8 +327,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     return;
 
                 case RV64_FUNCT3_SRLI :
-                    printf("\n");
-                    assert(0 && "RV64_OP_OP_IMM - SRLI\n");
+                    printf("srli\t$r%d, $r%d, %d\n", instruction.is_type.rd, instruction.is_type.rs1, is_imm_64(instruction.is_type));
                     return; //0x5
             }
 
