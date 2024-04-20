@@ -417,7 +417,7 @@ uint64_t u_imm(u_inst_t u)
     uint64_t val = 0;
     if(u.sext == 1)
     {
-        print("extended\n");
+        printf("extended\n");
         val = 0xFFFFFFFF;
         return (val << 20) | u.imm;
     }
