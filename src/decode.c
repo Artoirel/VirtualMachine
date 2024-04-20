@@ -249,23 +249,30 @@ void pretty_print(inst_t instruction, uint64_t PC)
         case RV64_OP_LOAD:
             switch (instruction.i_type.funct3) {
                 case RV64_FUNCT3_LB  :
+                    printf("\n");
                     assert(0 && "RV64_OP_LOAD - LB\n");
                     return; //0x0
                 case RV64_FUNCT3_LH  :
+                    printf("\n");
                     assert(0 && "RV64_OP_LOAD - LH\n");
                     return; //0x1
                 case RV64_FUNCT3_LW  :
+                    printf("\n");
                     assert(0 && "RV64_OP_LOAD - LW\n");
                     return; //0x2
                 case RV64_FUNCT3_LBU :
+                    printf("\n");
                     assert(0 && "RV64_OP_LOAD - LBU\n");
                     return; //0x4
                 case RV64_FUNCT3_LHU :
+                    printf("\n");
                     assert(0 && "RV64_OP_LOAD - LHU\n");
                     return; //0x5
                 case RV64_FUNCT3_LWU :
+                    printf("\n");
                     assert(0 && "RV64_OP_LOAD - LWU\n");
                     return; //0x6
+
                 case RV64_FUNCT3_LD  :
                     printf("ld\t$r%d, %d($r%d)\n", instruction.i_type.rd, i_imm(instruction.i_type), instruction.i_type.rs1);
                     return; //0x3
@@ -273,9 +280,11 @@ void pretty_print(inst_t instruction, uint64_t PC)
             assert(0 && "UNKNOWN LOAD OP");
             return 0; //0x03    /* 0000011 */
         case RV64_OP_LOAD_FP:
+            printf("\n");
             assert(0 && "RV64_OP_LOAD_FP\n");
             return 0; //0x07    /* 0000111 */
         case RV64_OP_MISC_MEM:
+            printf("\n");
             assert(0 && "RV64_OP_MISC_MEM\n");
             return 0; //0x0f    /* 0001111 */
 
@@ -286,15 +295,19 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     printf("addi\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x0
                 case RV64_FUNCT3_SLTI :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP_IMM - SLTI\n");
                     return;// 0x2
                 case RV64_FUNCT3_SLTIU:
+                    printf("\n");
                     assert(0 && "RV64_OP_OP_IMM - SLTIU\n");
                     return;// 0x3
                 case RV64_FUNCT3_XORI :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP_IMM - XORI\n");
                     return;// 0x4
                 case RV64_FUNCT3_ORI  :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP_IMM - ORI\n");
                     return;// 0x6
 
@@ -307,6 +320,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     return;
 
                 case RV64_FUNCT3_SRLI :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP_IMM - SRLI\n");
                     return; //0x5
             }
@@ -318,17 +332,21 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return; //0x17    /* 0010111 */
 
         case RV64_OP_OP_IMM32:
+            printf("\n");
             assert(0 && "RV64_OP_OP_IMM32\n");
             return 0; //0x1b    /* 0011011 */
         case RV64_OP_STORE:
             switch (instruction.s_type.funct3) {
                 case RV64_FUNCT3_SB :
+                    printf("\n");
                     assert(0 && "RV64_OP_STORE - SB\n");
                     return; //0x0
                 case RV64_FUNCT3_SH :
+                    printf("\n");
                     assert(0 && "RV64_OP_STORE - SH\n");
                     return; //0x1
                 case RV64_FUNCT3_SW :
+                    printf("\n");
                     assert(0 && "RV64_OP_STORE - SW\n");
                     return; //0x2
                 case RV64_FUNCT3_SD:
@@ -338,9 +356,11 @@ void pretty_print(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_STORE\n");
             return 0; //0x23    /* 0100011 */
         case RV64_OP_STORE_FP:
+            printf("\n");
             assert(0 && "RV64_OP_STORE_FP\n");
             return 0; //0x27    /* 0100111 */
         case RV64_OP_AMO:
+            printf("\n");
             assert(0 && "RV64_OP_AMO\n");
             return 0; //0x2f    /* 0101111 */
         case RV64_OP_OP:
@@ -354,29 +374,37 @@ void pretty_print(inst_t instruction, uint64_t PC)
                             printf("add\t$r%d, $r%d, $r%d\n", instruction.r_type.rd, instruction.r_type.rs1, instruction.r_type.rs2);
                             return; //0x00
                         case RV64_FUNCT7_SUB :
+                            printf("\n");
                             assert(0 && "RV64_OP_OP - SUB\n");
                             return PC + 4; //0x20
                     }
 
                 case RV64_FUNCT3_SLL   :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP - SLL\n");
                     return PC + 4; // 0x1
                 case RV64_FUNCT3_SLT   :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP - SLT\n");
                     return PC + 4; // 0x2
                 case RV64_FUNCT3_SLTU  :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP - SLTU\n");
                     return PC + 4; // 0x3
                 case RV64_FUNCT3_XOR   :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP - XOR\n");
                     return PC + 4; // 0x4
                 case RV64_FUNCT3_SRL   :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP - SRL\n");
                     return PC + 4; // 0x5
                 case RV64_FUNCT3_OR    :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP - OR\n");
                     return PC + 4; // 0x6
                 case RV64_FUNCT3_AND   :
+                    printf("\n");
                     assert(0 && "RV64_OP_OP - AND\n");
                     return PC + 4; // 0x7
             }
@@ -386,39 +414,49 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return; //0x37    /* 0110111 */
 
         case RV64_OP_OP32:
+            printf("\n");
             assert(0 && "RV64_OP_OP32\n");
             return 0; //0x3b    /* 0111011 */
         case RV64_OP_MADD:
+            printf("\n");
             assert(0 && "RV64_OP_MADD\n");
             return 0; //0x43    /* 1000011 */
         case RV64_OP_MSUB:
+            printf("\n");
             assert(0 && "RV64_OP_MSUB\n");
             return 0; //0x47    /* 1000111 */
         case RV64_OP_NMSUB:
+            printf("\n");
             assert(0 && "RV64_OP_NMSUB\n");
             return 0; //0x4b    /* 1001011 */
         case RV64_OP_NMADD:
+            printf("\n");
             assert(0 && "RV64_OP_NMADD\n");
             return 0; //0x4f    /* 1001111 */
         case RV64_OP_FP:
+            printf("\n");
             assert(0 && "RV64_OP_FP\n");
             return 0; //0x53    /* 1010011 */
         case RV64_OP_BRANCH:
             switch(instruction.b_type.funct3)
             {
                 case RV64_FUNCT3_BEQ  :
+                    printf("\n");
                     assert(0 && "RV64_OP_BRANCH - BEQ\n");
                     return; //0x0
                 case RV64_FUNCT3_BNE  :
                     printf("bne\t$r%d, $r%d, %d\n", instruction.b_type.rs1, instruction.b_type.rs2, b_imm(instruction.b_type));
                     return; //  0x1
                 case RV64_FUNCT3_BLT  :
+                    printf("\n");
                     assert(0 && "RV64_OP_BRANCH - BLT\n");
                     return; //  0x4
                 case RV64_FUNCT3_BGE  :
+                    printf("\n");
                     assert(0 && "RV64_OP_BRANCH - BGE\n");
                     return; //  0x5
                 case RV64_FUNCT3_BLTU :
+                    printf("\n");
                     assert(0 && "RV64_OP_BRANCH - BLTU\n");
                     return; //  0x6
                 case RV64_FUNCT3_BGEU :
@@ -438,6 +476,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return; //0x6f    /* 1101111 */
 
         case RV64_OP_SYSTEM:
+            printf("\n");
             assert(0 && "RV64_OP_SYSTEM\n");
             return 0; //0x73    /* 1110011 */
         default: return 1;
