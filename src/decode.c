@@ -143,8 +143,8 @@ int dispatch(inst_t instruction, uint64_t PC)
                         case RV64_FUNCT7_SUB :
                             assert(0 && "RV64_OP_OP - SUB\n");
                             return PC + 4; //0x20
-                        assert(0 && "Unknown ADD FUNCT7");
                     }
+                    assert(0 && "Unknown ADD FUNCT7");
 
                 case RV64_FUNCT3_SLL   :
                     assert(0 && "RV64_OP_OP - SLL\n");
@@ -378,7 +378,9 @@ void pretty_print(inst_t instruction, uint64_t PC)
                             printf("\n");
                             assert(0 && "RV64_OP_OP - SUB\n");
                             return PC + 4; //0x20
+
                     }
+                    assert(0 && "Unknown ADD FUNCT7");
 
                 case RV64_FUNCT3_SLL   :
                     printf("\n");
