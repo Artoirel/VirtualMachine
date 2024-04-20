@@ -143,6 +143,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                         case RV64_FUNCT7_SUB :
                             assert(0 && "RV64_OP_OP - SUB\n");
                             return PC + 4; //0x20
+                        assert(0 && "Unknown ADD FUNCT7");
                     }
 
                 case RV64_FUNCT3_SLL   :
