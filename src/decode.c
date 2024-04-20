@@ -380,6 +380,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     return PC + 4; // 0x7
             }
         case RV64_OP_LUI:
+            printf("\n");
             assert(0 && "RV64_OP_LUI\n");
             return 0; //0x37    /* 0110111 */
         case RV64_OP_OP32:
