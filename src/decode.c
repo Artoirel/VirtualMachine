@@ -172,8 +172,9 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x33    /* 0110011 */
 
         case RV64_OP_LUI:
-            assert(0 && "RV64_OP_LUI\n");
-            return 0; //0x37    /* 0110111 */
+            write_reg_long(instruction.u_type.rd, (instruction.u_type.sext << 20 | instruction.u_type.imm) << 12);
+            return PC + 4; //0x37    /* 0110111 */
+
         case RV64_OP_OP32:
             assert(0 && "RV64_OP_OP32\n");
             return 0; //0x3b    /* 0111011 */
@@ -379,10 +380,11 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP - AND\n");
                     return PC + 4; // 0x7
             }
+
         case RV64_OP_LUI:
             printf("lui\t$r%d, %d\n", instruction.u_type.rd, instruction.u_type.sext << 20 | instruction.u_type.imm);
-            assert(0 && "RV64_OP_LUI\n");
-            return 0; //0x37    /* 0110111 */
+            return; //0x37    /* 0110111 */
+
         case RV64_OP_OP32:
             assert(0 && "RV64_OP_OP32\n");
             return 0; //0x3b    /* 0111011 */
