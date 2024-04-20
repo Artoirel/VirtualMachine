@@ -198,9 +198,14 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_BEQ  :
                     assert(0 && "RV64_OP_BRANCH - BEQ\n");
                     return; //0x0
-                case RV64_FUNCT3_BNE  :
-                    assert(0 && "RV64_OP_BRANCH - BNE\n");
-                    return; //  0x1
+                    
+                case RV64_FUNCT3_BNE
+                    if(read_reg_long(instruction.b_type.rs1) != read_reg_long(instruction.b_type.rs2))
+                    {
+                        return PC + b_imm(instruction.b_type);
+                    }
+                    return PC + 4;
+
                 case RV64_FUNCT3_BLT  :
                     assert(0 && "RV64_OP_BRANCH - BLT\n");
                     return; //  0x4
