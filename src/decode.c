@@ -216,7 +216,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_BRANCH - BLTU\n");
                     return; //  0x6
                 case RV64_FUNCT3_BGEU :
-                    if(read_reg_long(instruction.b_type.rs1 >= read_reg_long(instruction.b_type.rs2))
+                    if(read_reg_long(instruction.b_type.rs1) >= read_reg_long(instruction.b_type.rs2))
                     {
                         return PC + b_imm(instruction.b_type);
                     }
