@@ -438,7 +438,7 @@ uint64_t j_imm(j_inst_t j)
     uint64_t val4 = 0;
     if(j.imm4 == 1)
     {
-        val = 0xFFFFFFFFFFFFl;
+        val4 = 0xFFFFFFFFFFFFl;
     }
 
     uint64_t val1 = j.imm1;
