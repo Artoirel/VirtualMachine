@@ -416,7 +416,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_BRANCH - BLTU\n");
                     return; //  0x6
                 case RV64_FUNCT3_BGEU :
-                    assert(0 && "RV64_OP_BRANCH - BGEU\n");
+                    printf("bgeu $r%d, $r%d, %d\n", instruction.b_type.rs1, instruction.b_type.rs2, b_imm(instruction.b_type));
                     return; //  0x7
             }
             assert(0 && "RV64_OP_BRANCH\n");
@@ -502,12 +502,11 @@ uint64_t s_imm(s_inst_t s)
 uint64_t b_imm(b_inst_t b)
 {
     uint64_t val = 0;
-    if(b.sext == 1)
+    if(b.sext == 1 && b.funct3 != RV64_FUNCT3_BGEU)
     {
         val = 0xFFFFFFFFFFFFl;
     }
 
     return val << 11 | b.imm3 << 10 | b.imm2 << 4 | b.imm1 << 1;
-
 }
 
