@@ -502,7 +502,7 @@ uint64_t b_imm(b_inst_t b)
         val = 0xFFFFFFFFFFFFl;
     }
 
-    return (val << 11 | b.imm3 << 10 | b.imm2 << 4 | b.imm1) << 1;
+    return val << 11 | b.imm3 << 10 | b.imm2 << 4 | b.imm1 << 1;
 
 }
 
