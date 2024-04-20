@@ -399,6 +399,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_BRANCH - BEQ\n");
                     return; //0x0
                 case RV64_FUNCT3_BNE  :
+                    printf("BNE\n");
                     assert(0 && "RV64_OP_BRANCH - BNE\n");
                     return; //  0x1
                 case RV64_FUNCT3_BLT  :
