@@ -399,8 +399,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_BRANCH - BEQ\n");
                     return; //0x0
                 case RV64_FUNCT3_BNE  :
-                    printf("BNE\n");
-                    assert(0 && "RV64_OP_BRANCH - BNE\n");
+                    printf("bne $r%d, $r%d, %d\n", instruction.b_type.rs1, instruction.b_type.rs2, b_imm(instruction.b_type));
                     return; //  0x1
                 case RV64_FUNCT3_BLT  :
                     assert(0 && "RV64_OP_BRANCH - BLT\n");
@@ -439,7 +438,7 @@ uint64_t j_imm(j_inst_t j)
     uint64_t val4 = 0;
     if(j.imm4 == 1)
     {
-        val4 = 0xFFFFFFFF;
+        val = 0xFFFFFFFFFFFFl;
     }
 
     uint64_t val1 = j.imm1;
@@ -456,7 +455,7 @@ uint64_t u_imm(u_inst_t u)
     uint64_t val = 0;
     if(u.sext == 1)
     {
-        val = 0xFFFFFFFF;
+        val = 0xFFFFFFFFFFFFl;
         return (val << 20) | u.imm;
     }
 
@@ -468,7 +467,7 @@ uint64_t i_imm(i_inst_t i)
     uint64_t val = 0;
     if(i.sext == 1)
     {
-        val = 0xFFFFFFFF;
+        val = 0xFFFFFFFFFFFFl;
     }
 
     return val << 11 | i.imm;
@@ -489,9 +488,21 @@ uint64_t s_imm(s_inst_t s)
     uint64_t val = 0;
     if(s.sext == 1)
     {
-        val = 0xFFFFFFFF;
+        val = 0xFFFFFFFFFFFFl;
     }
 
     return val << 11 | s.imm2 << 5 | s.imm1;
+}
+
+uint64_t b_imm(b_inst_t b)
+{
+    uint64 val = 0;
+    if(b.sext == 1)
+    {
+        val = 0xFFFFFFFFFFFFl;
+    }
+
+    return val << 12 | b.imm3 << 11 | b.imm2 << 5 | b.imm1;
+
 }
 

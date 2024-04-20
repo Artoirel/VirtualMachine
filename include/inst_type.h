@@ -59,7 +59,7 @@ typedef struct b_instruction_type
     uint32_t rs1 : 5;
     uint32_t rs2 : 5;
     uint32_t imm2 : 6;
-    uint32_t imm4 : 1;
+    uint32_t sext : 1;
 } b_inst_t;
 
 typedef struct u_instruction_type
