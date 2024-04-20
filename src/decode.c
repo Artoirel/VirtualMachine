@@ -16,6 +16,7 @@ void decode_loop(uint64_t PC)
         inst_t instruction;
         instruction.instruction = read_word(PC);
         PC = dispatch(instruction, PC);
+        inst_count++;
     }
 }
 
@@ -114,8 +115,8 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_STORE - SW\n");
                     return; //0x2
                 case RV64_FUNCT3_SD:
-                    assert(0 && "RV64_OP_STORE - SD\n");
-                    return; //0x3
+                    write_double_word(read_reg_long(instruction.s_type.rs1) + s_imm(instruction.s_type), read_reg_long(instruction.s_type.rs2));
+                    return PC + 4; //0x3
             }
             assert(0 && "RV64_OP_STORE\n");
             return 0; //0x23    /* 0100011 */
@@ -129,6 +130,7 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x2f    /* 0101111 */
 
         case RV64_OP_OP:
+<<<<<<< HEAD
             switch(instruction.r_type.funct3)
             {
 
@@ -164,6 +166,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_AND   :
                     assert(0 && "RV64_OP_OP - AND\n");
                     return PC + 4; // 0x7
+
             }
             assert(0 && "RV64_OP_OP\n");
             return 0; //0x33    /* 0110011 */
@@ -211,7 +214,7 @@ int dispatch(inst_t instruction, uint64_t PC)
 
 void pretty_print(inst_t instruction, uint64_t PC)
 {
-    printf("%8x:\t%8x\t", PC, instruction.instruction);
+    printf("%d\t%8x:\t%8x\t", inst_count, PC, instruction.instruction);
     switch(instruction.encoding.opcode)
     {
         case RV64_OP_LOAD:
@@ -301,7 +304,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     return; //0x2
                 case RV64_FUNCT3_SD:
                     printf("sd\t $r%d, %d($r%d)\n", instruction.s_type.rs2, s_imm(instruction.s_type), instruction.s_type.rs1);
-                    assert(0 && "RV64_OP_STORE - SD\n");
                     return; //0x3
             }
             assert(0 && "RV64_OP_STORE\n");
