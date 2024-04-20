@@ -24,4 +24,6 @@ uint32_t is_imm_32(is_inst_t i);
 
 uint64_t s_imm(s_inst_t s);
 
+uint64_t b_imm(b_inst_t b);
+
 #endif
