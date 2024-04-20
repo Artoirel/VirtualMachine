@@ -201,8 +201,11 @@ int dispatch(inst_t instruction, uint64_t PC)
             switch(instruction.b_type.funct3)
             {
                 case RV64_FUNCT3_BEQ  :
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
-                    return; //0x0
+                    if(read_reg_long(instruction.b_type.rs1) == read_reg_long(instruction.b_type.rs2))
+                    {
+                        return PC + b_imm(instruction.b_type);
+                    }
+                    return PC + 4;
 
                 case RV64_FUNCT3_BNE  :
                     if(read_reg_long(instruction.b_type.rs1) != read_reg_long(instruction.b_type.rs2))
@@ -450,8 +453,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             switch(instruction.b_type.funct3)
             {
                 case RV64_FUNCT3_BEQ  :
-                    printf("\n");
-                    assert(0 && "RV64_OP_BRANCH - BEQ\n");
+                    printf("beq\t$r%d, $r%d, %d\n", instruction.b_type.rs1, instruction.b_type.rs2, b_imm(instruction.b_type));
                     return; //0x0
                 case RV64_FUNCT3_BNE  :
                     printf("bne\t$r%d, $r%d, %d\n", instruction.b_type.rs1, instruction.b_type.rs2, b_imm(instruction.b_type));
