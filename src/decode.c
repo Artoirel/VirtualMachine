@@ -96,7 +96,6 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x13    /* 0010011 */
 
         case RV64_OP_AUIPC:
-            printf()
             write_reg_long(instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
             return PC + 4; //0x17    /* 0010111 */
 
