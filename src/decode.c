@@ -96,6 +96,7 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x13    /* 0010011 */
 
         case RV64_OP_AUIPC:
+            printf()
             write_reg_long(instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
             return PC + 4; //0x17    /* 0010111 */
 
@@ -286,6 +287,9 @@ void pretty_print(inst_t instruction, uint64_t PC)
 
         case RV64_OP_AUIPC:
             printf("auipc\t$r%d, 0x%lx\n", instruction.u_type.rd, u_imm(instruction.u_type) << 12 + PC);
+            printf("inst - %lb\n", instruction.instruction);
+            printf("imm - %lb\n", (sext << 20) | instruction.u_imm);
+
             return; //0x17    /* 0010111 */
 
         case RV64_OP_OP_IMM32:
