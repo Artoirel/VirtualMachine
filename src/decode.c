@@ -273,7 +273,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     return; //0x4
                 case RV64_FUNCT3_LHU :
                     printf("lhu\t$r%d, %d($r%d)\n", instruction.i_type.rd, instruction.i_type.sext << 11 | instruction.i_type.imm, instruction.i_type.rs1);
-                    assert(0 && "RV64_OP_LOAD - LHU\n");
                     return; //0x5
                 case RV64_FUNCT3_LWU :
                     printf("\n");
