@@ -103,8 +103,16 @@ int dispatch(inst_t instruction, uint64_t PC)
             switch(instruction.i_type.funct3)
             {
                 case RV64_FUNCT3_ADDIW :
-                    assert(0 && "RV64_OP_OP_IMM32 - ADDIW\n");
-                    return PC + 4;
+                    uint32_t val = read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type));
+                    val = -1;
+                    uint64_t write_val = 0;
+                    if(val >> 31 == 1)
+                        printf("test\n");
+                        write_val = 0xFFFFFFFF00000000l | val;
+
+                    write_reg_long(instruction.i_type.rd,
+                                   read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type));
+                    return PC + 4;// 0x0
             }
             assert(0 && "RV64_OP_OP_IMM32\n");
             return 0; //0x1b    /* 0011011 */
