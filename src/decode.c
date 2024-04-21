@@ -353,7 +353,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_STORE - SH\n");
                     return; //0x1
                 case RV64_FUNCT3_SW :
-                    printf("sw\t $r%d, %d($r%d)\n", instruction.s_type.rs2, s_imm(instruction.s_type), instruction.s_type.rs1);
+                    printf("sw\t$r%d, %d($r%d)\n", instruction.s_type.rs2, s_imm(instruction.s_type), instruction.s_type.rs1);
                     return; //0x2
                 case RV64_FUNCT3_SD:
                     printf("sd\t$r%d, %d($r%d)\n", instruction.s_type.rs2, s_imm(instruction.s_type), instruction.s_type.rs1);
