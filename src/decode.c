@@ -562,6 +562,3 @@ uint64_t b_imm(b_inst_t b)
 
     return val | b.sext << 12 | b.imm3 << 11 | b.imm2 << 5 | b.imm1 << 1;
 }
-
-uint64_t
-
