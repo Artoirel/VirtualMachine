@@ -513,8 +513,8 @@ uint64_t u_imm(u_inst_t u)
     uint64_t val = 0;
     if(u.sext == 1)
     {
-        val = 0xFFFFFFFFFFFFl;
-        return (val << 20) | u.imm;
+        val = 0xFFFFFFFFFFFFFFFFl;
+        return (val << 19) | u.imm;
     }
 
     return u.sext << 20 | u.imm;
