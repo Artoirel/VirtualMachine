@@ -102,7 +102,7 @@ int dispatch(inst_t instruction, uint64_t PC)
         case RV64_OP_OP_IMM32:
             switch(instruction.i_type.funct3)
             {
-                case RV64_FUNCT3_ADDIW  0x0 :
+                case RV64_FUNCT3_ADDIW :
                     assert(0 && "RV64_OP_OP_IMM32 - ADDIW\n");
                     return PC + 4;
             }
