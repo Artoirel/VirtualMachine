@@ -119,7 +119,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     uint64_t rs1 = read_reg_long(instruction.s_type.rs1);
                     uint64_t rs2 = read_reg_long(instruction.s_type.rs2);
                     uint64_t imm = s_imm(instruction.s_type);
-                    printf("rs1 - 0x%x\nrs2 - 0x%x\nimm - %d", rs1, rs2, imm);
+                    printf("rs1 - 0x%x\nrs2 - 0x%x\nimm - %d\n", rs1, rs2, imm);
                     write_double_word(read_reg_long(instruction.s_type.rs1) + s_imm(instruction.s_type), read_reg_long(instruction.s_type.rs2));
                     printf("%0x%x\n", read_reg_long(instruction.s_type.rs2));
                     return PC + 4; //0x3
