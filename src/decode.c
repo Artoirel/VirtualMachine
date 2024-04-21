@@ -356,7 +356,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     printf("sw\t $r%d, %d($r%d)\n", instruction.s_type.rs2, s_imm(instruction.s_type), instruction.s_type.rs1);
                     return; //0x2
                 case RV64_FUNCT3_SD:
-                    printf("sd\t $r%d, %d($r%d)\n", instruction.s_type.rs2, s_imm(instruction.s_type), instruction.s_type.rs1);
+                    printf("sd\t$r%d, %d($r%d)\n", instruction.s_type.rs2, s_imm(instruction.s_type), instruction.s_type.rs1);
                     return; //0x3
             }
             assert(0 && "RV64_OP_STORE\n");
