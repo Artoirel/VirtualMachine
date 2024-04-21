@@ -40,8 +40,8 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_LOAD - LBU\n");
                     return; //0x4
                 case RV64_FUNCT3_LHU :
-                    write_reg_long(instruction.i_type.rd, read_half(read_reg_long(instruction.i_type.rs1) + (instruction.i_type.sext << 11 | instruction.i_type.imm));
-                    return; //0x5
+                    write_reg_long(instruction.i_type.rd, read_half(read_reg_long(instruction.i_type.rs1) + (instruction.i_type.sext << 11 | instruction.i_type.imm)));
+                    return PC + 4; //0x5
                 case RV64_FUNCT3_LWU :
                     assert(0 && "RV64_OP_LOAD - LWU\n");
                     return; //0x6
