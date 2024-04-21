@@ -103,7 +103,7 @@ int dispatch(inst_t instruction, uint64_t PC)
             switch(instruction.i_type.funct3)
             {
                 case RV64_FUNCT3_ADDIW :
-                    uint32_t val = read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type));
+                    uint32_t val = read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type);
                     val = -1;
                     uint64_t write_val = 0;
                     if(val >> 31 == 1)
