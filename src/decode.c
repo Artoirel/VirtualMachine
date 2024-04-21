@@ -34,8 +34,8 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_LOAD - LH\n");
                     return; //0x1
                 case RV64_FUNCT3_LW  :
-                    assert(0 && "RV64_OP_LOAD - LW\n");
-                    return; //0x2
+                    write_reg_long(instruction.i_type.rd, read_word(read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type)));
+                    return PC + 4; //0x2
                 case RV64_FUNCT3_LBU :
                     assert(0 && "RV64_OP_LOAD - LBU\n");
                     return; //0x4
@@ -264,8 +264,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_LOAD - LH\n");
                     return; //0x1
                 case RV64_FUNCT3_LW  :
-                    printf("\n");
-                    assert(0 && "RV64_OP_LOAD - LW\n");
+                    printf("lw\t$r%d, %d($r%d)\n", instruction.i_type.rd, i_imm(instruction.i_type), instruction.i_type.rs1);
                     return; //0x2
                 case RV64_FUNCT3_LBU :
                     printf("\n");
