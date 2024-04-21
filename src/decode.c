@@ -40,7 +40,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_LOAD - LBU\n");
                     return; //0x4
                 case RV64_FUNCT3_LHU :
-                    assert(0 && "RV64_OP_LOAD - LHU\n");
+                    write_reg_long(instruction.i_type.rd, read_half(read_reg_long(instruction.i_type.rs1) + (instruction.i_type.sext << 11 | instruction.i_type.imm));
                     return; //0x5
                 case RV64_FUNCT3_LWU :
                     assert(0 && "RV64_OP_LOAD - LWU\n");
@@ -48,7 +48,6 @@ int dispatch(inst_t instruction, uint64_t PC)
 
                 case RV64_FUNCT3_LD  :
                     write_reg_long(instruction.i_type.rd, read_double_word(read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type)));
-                    printf("0x%lx\n", read_double_word(read_reg_long(instruction.i_type.rs1)) + i_imm(instruction.i_type));
                     return PC + 4; //0x3
 
             }
@@ -116,12 +115,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     write_word(read_reg_long(instruction.s_type.rs1) + s_imm(instruction.s_type), read_reg_long(instruction.s_type.rs2));
                     return PC + 4; //0x3
                 case RV64_FUNCT3_SD:
-                    uint64_t rs1 = read_reg_long(instruction.s_type.rs1);
-                    uint64_t rs2 = read_reg_long(instruction.s_type.rs2);
-                    uint64_t imm = s_imm(instruction.s_type);
-                    printf("rs1 - 0x%x\nrs2 - 0x%x\nimm - %d\n", rs1, rs2, imm);
                     write_double_word(read_reg_long(instruction.s_type.rs1) + s_imm(instruction.s_type), read_reg_long(instruction.s_type.rs2));
-                    printf("%0x%x\n", read_reg_long(instruction.s_type.rs2));
                     return PC + 4; //0x3
             }
             assert(0 && "RV64_OP_STORE\n");
@@ -241,12 +235,10 @@ int dispatch(inst_t instruction, uint64_t PC)
         case RV64_OP_JALR:
             write_reg_long(instruction.i_type.rd, PC + 4);
             PC = read_reg_long(instruction.i_type.rs1);
-            printf("ret - 0x%x\n", read_reg_long(instruction.i_type.rs1));
             return PC; //0x67    /* 1100111 */
 
         case RV64_OP_JAL:
             write_reg_long(instruction.j_type.rd, PC + 4);
-            printf("0x%x\n", read_reg_long(instruction.j_type.rd));
             return PC + j_imm(instruction.j_type);; //0x6f    /* 1101111 */
 
         case RV64_OP_SYSTEM:
@@ -280,7 +272,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_LOAD - LBU\n");
                     return; //0x4
                 case RV64_FUNCT3_LHU :
-                    printf("\n");
+                    printf("lhu\t$r%d, %d($r%d)\n", instruction.i_type.rd, instruction.i_type.sext << 11 | instruction.i_type.imm, instruction.i_type.rs1);
                     assert(0 && "RV64_OP_LOAD - LHU\n");
                     return; //0x5
                 case RV64_FUNCT3_LWU :
@@ -541,7 +533,7 @@ uint64_t i_imm(i_inst_t i)
 
 uint64_t is_imm_64(is_inst_t i)
 {
-    return i.shamt_ext << 6 | i.shamt;//val << 11 | i.imm;
+    return i.shamt_ext << 6 | i.shamt;
 }
 
 uint32_t is_imm_32(is_inst_t i)
@@ -570,4 +562,6 @@ uint64_t b_imm(b_inst_t b)
 
     return val | b.sext << 12 | b.imm3 << 11 | b.imm2 << 5 | b.imm1 << 1;
 }
+
+uint64_t
 
