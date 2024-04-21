@@ -241,6 +241,7 @@ int dispatch(inst_t instruction, uint64_t PC)
 
         case RV64_OP_JAL:
             write_reg_long(instruction.j_type.rd, PC + 4);
+            printf("0x%x\n", PC + 4);
             return PC + j_imm(instruction.j_type);; //0x6f    /* 1101111 */
 
         case RV64_OP_SYSTEM:
