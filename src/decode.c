@@ -334,7 +334,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return 0; //0x13    /* 0010011 */
 
         case RV64_OP_AUIPC:
-            printf("auipc\t$r%d, 0x%lx\n", instruction.u_type.rd, (u_imm(instruction.u_type) << 12) + PC);
+            printf("auipc\t$r%d, 0x%lx\n", instruction.u_type.rd, (u_imm(instruction.u_type);
             return; //0x17    /* 0010111 */
 
         case RV64_OP_OP_IMM32:
