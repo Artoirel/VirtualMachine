@@ -74,8 +74,9 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP_IMM - SLTIU\n");
                     return;// 0x3
                 case RV64_FUNCT3_XORI :
-                    assert(0 && "RV64_OP_OP_IMM - XORI\n");
-                    return;// 0x4
+                    write_reg_long(instruction.i_type.rd,
+                                   read_reg_long(instruction.i_type.rs1) ^ i_imm(instruction.i_type));
+                    return PC + 4;// 0x0
                 case RV64_FUNCT3_ORI  :
                     assert(0 && "RV64_OP_OP_IMM - ORI\n");
                     return;// 0x6
@@ -323,8 +324,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP_IMM - SLTIU\n");
                     return;// 0x3
                 case RV64_FUNCT3_XORI :
-                    printf("\n");
-                    assert(0 && "RV64_OP_OP_IMM - XORI\n");
+                    printf("xori\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x4
                 case RV64_FUNCT3_ORI  :
                     printf("\n");
