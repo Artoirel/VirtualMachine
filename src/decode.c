@@ -144,7 +144,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                             write_reg_long(instruction.r_type.rd, read_reg_long(instruction.r_type.rs1) * read_reg_long(instruction.r_type.rs2));
                             return PC + 4; //0x01
                         case RV64_FUNCT7_SUB :
-                            assert(0 && "RV64_OP_OP - SUB\n");
+                            write_reg_long(instruction.r_type.rd, read_reg_long(instruction.r_type.rs1) - read_reg_long(instruction.r_type.rs2));
                             return PC + 4; //0x20
                     }
                     assert(0 && "Unknown ADD FUNCT7");
@@ -379,8 +379,8 @@ void pretty_print(inst_t instruction, uint64_t PC)
                             printf("mul\t$r%d, $r%d, $r%d\n", instruction.r_type.rd, instruction.r_type.rs1, instruction.r_type.rs2);
                             return; //0x01
                         case RV64_FUNCT7_SUB :
-                            printf("\n");
-                            assert(0 && "RV64_OP_OP - SUB\n");
+                            printf("sub\t$r%d, $r%d, $r%d\n", instruction.r_type.rd, instruction.r_type.rs1, instruction.r_type.rs2);
+
                             return; //0x20
 
                     }
