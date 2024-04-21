@@ -47,7 +47,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     return; //0x6
 
                 case RV64_FUNCT3_LD  :
-                    write_reg_long(instruction.i_type.rd, read_double_word(read_reg_long(instruction.i_type.rs1)) + i_imm(instruction.i_type));
+                    write_reg_long(instruction.i_type.rd, read_double_word(read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type)));
                     printf("0x%lx\n", read_double_word(read_reg_long(instruction.i_type.rs1)) + i_imm(instruction.i_type));
                     return PC + 4; //0x3
 
