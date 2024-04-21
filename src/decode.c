@@ -117,6 +117,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     return PC + 4; //0x3
                 case RV64_FUNCT3_SD:
                     write_double_word(read_reg_long(instruction.s_type.rs1) + s_imm(instruction.s_type), read_reg_long(instruction.s_type.rs2));
+                    printf("%0x%x\n", read_reg_long(instruction.s_type.rs2));
                     return PC + 4; //0x3
             }
             assert(0 && "RV64_OP_STORE\n");
