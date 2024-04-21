@@ -112,8 +112,8 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_STORE - SH\n");
                     return; //0x1
                 case RV64_FUNCT3_SW :
-                    assert(0 && "RV64_OP_STORE - SW\n");
-                    return; //0x2
+                    write_double_word(read_reg_long(instruction.s_type.rs1) + s_imm(instruction.s_type), read_reg_long(instruction.s_type.rs2));
+                    return PC + 4; //0x3
                 case RV64_FUNCT3_SD:
                     write_double_word(read_reg_long(instruction.s_type.rs1) + s_imm(instruction.s_type), read_reg_long(instruction.s_type.rs2));
                     return PC + 4; //0x3
@@ -371,7 +371,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
         case RV64_OP_OP:
             switch(instruction.r_type.funct3)
             {
-
                 case RV64_FUNCT3_ADD   :
                     switch(instruction.r_type.funct7)
                     {
