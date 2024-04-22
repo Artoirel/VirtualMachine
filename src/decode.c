@@ -103,25 +103,25 @@ int dispatch(inst_t instruction, uint64_t PC)
         case RV64_OP_OP_IMM32:
             switch(instruction.i_type.funct3) {
                 case RV64_FUNCT3_ADDIW :
-                    uint32_t val = read_reg_int(instruction.i_type.rs1) + i_imm(instruction.i_type);
-                    uint64_t write_val = val;
+                    uint32_t addiw_val = read_reg_int(instruction.i_type.rs1) + i_imm(instruction.i_type);
+                    uint64_t addiw_write = addiw_val;
                     if (val >> 31 == 1)
                     {
-                        write_val = 0xFFFFFFFF00000000l | val;
+                        write_val = 0xFFFFFFFF00000000l | addiw_val;
                     }
 
-                    write_reg_long(instruction.i_type.rd, write_val);
+                    write_reg_long(instruction.i_type.rd, addiw_write);
                     return PC + 4;// 0x0
 
                 case RV64_FUNCT3_SLLIW :
-                    uint32_t val = read_reg_int(instruction.i_type.rs1) << i_imm(instruction.i_type);
-                    uint64_t write_val = val;
-                    if (val >> 31 == 1)
+                    uint32_t slliw_val = read_reg_int(instruction.i_type.rs1) << i_imm(instruction.i_type);
+                    uint64_t slliw_write = slliw_val;
+                    if (slliw_val >> 31 == 1)
                     {
-                        write_val = 0xFFFFFFFF00000000l | val;
+                        write_val = 0xFFFFFFFF00000000l | slliw_val;
                     }
 
-                    write_reg_long(instruction.i_type.rd, write_val);
+                    write_reg_long(instruction.i_type.rd, slliw_write);
                     return PC + 4;// 0x0
             }
             printf("\n");
@@ -379,6 +379,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_ADDIW :
                     printf("addiw\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x0
+
                 case RV64_FUNCT3_SLLIW :
                     printf("slliw\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x1
