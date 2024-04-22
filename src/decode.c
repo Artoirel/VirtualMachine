@@ -295,7 +295,7 @@ int dispatch(inst_t instruction, uint64_t PC)
             return PC + j_imm(instruction.j_type);; //0x6f    /* 1101111 */
 
         case RV64_OP_SYSTEM:
-            uint64_t sys = read_reg_long(10);
+            uint64_t sys = read_reg_long(17);
             switch (sys)
             {
                 case RV64_SYS_io_setup:
