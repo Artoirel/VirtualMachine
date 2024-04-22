@@ -105,6 +105,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_ADDIW :
                     uint32_t val = read_reg_int(instruction.i_type.rs1) + i_imm(instruction.i_type);
                     uint64_t write_val = val;
+                    val = -1;ss
                     if (val >> 31 == 1)
                     {
                         printf("test\n");
