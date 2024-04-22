@@ -110,7 +110,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                         write_val = 0xFFFFFFFF00000000l | val;
 
                     write_reg_long(instruction.i_type.rd,
-                                   read_reg_long(instruction.i_type.rs1) + write_val);
+                                   read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type);
                     return PC + 4;// 0x0
             }
             printf("\n");
@@ -455,6 +455,15 @@ void pretty_print(inst_t instruction, uint64_t PC)
             return; //0x37    /* 0110111 */
 
         case RV64_OP_OP32:
+            /*
+            switch (instruction.r_type.funct3) {
+                case RV64_FUNCT3_ADDW : //  0x0
+                    printf("addw\t$r%d, $r%d, $r%d\n", instruction.r_type.rd, instruction.r_type.rs1, instruction.r_type.rs2);
+                    assert(0 && "RV64_OP_OP32\n");
+                    return; //0x00
+
+            }
+             */
             printf("\n");
             assert(0 && "RV64_OP_OP32\n");
             return 0; //0x3b    /* 0111011 */
