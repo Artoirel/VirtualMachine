@@ -111,6 +111,8 @@ int dispatch(inst_t instruction, uint64_t PC)
 
                     write_reg_long(instruction.i_type.rd,
                                    read_reg_long(instruction.i_type.rs1) + write_val);
+                    assert(0 && "RV64_OP_OP32\n");
+
                     return PC + 4;// 0x0
             }
             printf("\n");
@@ -203,8 +205,6 @@ int dispatch(inst_t instruction, uint64_t PC)
 
                     write_reg_long(instruction.i_type.rd,
                                    read_reg_long(instruction.i_type.rs1) + write_val);
-                    assert(0 && "RV64_OP_OP32\n");
-
                     return PC + 4;// 0x0
             }
             printf("\n");
