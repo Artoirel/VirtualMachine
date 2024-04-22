@@ -82,7 +82,6 @@
 #define RV64_SYS_sync 81
 #define RV64_SYS_fsync 82
 #define RV64_SYS_fdatasync 83
-#define RV64_SYS_sync_file_range2 84
 #define RV64_SYS_sync_file_range 84
 #define RV64_SYS_timerfd_create 85
 #define RV64_SYS_timerfd_settime 86

@@ -466,8 +466,6 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_SYS_fsync\n");
                 case RV64_SYS_fdatasync:
                     assert(0 && "RV64_SYS_fdatasync\n");
-                case RV64_SYS_sync_file_range2:
-                    assert(0 && "RV64_SYS_sync_file_range2\n");
                 case RV64_SYS_sync_file_range:
                     assert(0 && "RV64_SYS_sync_file_range\n");
                 case RV64_SYS_timerfd_create:
@@ -1398,8 +1396,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
                 case RV64_SYS_fsync:
                     assert(0 && "RV64_OP_SYSTEM\n");
                 case RV64_SYS_fdatasync:
-                    assert(0 && "RV64_OP_SYSTEM\n");
-                case RV64_SYS_sync_file_range2:
                     assert(0 && "RV64_OP_SYSTEM\n");
                 case RV64_SYS_sync_file_range:
                     assert(0 && "RV64_OP_SYSTEM\n");
