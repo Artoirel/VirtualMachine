@@ -476,7 +476,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
                             return PC + 4;
                         case RV64_FUNCT7_DIVU :
                             printf("divu\t$r%d, $r%d, $r%d\n", instruction.r_type.rd, instruction.r_type.rs1, instruction.r_type.rs2);
-                            assert(0 && "RV64_OP_OP - DIVU\n");
                             return PC + 4;
                     }
                     return PC + 4; // 0x5
