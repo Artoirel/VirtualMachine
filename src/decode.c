@@ -744,7 +744,13 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_execve:
                     assert(0 && "RV64_SYS_execve\n");
                 case RV64_SYS_mmap:
-                    printf("size - %d\n", read_reg_long(16));
+                    printf("0x%x\n", read_reg_long(16));
+                    printf("0x%x\n", read_reg_long(15));
+                    printf("0x%x\n", read_reg_long(14));
+                    printf("0x%x\n", read_reg_long(13));
+                    printf("0x%x\n", read_reg_long(12));
+                    printf("0x%x\n", read_reg_long(11));
+                    printf("0x%x\n", read_reg_long(10));
                     assert(0 && "RV64_SYS_mmap\n");
                 case RV64_SYS_fadvise64:
                     assert(0 && "RV64_SYS_fadvise64\n");
