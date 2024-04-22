@@ -457,7 +457,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
             switch (instruction.r_type.funct3) {
                 case RV64_FUNCT3_ADDW : //  0x0
                     printf("addw\t$r%d, $r%d, $r%d\n", instruction.r_type.rd, instruction.r_type.rs1, instruction.r_type.rs2);
-                    assert(0 && "RV64_OP_OP32\n");
                     return; //0x00
 
             }
