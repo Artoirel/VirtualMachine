@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include "inst_type.h"
 #include "rv64_opcodes.h"
+#include "rv64_syscall.h"
 #include <assert.h>
 
 int inst_count = 0;
