@@ -727,6 +727,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_readahead:
                     assert(0 && "RV64_SYS_readahead\n");
                 case RV64_SYS_brk:
+                    write_reg_long(10, 0);
                     return PC + 4;
                 case RV64_SYS_munmap:
                     assert(0 && "RV64_SYS_munmap\n");
