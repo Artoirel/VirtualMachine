@@ -105,14 +105,15 @@ int dispatch(inst_t instruction, uint64_t PC)
             {
                 case RV64_FUNCT3_ADDIW :
                     uint32_t val = read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type);
-                    uint64_t write_val = 0;
+                    uint64_t write_val = val;
                     if(val >> 31 == 1)
                         write_val = 0xFFFFFFFF00000000l | val;
 
                     write_reg_long(instruction.i_type.rd,
-                                   read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type));
+                                   read_reg_long(instruction.i_type.rs1) + write_val);
                     return PC + 4;// 0x0
             }
+            printf("\n");
             assert(0 && "RV64_OP_OP_IMM32\n");
             return 0; //0x1b    /* 0011011 */
 
@@ -193,6 +194,18 @@ int dispatch(inst_t instruction, uint64_t PC)
             return PC + 4; //0x37    /* 0110111 */
 
         case RV64_OP_OP32:
+            switch (instruction.r_type.funct3) {
+                case RV64_FUNCT3_ADDIW :
+                    uint32_t val = read_reg_long(instruction.r_type.rs1) + read_reg_long(instruction.r_type.rs2);
+                    uint64_t write_val = val;
+                    if(val >> 31 == 1)
+                        write_val = 0xFFFFFFFF00000000l | val;
+
+                    write_reg_long(instruction.i_type.rd,
+                                   read_reg_long(instruction.i_type.rs1) + write_val);
+                    return PC + 4;// 0x0
+            }
+            printf("\n");
             assert(0 && "RV64_OP_OP32\n");
             return 0; //0x3b    /* 0111011 */
         case RV64_OP_MADD:
