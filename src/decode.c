@@ -110,7 +110,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                         write_val = 0xFFFFFFFF00000000l | val;
 
                     write_reg_long(instruction.i_type.rd,
-                                   read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type);
+                                   read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type));
                     return PC + 4;// 0x0
             }
             printf("\n");
