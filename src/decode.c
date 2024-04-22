@@ -104,6 +104,7 @@ int dispatch(inst_t instruction, uint64_t PC)
             switch(instruction.i_type.funct3)
             {
                 case RV64_FUNCT3_ADDIW :
+                    printf("\n");
                     uint32_t val = read_reg_long(instruction.i_type.rs1) + i_imm(instruction.i_type);
                     uint64_t write_val = val;
                     if(val >> 31 == 1)
