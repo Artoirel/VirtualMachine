@@ -187,7 +187,19 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP - XOR\n");
                     return PC + 4; // 0x4
                 case RV64_FUNCT3_SRL   :
-                    assert(0 && "RV64_OP_OP - SRL\n");
+                    switch(instruction.r_type.funct7)
+                    {
+                        case RV64_FUNCT7_SRL :
+                            assert(0 && "RV64_OP_OP - SRL\n");
+                            return PC + 4;
+                        case RV64_FUNCT7_SRA :
+                            assert(0 && "RV64_OP_OP - SRA\n");
+                            return PC + 4;
+                        case RV64_FUNCT7_DIVU :
+                            assert(0 && "RV64_OP_OP - DIV\n");
+                            return PC + 4;
+                    }
+                    assert(0 && "RV64_OP_OP - UNKNOWN\n");
                     return PC + 4; // 0x5
                 case RV64_FUNCT3_OR    :
                     assert(0 && "RV64_OP_OP - OR\n");
@@ -452,8 +464,21 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP - XOR\n");
                     return PC + 4; // 0x4
                 case RV64_FUNCT3_SRL   :
-                    printf("\n");
-                    assert(0 && "RV64_OP_OP - SRL\n");
+                    switch(instruction.r_type.funct7)
+                    {
+                        case RV64_FUNCT7_SRL :
+                            printf("\n");
+                            assert(0 && "RV64_OP_OP - SRL\n");
+                            return PC + 4;
+                        case RV64_FUNCT7_SRA :
+                            printf("\n");
+                            assert(0 && "RV64_OP_OP - SRA\n");
+                            return PC + 4;
+                        case RV64_FUNCT7_DIVU :
+                            printf("\n");
+                            assert(0 && "RV64_OP_OP - DIV\n");
+                            return PC + 4;
+                    }
                     return PC + 4; // 0x5
                 case RV64_FUNCT3_OR    :
                     printf("\n");
