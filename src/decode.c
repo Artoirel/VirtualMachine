@@ -105,9 +105,9 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_ADDIW :
                     uint32_t addiw_val = read_reg_int(instruction.i_type.rs1) + i_imm(instruction.i_type);
                     uint64_t addiw_write = addiw_val;
-                    if (val >> 31 == 1)
+                    if (addiw_val >> 31 == 1)
                     {
-                        write_val = 0xFFFFFFFF00000000l | addiw_val;
+                        addiw_write = 0xFFFFFFFF00000000l | addiw_val;
                     }
 
                     write_reg_long(instruction.i_type.rd, addiw_write);
@@ -118,7 +118,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     uint64_t slliw_write = slliw_val;
                     if (slliw_val >> 31 == 1)
                     {
-                        write_val = 0xFFFFFFFF00000000l | slliw_val;
+                        slliw_write = 0xFFFFFFFF00000000l | slliw_val;
                     }
 
                     write_reg_long(instruction.i_type.rd, slliw_write);
