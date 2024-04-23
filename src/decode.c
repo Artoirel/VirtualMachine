@@ -529,13 +529,6 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_set_robust_list:
                     write_reg_long(10, 0);
                     return PC + 4;
-                    printf("%d\n", read_reg_long(10));
-                    printf("%d\n", read_reg_long(11));
-                    printf("%d\n", read_reg_long(12));
-                    printf("%d\n", read_reg_long(13));
-                    printf("%d\n", read_reg_long(14));
-                    printf("%d\n", read_reg_long(15));
-                    printf("%d\n", read_reg_long(16));
                     assert(0 && "RV64_SYS_set_robust_list\n");
                 case RV64_SYS_get_robust_list:
                     assert(0 && "RV64_SYS_get_robust_list\n");
@@ -564,6 +557,13 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_clock_settime:
                     assert(0 && "RV64_SYS_clock_settime\n");
                 case RV64_SYS_clock_gettime:
+                    printf("%d\n", read_reg_long(10));
+                    printf("%d\n", read_reg_long(11));
+                    printf("%d\n", read_reg_long(12));
+                    printf("%d\n", read_reg_long(13));
+                    printf("%d\n", read_reg_long(14));
+                    printf("%d\n", read_reg_long(15));
+                    printf("%d\n", read_reg_long(16));
                     assert(0 && "RV64_SYS_clock_gettime\n");
                 case RV64_SYS_clock_getres:
                     assert(0 && "RV64_SYS_clock_getres\n");
