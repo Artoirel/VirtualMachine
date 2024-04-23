@@ -558,7 +558,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_clock_settime:
                     assert(0 && "RV64_SYS_clock_settime\n");
                 case RV64_SYS_clock_gettime:
-                    write_reg_long(10, time());
+                    write_reg_long(10, time(NULL));
                     printf("%d\n", read_reg_long(10));
                     printf("%d\n", read_reg_long(11));
                     printf("%d\n", read_reg_long(12));
