@@ -1244,7 +1244,7 @@ uint64_t j_imm(j_inst_t j)
     uint64_t val4 = 0;
     if(j.imm4 == 1)
     {
-        val4 = 0xFFFFFFFFFFFFl;
+        val4 = 0xFFFFFFFFFFFFFFFFl;
     }
 
     uint64_t val1 = j.imm1;
@@ -1273,7 +1273,7 @@ uint64_t i_imm(i_inst_t i)
     uint64_t val = 0;
     if(i.sext == 1)
     {
-        val = 0xFFFFFFFFFFFFl;
+        val = 0xFFFFFFFFFFFFFFFFl;
     }
 
     return val << 11 | i.imm;
@@ -1294,7 +1294,7 @@ uint64_t s_imm(s_inst_t s)
     uint64_t val = 0;
     if(s.sext == 1)
     {
-        val = 0xFFFFFFFFFFFFl;
+        val = 0xFFFFFFFFFFFFFFFFl;
     }
 
     return val << 11 | s.imm2 << 5 | s.imm1;
