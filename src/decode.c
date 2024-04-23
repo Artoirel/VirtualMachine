@@ -482,12 +482,11 @@ int dispatch(inst_t instruction, uint64_t PC)
                     uint8_t ch;
                     do
                     {
-                        ch = read_byte(addr);
+                        ch = read_byte(addr + 1);
                         addr += 1;
                         printf("%c", ch);
                     } while (ch);
                     printf("\n");
-                    printf("%c\n", read_byte(read_reg_long(11)));
                     printf("%d\n", read_reg_long(11));
                     printf("%d\n", read_reg_long(12));
                     printf("%d\n", read_reg_long(13));
