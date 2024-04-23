@@ -83,8 +83,16 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP_IMM - SLTI\n");
                     return;// 0x2
                 case RV64_FUNCT3_SLTIU:
-                    assert(0 && "RV64_OP_OP_IMM - SLTIU\n");
-                    return;// 0x3
+                    unsigned uint64_t sltiuval = read_reg_long(instruction.i_type.rs1);
+                    unsigned uint64_t sltiuimm = instruction.i_type.imm;
+                    uint64_t writeval = 0;
+                    if(sltiuval < sltiuimm)
+                    {
+                        writeval = 1;
+                    }
+
+                    write_reg_long(instruction.i_type.rd, writeval);
+                    return PC + 4;// 0x3
                 case RV64_FUNCT3_XORI :
                     write_reg_long(instruction.i_type.rd,
                                    read_reg_long(instruction.i_type.rs1) ^ i_imm(instruction.i_type));
@@ -1148,8 +1156,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP_IMM - SLTI\n");
                     return;// 0x2
                 case RV64_FUNCT3_SLTIU:
-                    printf("\n");
-                    assert(0 && "RV64_OP_OP_IMM - SLTIU\n");
+                    printf("sltiu\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x3
                 case RV64_FUNCT3_XORI :
                     printf("xori\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
