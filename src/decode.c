@@ -476,10 +476,14 @@ int dispatch(inst_t instruction, uint64_t PC)
                     char *fullpath = (char*) malloc(4096);
                     fullpath = realpath(get_filename(), fullpath);
                     printf("%s\n", fullpath);
-                    if(read_reg_long(10) == AT_FDCWD)
+                    char c;
+                    int count = 0;
+                    do
                     {
-
-                    }
+                        c = fullpath++;
+                        count++;
+                        printf("%c\n", c);
+                    } while(c);
 
                     printf("%.lx\n", read_reg_long(10));
                     printf("%d\n", read_reg_long(11));
