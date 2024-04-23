@@ -140,8 +140,8 @@ int dispatch(inst_t instruction, uint64_t PC)
         case RV64_OP_STORE:
             switch (instruction.s_type.funct3) {
                 case RV64_FUNCT3_SB :
-                    assert(0 && "RV64_OP_STORE - SB\n");
-                    return; //0x0
+                    write_byte(read_reg_long(instruction.s_type.rs1) + s_imm(instruction.s_type), read_reg_long(instruction.s_type.rs2));
+                    return PC + 4; //0x0
                 case RV64_FUNCT3_SH :
                     assert(0 && "RV64_OP_STORE - SH\n");
                     return; //0x1
@@ -1105,8 +1105,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
         case RV64_OP_STORE:
             switch (instruction.s_type.funct3) {
                 case RV64_FUNCT3_SB :
-                    printf("\n");
-                    assert(0 && "RV64_OP_STORE - SB\n");
+                    printf("sb\t$r%d, %d($r%d)\n", instruction.s_type.rs2, s_imm(instruction.s_type), instruction.s_type.rs1);
                     return; //0x0
                 case RV64_FUNCT3_SH :
                     printf("\n");
