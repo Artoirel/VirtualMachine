@@ -1215,8 +1215,55 @@ void pretty_print(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_STORE_FP\n");
             return 0; //0x27    /* 0100111 */
         case RV64_OP_AMO:
-            printf("\n");
-            assert(0 && "RV64_OP_AMO\n");
+            switch(instruction.r_type.funct7 >> 2)
+            {
+                case RV64_FUNCT5_LRW       :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_LRW\n");
+                    return;
+                case RV64_FUNCT5_SCW       :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_SCW\n");
+                    return;// 0x03
+                case RV64_FUNCT5_AMOSWAPW  :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_AMOSWAPW\n");
+                    return;// 0x01
+                case RV64_FUNCT5_AMOADDW   :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_AMOADDW\n");
+                    return;// 0x00
+                case RV64_FUNCT5_AMOXORW   :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_AMOXORW\n");
+                    return;// 0x04
+                case RV64_FUNCT5_AMOANDW   :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_AMOANDW\n");
+                    return;// 0x0c
+                case RV64_FUNCT5_AMOORW    :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_AMOORW\n");
+                    return;// 0x08
+                case RV64_FUNCT5_AMOMINW   :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_AMOMINW\n");
+                    return;// 0x10
+                case RV64_FUNCT5_AMOMAXW   :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_AMOMAXW\n");
+                    return;// 0x14
+                case RV64_FUNCT5_AMOMINUW  :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_AMOMINUW\n");
+                    return;// 0x18
+                case RV64_FUNCT5_AMOMAXUW  :
+                    printf("\n");
+                    assert(0 && "RV64_FUNCT5_AMOMAXUW\n");
+                    return;// 0x1c
+            }
+            assert(0 && "UNKNOWN ATOMIC FUNCTION");
+            return 0; //0x2f    /* 0101111 */
             return 0; //0x2f    /* 0101111 */
         case RV64_OP_OP:
             switch(instruction.r_type.funct3)
