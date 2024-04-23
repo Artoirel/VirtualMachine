@@ -884,6 +884,10 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_seccomp:
                     assert(0 && "RV64_SYS_seccomp\n");
                 case RV64_SYS_getrandom:
+                    char* rand = "random!!";
+                    write_arbitrary_bytes(rand, read_reg_long(10), read_reg_long(11));
+
+                    return PC + 4;
                     printf("%d\n", read_reg_long(10));
                     printf("%d\n", read_reg_long(11));
                     printf("%d\n", read_reg_long(12));
