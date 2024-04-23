@@ -472,7 +472,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_SYS_tee\n");
                 case RV64_SYS_readlinkat:
                     printf("%.lx\n", read_reg_long(10));
-                    printf("%c\n", read_byte(read_reg_long(10)));
+                    printf("%c\n", read_byte(read_reg_long(11)));
                     printf("%d\n", read_reg_long(11));
                     printf("%d\n", read_reg_long(12));
                     printf("%d\n", read_reg_long(13));
