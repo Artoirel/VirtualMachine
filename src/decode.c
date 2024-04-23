@@ -744,9 +744,8 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_execve:
                     assert(0 && "RV64_SYS_execve\n");
                 case RV64_SYS_mmap:
-                    uint64_t region = g_mmap(read_reg_long(11));
-                    region = g_mmap(read_reg_long(11));
-                    printf("0x%.lx\n", region);
+                    printf("0x%.lx\n", g_mmap(read_reg_long(11)));
+                    printf("0x%.lx\n", g_mmap(read_reg_long(11)));
                     assert(0 && "RV64_SYS_mmap\n");
                 case RV64_SYS_fadvise64:
                     assert(0 && "RV64_SYS_fadvise64\n");
