@@ -1228,8 +1228,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_FUNCT5_SCW\n");
                     return;// 0x03
                 case RV64_FUNCT5_AMOSWAPW  :
-                    printf("\n");
-                    assert(0 && "RV64_FUNCT5_AMOSWAPW\n");
+                    printf("amoswap.w\t$r%d, $r%d, ($r%d)\n", instruction.r_type.rd, instruction.r_type.rs2, instruction.r_type.rs1);
                     return;// 0x01
                 case RV64_FUNCT5_AMOADDW   :
                     printf("\n");
@@ -1260,7 +1259,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_FUNCT5_AMOMINUW\n");
                     return;// 0x18
                 case RV64_FUNCT5_AMOMAXUW  :
-                    printf("amoswap.w\t$r%d, $r%d, ($r%d)\n", instruction.r_type.rd, instruction.r_type.rs2, instruction.r_type.rs1);
+                    assert(0 && "RV64_FUNCT5_AMOMAXUW\n");
                     return;// 0x1c
             }
             assert(0 && "UNKNOWN ATOMIC FUNCTION");
