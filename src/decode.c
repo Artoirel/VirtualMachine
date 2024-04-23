@@ -560,12 +560,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_clock_gettime:
                     write_reg_long(10, time(NULL));
                     printf("%d\n", read_reg_long(10));
-                    printf("%d\n", read_reg_long(11));
-                    printf("%d\n", read_reg_long(12));
-                    printf("%d\n", read_reg_long(13));
-                    printf("%d\n", read_reg_long(14));
-                    printf("%d\n", read_reg_long(15));
-                    printf("%d\n", read_reg_long(16));
+                    return PC + 4;
                     assert(0 && "RV64_SYS_clock_gettime\n");
                 case RV64_SYS_clock_getres:
                     assert(0 && "RV64_SYS_clock_getres\n");
