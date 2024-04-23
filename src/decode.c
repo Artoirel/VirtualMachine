@@ -174,7 +174,6 @@ int dispatch(inst_t instruction, uint64_t PC)
             return 0; //0x27    /* 0100111 */
 
         case RV64_OP_AMO:
-            assert(0 && "RV64_OP_AMO\n");
             switch(instruction.r_type.funct7 >> 2)
             {
                 case RV64_FUNCT5_LRW       :
