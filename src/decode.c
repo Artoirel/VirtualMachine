@@ -748,7 +748,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     {
                         assert(0 && "specific address mmap");
                     }
-                    if(read_reg_long(14))
+                    if(read_reg_long(14) == -1)
                     {
                         assert(0 && "file backed mmap");
                     }
