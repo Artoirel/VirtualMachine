@@ -61,8 +61,8 @@ int dispatch(inst_t instruction, uint64_t PC)
             switch (instruction.i_type.funct3)
             {
                 case RV64_FUNCT3_FENCE:
-                    printf("\n");
-                    assert(0 && "FENCE INST");
+                    printf("fence\n");
+                    return;
                 default:
                     printf("\n");
                     assert(0 && "UNKNOWN MISC_MEM");
@@ -1036,8 +1036,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
             switch (instruction.i_type.funct3)
             {
                 case RV64_FUNCT3_FENCE:
-                    printf("\n");
-                    assert(0 && "FENCE INST");
+                    return PC + 4;
                 default:
                     printf("\n");
                     assert(0 && "UNKNOWN MISC_MEM");
