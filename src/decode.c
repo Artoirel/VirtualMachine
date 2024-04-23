@@ -285,8 +285,11 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_BRANCH - BLT\n");
                     return; //  0x4
                 case RV64_FUNCT3_BGE  :
-                    assert(0 && "RV64_OP_BRANCH - BGE\n");
-                    return; //  0x5
+                    if(read_reg_long(instruction.b_type.rs1) >= read_reg_long(instruction.b_type.rs2))
+                    {
+                        return PC + b_imm(instruction.b_type);
+                    }
+                    return PC + 4;
                 case RV64_FUNCT3_BLTU :
                     if(read_reg_long(instruction.b_type.rs1) < read_reg_long(instruction.b_type.rs2))
                     {
@@ -1275,8 +1278,7 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_BRANCH - BLT\n");
                     return; //  0x4
                 case RV64_FUNCT3_BGE  :
-                    printf("\n");
-                    assert(0 && "RV64_OP_BRANCH - BGE\n");
+                    printf("bge\t$r%d, $r%d, %d\n", instruction.b_type.rs1, instruction.b_type.rs2, b_imm(instruction.b_type));
                     return; //  0x5
                 case RV64_FUNCT3_BLTU :
                     printf("bltu\t$r%d, $r%d, %d\n", instruction.b_type.rs1, instruction.b_type.rs2, b_imm(instruction.b_type));
