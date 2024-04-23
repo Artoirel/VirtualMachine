@@ -211,7 +211,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP - UNKNOWN\n");
                     return PC + 4; // 0x5
                 case RV64_FUNCT3_OR    :
-                    assert(0 && "RV64_OP_OP - OR\n");
+                    write_reg_long(instruction.r_type.rd, read_reg_long(instruction.r_type.rs1) | read_reg_long(instruction.r_type.rs2));
                     return PC + 4; // 0x6
                 case RV64_FUNCT3_AND   :
                     switch (instruction.r_type.funct7)
@@ -1190,9 +1190,8 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     }
                     return PC + 4; // 0x5
                 case RV64_FUNCT3_OR    :
-                    printf("\n");
-                    assert(0 && "RV64_OP_OP - OR\n");
-                    return PC + 4; // 0x6
+                    printf("or\t$r%d, $r%d, $r%d\n", instruction.r_type.rd, instruction.r_type.rs1, instruction.r_type.rs2);
+                    return;
                 case RV64_FUNCT3_AND   :
                     switch (instruction.r_type.funct7)
                     {
