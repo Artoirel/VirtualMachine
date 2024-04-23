@@ -744,10 +744,17 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_execve:
                     assert(0 && "RV64_SYS_execve\n");
                 case RV64_SYS_mmap:
-                    printf("region - 0x%.lx\n", get_program_break());
+                    if(read_reg_long(10))
+                    {
+                        assert(0 && "specific address mmap");
+                    }
+                    if(read_reg_long(14))
+                    {
+                        assert(0 && "file backed mmap");
+                    }
+                    write_reg_long(10, get_program_break());
                     set_program_break(get_program_break() + read_reg_long(11));
-                    printf("0x%.lx\n", get_program_break());
-                    assert(0 && "RV64_SYS_mmap\n");
+                    return PC + 4;
                 case RV64_SYS_fadvise64:
                     assert(0 && "RV64_SYS_fadvise64\n");
                 case RV64_SYS_swapon:
