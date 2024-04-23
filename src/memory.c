@@ -232,7 +232,6 @@ void print_arbitrary_bytes(uint64_t start)
 void set_program_break(uint64_t addr)
 {
     program_break = addr;
-    printf("0x%.lx\n", program_break);
 }
 
 uint64_t get_program_break()
