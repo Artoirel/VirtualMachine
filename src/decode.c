@@ -828,6 +828,13 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_wait4:
                     assert(0 && "RV64_SYS_wait4\n");
                 case RV64_SYS_prlimit64:
+                    printf("%d\n", read_reg_long(10));
+                    printf("%d\n", read_reg_long(11));
+                    printf("%d\n", read_reg_long(12));
+                    printf("%d\n", read_reg_long(13));
+                    printf("%d\n", read_reg_long(14));
+                    printf("%d\n", read_reg_long(15));
+                    printf("%d\n", read_reg_long(16));
                     assert(0 && "RV64_SYS_prlimit64\n");
                 case RV64_SYS_fanotify_init:
                     assert(0 && "RV64_SYS_fanotify_init\n");
