@@ -21,6 +21,6 @@ uint64_t write_arbitrary_bytes(uint8_t *bytes, uint64_t addr, uint64_t size);
 void print_arbitrary_bytes(uint64_t start);
 
 void set_program_break(uint64_t addr);
-uint64_t g_mmap(uint64_t size);
+uint64_t get_program_break();
 
 #endif

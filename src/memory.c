@@ -232,13 +232,10 @@ void print_arbitrary_bytes(uint64_t start)
 void set_program_break(uint64_t addr)
 {
     program_break = addr;
-    printf("0x%.lx", program_break);
+    printf("0x%.lx\n", program_break);
 }
 
-uint64_t g_mmap(uint64_t size)
+uint64_t get_program_break()
 {
-    uint64_t region = program_break;
-    set_program_break(region + size);
-
-    return region;
+    return program_break;
 }
