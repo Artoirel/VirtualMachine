@@ -196,7 +196,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP - SLTU\n");
                     return PC + 4; // 0x3
                 case RV64_FUNCT3_XOR   :
-                    assert(0 && "RV64_OP_OP - XOR\n");
+                    write_reg_long(instruction.r_type.rd, read_reg_long(instruction.r_type.rs1) ^ read_reg_long(instruction.r_type.rs2));
                     return PC + 4; // 0x4
                 case RV64_FUNCT3_SRL   :
                     switch(instruction.r_type.funct7)
@@ -1200,23 +1200,22 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP - SLTU\n");
                     return PC + 4; // 0x3
                 case RV64_FUNCT3_XOR   :
-                    printf("\n");
-                    assert(0 && "RV64_OP_OP - XOR\n");
-                    return PC + 4; // 0x4
+                    printf("xor\t$r%d, $r%d, $r%d\n", instruction.r_type.rd, instruction.r_type.rs1, instruction.r_type.rs2);
+                    return; // 0x4
                 case RV64_FUNCT3_SRL   :
                     switch(instruction.r_type.funct7)
                     {
                         case RV64_FUNCT7_SRL :
                             printf("\n");
                             assert(0 && "RV64_OP_OP - SRL\n");
-                            return PC + 4;
+                            return;
                         case RV64_FUNCT7_SRA :
                             printf("\n");
                             assert(0 && "RV64_OP_OP - SRA\n");
-                            return PC + 4;
+                            return;
                         case RV64_FUNCT7_DIVU :
                             printf("divu\t$r%d, $r%d, $r%d\n", instruction.r_type.rd, instruction.r_type.rs1, instruction.r_type.rs2);
-                            return PC + 4;
+                            return;
                     }
                     return PC + 4; // 0x5
                 case RV64_FUNCT3_OR    :
