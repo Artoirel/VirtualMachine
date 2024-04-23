@@ -473,7 +473,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_tee:
                     assert(0 && "RV64_SYS_tee\n");
                 case RV64_SYS_readlinkat:
-                    char fullpath[PATH_MAX+1];
+                    char fullpath[4096];
                     fullpath = (get_filiepath(), fullpath);
                     printf("%s\n", fullpath);
                     if(read_reg_long(10) == AT_FDCWD)
