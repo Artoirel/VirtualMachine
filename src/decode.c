@@ -83,8 +83,8 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP_IMM - SLTI\n");
                     return;// 0x2
                 case RV64_FUNCT3_SLTIU:
-                    uint64_t sltiuval = read_reg_long(instruction.i_type.rs1);
-                    uint64_t sltiuimm = instruction.i_type.imm;
+                    unsigned long sltiuval = read_reg_long(instruction.i_type.rs1);
+                    unsigned long sltiuimm = instruction.i_type.imm;
                     uint64_t writeval = 0;
 
                     if(sltiuval < sltiuimm)
