@@ -181,7 +181,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_FUNCT5_LRW\n");
                     return;
                 case RV64_FUNCT5_SCW       :
-                    assert(0 && "RV64_FUNCT5_SCW\N");
+                    assert(0 && "RV64_FUNCT5_SCW\n");
                     return;// 0x03
                 case RV64_FUNCT5_AMOSWAPW  :
                     assert(0 && "RV64_FUNCT5_AMOSWAPW\n");
