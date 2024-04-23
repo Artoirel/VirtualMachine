@@ -474,7 +474,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_readlinkat:
                     if(read_reg_long(10) == AT_FDCWD)
                     {
-                        assert(0 && "relative pathing");
+                        //assert(0 && "relative pathing");
                     }
 
                     printf("%.lx\n", read_reg_long(10));
