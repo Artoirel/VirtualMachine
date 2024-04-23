@@ -135,6 +135,17 @@ int dispatch(inst_t instruction, uint64_t PC)
 
                     write_reg_long(instruction.i_type.rd, slliw_write);
                     return PC + 4;// 0x0
+
+                case RV64_FUNCT3_SRLIW:
+                    uint32_t srliw_val = read_reg_int(instruction.i_type.rs1) >> i_imm(instruction.i_type);
+                    uint64_t srliw_write = srliw_val;
+                    if (srliw_val >> 31 == 1)
+                    {
+                        srliw_write = 0xFFFFFFFF00000000l | srliw_val;
+                    }
+
+                    write_reg_long(instruction.i_type.rd, srliw_write);
+                    return PC + 4;// 0x0
             }
             printf("\n");
             assert(0 && "RV64_OP_OP_IMM32\n");
@@ -1136,6 +1147,10 @@ void pretty_print(inst_t instruction, uint64_t PC)
                 case RV64_FUNCT3_SLLIW :
                     printf("slliw\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
                     return;// 0x1
+
+                case RV64_FUNCT3_SRLIW:
+                    printf("srliw\t$r%d, $r%d, %d\n", instruction.i_type.rd, instruction.i_type.rs1, i_imm(instruction.i_type));
+                    return;// 0x5
             }
             printf("\n");
             assert(0 && "RV64_OP_OP_IMM32\n");
