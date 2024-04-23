@@ -475,8 +475,11 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_readlinkat:
                     char *fullpath = (char*) malloc(4096);
                     fullpath = realpath(get_filename(), fullpath);
-                    printf("%d\n", strlen(fullpath));
 
+                    write_arbitrary_bytes(fullpath, read_reg_long(12), strlen(fullpath));
+                    print_arbitrary_bytes(read_reg_long(12));
+
+                    write_reg_long(10, strlen(fullpath));
                     printf("%.lx\n", read_reg_long(10));
                     printf("%d\n", read_reg_long(11));
                     printf("%d\n", read_reg_long(12));
