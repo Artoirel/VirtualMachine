@@ -7,6 +7,7 @@
 #include "error.h"
 
 uint8_t *****vmem = NULL;
+uint64_t program_break = 0;
 
 void write_byte(uint64_t addr, uint8_t byte)
 {
@@ -77,12 +78,14 @@ void write_double_word(uint64_t addr, uint64_t double_word)
     write_word(addr + 4, data.words.w2);
 }
 
-void write_arbitrary_bytes(uint8_t *bytes, uint64_t addr, uint64_t size)
+uint64_t write_arbitrary_bytes(uint8_t *bytes, uint64_t addr, uint64_t size)
 {
     for(int i = 0; i < size; i++)
     {
         write_byte(addr + i, bytes[i]);
     }
+
+    return addr + size;
 }
 
 uint8_t read_byte(uint64_t addr)
@@ -224,4 +227,19 @@ void print_arbitrary_bytes(uint64_t start)
             printf("%c", temp);
         }
     }
+}
+
+void set_program_break(uint64_t addr)
+{
+    program_break = addr;
+}
+
+uint64_t g_mmap(uint64_t size)
+{
+    uint64_t region = program_break;
+    program_break += size;
+    printf("0x%.lx", region);
+    printf("0x%.lx", program_break);
+
+    return region;
 }

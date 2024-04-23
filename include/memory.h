@@ -17,7 +17,10 @@ uint64_t read_double_word(uint64_t addr);
 
 int check_addr_aligned(uint64_t addr, int size);
 void validate_mem_alloc(address_t address);
-void write_arbitrary_bytes(uint8_t *bytes, uint64_t addr, uint64_t size);
+uint64_t write_arbitrary_bytes(uint8_t *bytes, uint64_t addr, uint64_t size);
 void print_arbitrary_bytes(uint64_t start);
+
+void set_program_break(uint64_t addr);
+uint64_t g_mmap(uint64_t size);
 
 #endif

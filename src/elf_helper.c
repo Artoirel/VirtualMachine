@@ -78,6 +78,7 @@ void get_loadable_segment(void* header)
 
     for (int i = 0; i < temp->e_phnum; i++)
     {
+        uint64_t addr;
         if(temp_phdr[i].p_type == PT_LOAD || temp_phdr[i].p_type == PT_TLS)
         {
             uint8_t bytes[temp_phdr[i].p_memsz];
@@ -97,8 +98,9 @@ void get_loadable_segment(void* header)
                 }
             }
 
-            write_arbitrary_bytes(bytes, temp_phdr[i].p_vaddr, temp_phdr[i].p_memsz);
+            addr = write_arbitrary_bytes(bytes, temp_phdr[i].p_vaddr, temp_phdr[i].p_memsz);
         }
+        set_program_break((addr + 4096) & 0xffffffffffff);
     }
 }
 
