@@ -1381,7 +1381,6 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     printf("bne\t$r%d, $r%d, %d\n", instruction.b_type.rs1, instruction.b_type.rs2, b_imm(instruction.b_type));
                     return; //  0x1
                 case RV64_FUNCT3_BLT  :
-                    printf("\n");
                     printf("blt\t$r%d, $r%d, %d\n", instruction.b_type.rs1, instruction.b_type.rs2, b_imm(instruction.b_type));
                     return; //  0x4
                 case RV64_FUNCT3_BGE  :
