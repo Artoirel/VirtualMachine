@@ -514,6 +514,13 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_futex:
                     assert(0 && "RV64_SYS_futex\n");
                 case RV64_SYS_set_robust_list:
+                    printf("%d\n", read_reg_long(10));
+                    printf("%d\n", read_reg_long(11));
+                    printf("%d\n", read_reg_long(12));
+                    printf("%d\n", read_reg_long(13));
+                    printf("%d\n", read_reg_long(14));
+                    printf("%d\n", read_reg_long(15));
+                    printf("%d\n", read_reg_long(16));
                     assert(0 && "RV64_SYS_set_robust_list\n");
                 case RV64_SYS_get_robust_list:
                     assert(0 && "RV64_SYS_get_robust_list\n");
