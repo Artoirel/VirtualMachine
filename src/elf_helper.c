@@ -100,7 +100,7 @@ void get_loadable_segment(void* header)
 
             addr = write_arbitrary_bytes(bytes, temp_phdr[i].p_vaddr, temp_phdr[i].p_memsz);
         }
-        set_program_break((addr + 4096) & 0xffffffffffff0000l);
+        set_program_break((addr) & 0xffffffffffff0000l);
     }
 }
 
