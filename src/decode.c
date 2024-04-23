@@ -477,17 +477,11 @@ int dispatch(inst_t instruction, uint64_t PC)
                     fullpath = realpath(get_filename(), fullpath);
 
                     write_arbitrary_bytes(fullpath, read_reg_long(12), strlen(fullpath));
-                    print_arbitrary_bytes(read_reg_long(12));
-
                     write_reg_long(10, strlen(fullpath));
-                    printf("%.lx\n", read_reg_long(10));
-                    printf("%d\n", read_reg_long(11));
-                    printf("%d\n", read_reg_long(12));
-                    printf("%d\n", read_reg_long(13));
-                    printf("%d\n", read_reg_long(14));
-                    printf("%d\n", read_reg_long(15));
-                    printf("%d\n", read_reg_long(16));
-                    assert(0 && "RV64_SYS_readlinkat\n");
+
+                    free(fullpath);
+                    return PC + 4;
+
                 case RV64_SYS_fstatat:
                     assert(0 && "RV64_SYS_fstatat\n");
                 case RV64_SYS_fstat:
