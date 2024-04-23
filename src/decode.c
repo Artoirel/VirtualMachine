@@ -7,6 +7,7 @@
 #include "rv64_opcodes.h"
 #include "rv64_syscall.h"
 #include <assert.h>
+#include <fcntl.h>
 
 int inst_count = 0;
 
@@ -471,6 +472,11 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_tee:
                     assert(0 && "RV64_SYS_tee\n");
                 case RV64_SYS_readlinkat:
+                    if(read_reg_long(10) == AT_FDCWD)
+                    {
+                        assert(0 && "relative pathing");
+                    }
+
                     printf("%.lx\n", read_reg_long(10));
                     uint64_t addr = read_reg_long(11);
                     uint8_t ch;
