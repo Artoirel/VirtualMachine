@@ -238,8 +238,6 @@ uint64_t g_mmap(uint64_t size)
 {
     uint64_t region = program_break;
     program_break += size;
-    printf("0x%.lx\n", region);
-    printf("0x%.lx\n", program_break);
 
     return region;
 }

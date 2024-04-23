@@ -33,8 +33,7 @@ int main(int argc, char *argv[], char *envp[])
 
     get_loadable_segment(header);
 
-    //decode_loop(PC);
-    g_mmap(2000);
+    decode_loop(PC);
 
     printf("Success!");
 
