@@ -1024,8 +1024,17 @@ void pretty_print(inst_t instruction, uint64_t PC)
             assert(0 && "RV64_OP_LOAD_FP\n");
             return 0; //0x07    /* 0000111 */
         case RV64_OP_MISC_MEM:
+            switch (instruction.i_type.funct3)
+            {
+                case RV64_FUNCT3_FENCE:
+                    printf("\n");
+                    assert(0 && "FENCE INST")
+                default:
+                    printf("\n");
+                    assert(0 && "UNKNOWN MISC_MEM");
+            }
             printf("\n");
-            assert(0 && "RV64_OP_MISC_MEM\n");
+            assert(0 && "UNKNOWN MISC MEM\n");
             return 0; //0x0f    /* 0001111 */
 
         case RV64_OP_OP_IMM:
