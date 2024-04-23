@@ -10,7 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb51fbd6-7fbc-4453-b11c-4ec8761df7bd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elf_helper.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/elf_helper.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +68,7 @@
       <workItem from="1713468311052" duration="22094000" />
       <workItem from="1713644183491" duration="21846000" />
       <workItem from="1713711137662" duration="16847000" />
-      <workItem from="1713870511580" duration="626000" />
+      <workItem from="1713870511580" duration="853000" />
     </task>
     <servers />
   </component>

@@ -79,6 +79,7 @@ void get_loadable_segment(void* header)
     for (int i = 0; i < temp->e_phnum; i++)
     {
         uint64_t addr;
+        printf("%p type - d\tLOAD - %d\tTLS - %d\n", temp_phdr[i].p_type, PT_LOAD, PT_TLS);
         if(temp_phdr[i].p_type == PT_LOAD || temp_phdr[i].p_type == PT_TLS)
         {
             if(temp_phdr[i].p_type == PT_TLS);
