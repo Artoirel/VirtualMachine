@@ -474,7 +474,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_SYS_tee\n");
                 case RV64_SYS_readlinkat:
                     char *fullpath = (char*) malloc(4096);
-                    fullpath = (get_filename(), fullpath);
+                    fullpath = realpath(get_filename(), fullpath);
                     printf("%s\n", fullpath);
                     if(read_reg_long(10) == AT_FDCWD)
                     {
