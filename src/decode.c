@@ -175,6 +175,43 @@ int dispatch(inst_t instruction, uint64_t PC)
 
         case RV64_OP_AMO:
             assert(0 && "RV64_OP_AMO\n");
+            switch(instruction.r_type.funct7 >> 2)
+            {
+                case RV64_FUNCT5_LRW       :
+                    assert(0 && "RV64_FUNCT5_LRW");
+                    return;
+                case RV64_FUNCT5_SCW       :
+                    assert(0 && "RV64_FUNCT5_SCW);
+                    return;// 0x03
+                case RV64_FUNCT5_AMOSWAPW  :
+                    assert(0 && "RV64_FUNCT5_AMOSWAPW");
+                    return;// 0x01
+                case RV64_FUNCT5_AMOADDW   :
+                    assert(0 && "RV64_FUNCT5_AMOADDW");
+                    return;// 0x00
+                case RV64_FUNCT5_AMOXORW   :
+                    assert(0 && "RV64_FUNCT5_AMOXORW");
+                    return;// 0x04
+                case RV64_FUNCT5_AMOANDW   :
+                    assert(0 && "RV64_FUNCT5_AMOANDW");
+                    return;// 0x0c
+                case RV64_FUNCT5_AMOORW    :
+                    assert(0 && "RV64_FUNCT5_AMOORW");
+                    return;// 0x08
+                case RV64_FUNCT5_AMOMINW   :
+                    assert(0 && "RV64_FUNCT5_AMOMINW");
+                    return;// 0x10
+                case RV64_FUNCT5_AMOMAXW   :
+                    assert(0 && "RV64_FUNCT5_AMOMAXW");
+                    return;// 0x14
+                case RV64_FUNCT5_AMOMINUW  :
+                    assert(0 && "RV64_FUNCT5_AMOMINUW");
+                    return;// 0x18
+                case RV64_FUNCT5_AMOMAXUW  :
+                    assert(0 && "RV64_FUNCT5_AMOMAXUW");
+                    return;// 0x1c
+            }
+            assert(0 && "UNKNOWN ATOMIC FUNCTION");
             return 0; //0x2f    /* 0101111 */
 
         case RV64_OP_OP:
