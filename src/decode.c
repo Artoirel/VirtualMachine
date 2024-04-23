@@ -8,6 +8,7 @@
 #include "rv64_syscall.h"
 #include <assert.h>
 #include <fcntl.h>
+#include "elf_helper.h"
 
 int inst_count = 0;
 
@@ -472,21 +473,13 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_tee:
                     assert(0 && "RV64_SYS_tee\n");
                 case RV64_SYS_readlinkat:
+                    printf("%s\n", get_filename());
                     if(read_reg_long(10) == AT_FDCWD)
                     {
-                        //assert(0 && "relative pathing");
+
                     }
 
                     printf("%.lx\n", read_reg_long(10));
-                    uint64_t addr = read_reg_long(11);
-                    uint8_t ch;
-                    do
-                    {
-                        ch = read_byte(addr);
-                        addr += 1;
-                        printf("%c", ch);
-                    } while (1);
-                    printf("\n");
                     printf("%d\n", read_reg_long(11));
                     printf("%d\n", read_reg_long(12));
                     printf("%d\n", read_reg_long(13));

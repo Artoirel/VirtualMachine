@@ -13,6 +13,6 @@ void get_loadable_segment(void* header);
 
 void* create_shdr(void *header);
 
-void get_main(void* header, void* sec, int argc, char* argv[]);
+char* get_filename();
 
 #endif

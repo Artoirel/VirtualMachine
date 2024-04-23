@@ -13,8 +13,10 @@
 #include "memory.h"
 
 static int fd = -1;
+char* filename;
 
 int check_elf(char* file) {
+    filename = file;
     char *magic = NULL;
     fd = open(file, O_RDONLY);
     magic = (char *) mmap(NULL, 16, PROT_READ, MAP_SHARED, fd, 0);
@@ -118,69 +120,7 @@ void* create_shdr(void* header)
     return sec;
 }
 
-void get_main(void* header,void* sec, int argc, char * argv[])
+char* get_filename()
 {
-    int er = 0;
-    char *strtab = NULL;
-    int strtabsize = 0;
-    char * sym = NULL;
-    int symsize = 0;
-    int strtabsecsize = 0;
-    int (*main2)(int, char**) = NULL;
-    Elf64_Ehdr* temp = (Elf64_Ehdr*) header;
-    Elf64_Shdr* stemp = (Elf64_Shdr*) sec;
-    Elf64_Sym * symtab = NULL;
-
-    if(temp->e_shstrndx != SHN_UNDEF)
-    {
-        strtab = (char*) malloc(stemp[temp->e_shstrndx].sh_size);
-        strtabsize = stemp[temp->e_shstrndx].sh_size;
-        lseek(fd, stemp[temp->e_shstrndx].sh_offset, SEEK_SET);
-        read(fd, strtab, stemp[temp->e_shstrndx].sh_size);
-    }
-
-    for (int i=0; i < temp->e_shnum; i++)
-    {
-        if(strcmp(&(strtab[stemp[i].sh_name]), ".strtab") == 0)
-        {
-	        strtabsecsize = stemp[i].sh_size;
-            sym = (unsigned char*) mmap(NULL, stemp[i].sh_size, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-            lseek(fd, stemp[i].sh_offset, SEEK_SET);
-            er = read(fd, sym, stemp[i].sh_size);
-            if(er == -1)
-            {
-                THROW_ERROR("Error Reading Section Data");
-            }
-        }
-    }
-	
-    for(int i = 0; i < temp->e_shnum; i++)
-    {
-        if(stemp[i].sh_type == SHT_SYMTAB)
-        {
-            symtab = (Elf64_Sym*) malloc(stemp[i].sh_size);
-            symsize = stemp[i].sh_size;
-            lseek(fd, stemp[i].sh_offset, SEEK_SET);
-            er = read(fd, symtab, symsize);
-            if (er == -1)
-            {
-                THROW_ERROR("Error reading Symbol Table");
-            }
-	    }
-    }
-
-    if(symtab)
-    {
-        for(int i = 0; i < symsize / sizeof(Elf64_Sym); i++)
-        {
-            if(strcmp(&sym[symtab[i].st_name], "main") == 0)
-            {
-               main2 = (int (*)(int, char**)) symtab[i].st_value;
-               int test = main2(argc, argv);
-            }
-        }
-    }
-
-    close(fd);
-    munmap(sym, strtabsecsize);
+    return filename;
 }
