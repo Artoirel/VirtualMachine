@@ -1160,8 +1160,20 @@ void pretty_print(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_OP_OP - OR\n");
                     return PC + 4; // 0x6
                 case RV64_FUNCT3_AND   :
+                    switch (instruction.r_type.funct7) :
+                    {
+                        case RV64_FUNCT7_REMU :
+                            printf("\n");
+                            assert(0 && "RV64_OP_OP - REMU\n");
+                            return PC + 4;
+
+                        case RV64_FUNCT7_AND :
+                            printf("\n");
+                            assert(0 && "RV64_OP_OP - AND\n");
+                            return PC + 4;
+                    }
                     printf("\n");
-                    assert(0 && "RV64_OP_OP - AND\n");
+                    assert(0 && "UNKNOWN OP INST\n");
                     return PC + 4; // 0x7
             }
 
