@@ -473,7 +473,7 @@ int dispatch(inst_t instruction, uint64_t PC)
                 case RV64_SYS_readlinkat:
                     printf("%.lx\n", read_reg_long(10));
                     uint64_t addr = read_reg_long(11);
-                    uint8_t ch
+                    uint8_t ch;
                     do
                     {
                         ch =  = read_byte(addr);
