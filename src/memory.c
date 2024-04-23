@@ -237,7 +237,7 @@ void set_program_break(uint64_t addr)
 uint64_t g_mmap(uint64_t size)
 {
     uint64_t region = program_break;
-    program_break += size;
+    program_break = region + size;
 
     return region;
 }
