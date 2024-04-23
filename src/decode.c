@@ -183,9 +183,9 @@ int dispatch(inst_t instruction, uint64_t PC)
                     assert(0 && "RV64_FUNCT5_SCW\n");
                     return;// 0x03
                 case RV64_FUNCT5_AMOSWAPW  :
-                    write_reg_word(instruction.r_type.rd, read_reg_word(instruction.r_type.rs2));
-                    write_reg_word(instruction.r_type.rs2, read_word(read_reg_long(instruction.r_type.rs1)));
-                    write_word(read_reg_long(instruction.r_type.rs1), read_reg_word(instruction.r_type.rd));
+                    write_reg_int(instruction.r_type.rd, read_reg_int(instruction.r_type.rs2));
+                    write_reg_int(instruction.r_type.rs2, read_word(read_reg_long(instruction.r_type.rs1)));
+                    write_word(read_reg_long(instruction.r_type.rs1), read_reg_int(instruction.r_type.rd));
                     return PC + 4;// 0x01
                 case RV64_FUNCT5_AMOADDW   :
                     assert(0 && "RV64_FUNCT5_AMOADDW\n");
