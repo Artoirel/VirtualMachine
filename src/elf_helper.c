@@ -81,6 +81,11 @@ void get_loadable_segment(void* header)
         uint64_t addr;
         if(temp_phdr[i].p_type == PT_LOAD || temp_phdr[i].p_type == PT_TLS)
         {
+            if(temp_phdr[i].p_type == PT_TLS);
+            {
+                printf("TEST\n");
+            }
+
             uint8_t bytes[temp_phdr[i].p_memsz];
             lseek(fd, temp_phdr[i].p_offset, SEEK_SET);
             er = read(fd, bytes, temp_phdr[i].p_filesz);
